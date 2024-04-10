@@ -3,11 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martirod <martirod@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:37 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/08 15:10:38 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/10 14:13:07 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 
+size_t ft_strlen(const char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+    {
+        i++;
+    }
+    return (i);
+}
