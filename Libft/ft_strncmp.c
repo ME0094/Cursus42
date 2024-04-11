@@ -1,13 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martirod <martirod@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 15:11:24 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/08 15:11:25 by martirod         ###   ########.fr       */
+/*   Created: 2024/04/08 15:11:06 by martirod          #+#    #+#             */
+/*   Updated: 2024/04/11 15:13:50 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
 
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
+	{
+		if (*s1 != *s2)
+		{
+			return (*s1 - *s2);
+		}
+		s1++;
+		s2++;
+		n--;
+	}
+	return (0);
+}
