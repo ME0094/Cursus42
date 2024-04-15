@@ -3,11 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martirod <martirod@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:07:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/08 15:07:12 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:30:00 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libft.h"

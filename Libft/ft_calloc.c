@@ -6,16 +6,17 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:03:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/12 15:14:40 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:53:11 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
+#include "stdlib.h"
 
-void	*ft_calloc(unsigned int count, unsigned int size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned int	total_size;
-	void			*ptr;
+	size_t	total_size;
+	void	*ptr;
 
 	total_size = count * size;
 	ptr = malloc(total_size);

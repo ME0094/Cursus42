@@ -6,13 +6,13 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:52 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/11 12:36:09 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:50:30 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int	tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		c += 32;

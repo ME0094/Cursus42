@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:24 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/12 13:33:16 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:03:42 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *str, int c)
 {
@@ -24,6 +24,10 @@ char	*ft_strrchr(const char *str, int c)
 			last_occurrence = str;
 		}
 		str++;
+	}
+	if (*str == c)
+	{
+		last_occurrence = str;
 	}
 	return ((char *)last_occurrence);
 }

@@ -6,19 +6,24 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:06 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/11 15:13:50 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:52:41 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
+	unsigned char	u1;
+	unsigned char	u2;
+
 	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
 	{
-		if (*s1 != *s2)
+		u1 = (unsigned char)*s1;
+		u2 = (unsigned char)*s2;
+		if (u1 != u2)
 		{
-			return (*s1 - *s2);
+			return (u1 - u2);
 		}
 		s1++;
 		s2++;

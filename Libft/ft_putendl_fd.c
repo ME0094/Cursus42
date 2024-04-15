@@ -3,11 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martirod <martirod@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:08:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/08 15:08:28 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:30:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libft.h"

@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martirod <martirod@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:08:18 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/08 15:08:19 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:30:22 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"

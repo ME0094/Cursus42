@@ -6,9 +6,8 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:00 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/12 15:11:49 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:30:42 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-lieufbhiuerrnoienbo
+#include "libft.h"

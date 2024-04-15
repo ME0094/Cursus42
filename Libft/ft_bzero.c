@@ -6,21 +6,19 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:03:45 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/11 14:56:01 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:48:00 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	ft_bzero(void *dest, unsigned int n)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*s;
+	size_t	c;
 
-	s = (unsigned char *)dest;
-	while (*s < n)
+	c = 0;
+	while (c < n)
 	{
-		*s = 0;
-		s++;
+		((unsigned char *)s)[c++] = 0;
 	}
-	return (dest);
 }

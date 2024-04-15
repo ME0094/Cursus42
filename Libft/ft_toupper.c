@@ -6,13 +6,13 @@
 /*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:59 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/11 12:35:51 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:50:22 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int	toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
 		c -= 32;
