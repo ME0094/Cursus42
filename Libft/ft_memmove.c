@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martirod <martirod@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:07:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/15 18:52:46 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:33:46 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*cdst;
-	const unsigned char	*csrc;
+	unsigned char	*csrc;
 
 	cdst = (unsigned char *) dest;
 	csrc = (unsigned char *) src;
@@ -29,7 +29,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			i++;
 		}
 	}
-<<<<<<< HEAD
 	else if (cdst > csrc)
 	{
 		i = n;
@@ -39,7 +38,5 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			i--;
 		}
 	}
-=======
->>>>>>> 66306ff2cc077d1229f3261523ed6330d2cd4b7e
 	return (dest);
 }
