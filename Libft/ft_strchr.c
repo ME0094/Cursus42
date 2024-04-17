@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:19 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:34:17 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:40:45 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	while (*str != '\0' || *str == c)
+	unsigned char	ch;
+
+	ch = (unsigned char)c;
+	while (*str != '\0')
 	{
-		if (*str == c)
+		if (*str == ch)
 			return ((char *)str);
 		str++;
 	}
-	return (0);
+	if (!ch)
+		return ((char *)str);
+	return (NULL);
 }

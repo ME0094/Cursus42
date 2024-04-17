@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:43:40 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 12:00:14 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:22:52 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(char const *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putendl_fd(char *s, int fd);
@@ -53,7 +53,8 @@ char	*ft_strdup(const char *src);
 char	*ft_itoa(int n);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strmapi(char *s, char (*f)(size_t, char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(const char *str1, const char *str2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif

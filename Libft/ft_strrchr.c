@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:24 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:35:02 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:01:02 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	const char	*last_occurrence;
+	const char	*last_occurrence = NULL;
 
-	last_occurrence = 0;
 	while (*str != '\0')
 	{
 		if (*str == c)
@@ -25,9 +24,7 @@ char	*ft_strrchr(const char *str, int c)
 		}
 		str++;
 	}
-	if (*str == c)
-	{
-		last_occurrence = str;
-	}
+	if (c == '\0')
+		return ((char *)str);
 	return ((char *)last_occurrence);
 }
