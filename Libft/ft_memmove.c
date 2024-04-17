@@ -16,7 +16,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*cdst;
-	unsigned char	*csrc;
+	const unsigned char	*csrc;
 
 	cdst = (unsigned char *) dest;
 	csrc = (unsigned char *) src;
@@ -29,6 +29,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			i++;
 		}
 	}
+<<<<<<< HEAD
 	else if (cdst > csrc)
 	{
 		i = n;
@@ -38,5 +39,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			i--;
 		}
 	}
+=======
+>>>>>>> 66306ff2cc077d1229f3261523ed6330d2cd4b7e
 	return (dest);
 }

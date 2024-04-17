@@ -18,7 +18,11 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	while (n-- > 0)
 	{
+<<<<<<< HEAD
 		if (*ptr == ((unsigned char)c))
+=======
+		if (*ptr == ((unsigned char) c))
+>>>>>>> 66306ff2cc077d1229f3261523ed6330d2cd4b7e
 			return ((void *)ptr);
 		ptr++;
 	}

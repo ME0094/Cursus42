@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+<<<<<<< HEAD
 #include "libft.h"
 
 char	*ft_substr(char const *s, size_t start, size_t len);
+=======
+char *ft_substr(char const *s, unsigned int start, unsigned int len);
+>>>>>>> 66306ff2cc077d1229f3261523ed6330d2cd4b7e
