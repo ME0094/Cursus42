@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/18 16:22:18 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:10:32 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ static char	*extract_word(const char *s, char c)
 	return (word);
 }
 
+static void	free_tab(char **tab, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
 static void	extract_words(char **tab, const char *s, char c)
 {
 	size_t	i;
@@ -55,11 +68,7 @@ static void	extract_words(char **tab, const char *s, char c)
 			tab[i] = extract_word(s, c);
 			if (!tab[i])
 			{
-				while (i > 0)
-				{
-					free(tab[--i]);
-				}
-				free(tab);
+				free_tab(tab, i);
 				return ;
 			}
 			i++;
