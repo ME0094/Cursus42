@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 15:43:40 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 17:22:52 by martirod         ###   ########.fr       */
+/*   Created: 2024/04/18 15:18:50 by martirod          #+#    #+#             */
+/*   Updated: 2024/04/18 15:18:55 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <string.h>
-# include <stddef.h>
 # include <unistd.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 void	*ft_memset(void *b, int c, size_t len);
 size_t	ft_strlen(const char *s);
@@ -56,5 +49,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(const char *str1, const char *str2);
 char	*ft_strtrim(char const *s1, char const *set);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	**ft_split(char const *s, char c);
 
 #endif
