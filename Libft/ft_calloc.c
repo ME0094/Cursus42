@@ -6,12 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:03:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:32:19 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:03:20 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

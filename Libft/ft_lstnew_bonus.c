@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:06:49 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/23 17:55:57 by martirod         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:37:57 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 t_list  *ft_lstnew(void *content)
 {
-    NODE* newNode;
-    newNode= malloc(sizeof(NODE));
-    newNode->next = NULL;
-    newNode->number = number;
-
-    return newNode;
+    t_list *new_node;
+    new_node = malloc(sizeof(t_list));
+    if (!new_node)
+        return (NULL);
+    new_node->content = content;
+    new_node->next = NULL;
+    return (new_node);
 }
