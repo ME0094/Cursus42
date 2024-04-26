@@ -84,7 +84,6 @@ static void	extract_words(char **tab, const char *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
-	size_t	i;
 	size_t	word_count;
 
 	if (!s)
@@ -93,7 +92,6 @@ char	**ft_split(char const *s, char c)
 	tab = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!tab)
 		return (NULL);
-	i = 0;
 	extract_words(tab, s, c);
 	return (tab);
 }

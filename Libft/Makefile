@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/18 14:21:33 by martirod          #+#    #+#              #
-#    Updated: 2024/04/25 12:40:00 by martirod         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libft.a
 
 SRCS = \
@@ -24,7 +12,7 @@ ft_striteri.c ft_split.c
 BONUS_SRCS = \
 ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.clean
+ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJ = $(SRCS:.c=.o)
 
@@ -42,13 +30,13 @@ $(NAME): $(OBJ)
 	$(LIB) $(NAME) $(OBJ)
 
 $(OBJ): %.o:%.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	
 bonus: $(BONUS_OBJS)
-	$(LIB) $(NAME) $(BONUS_OBJS)
+	$(LIB) $(NAME) $^
 
 $(BONUS_OBJSOBJ): %.o:%.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
