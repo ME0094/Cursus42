@@ -6,7 +6,13 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:21:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/27 15:21:34 by martirod         ###   ########.fr       */
+/*   Updated: 2024/05/27 20:22:58 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "printf.h"
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
