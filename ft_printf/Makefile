@@ -6,7 +6,32 @@
 #    By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/27 15:10:10 by martirod          #+#    #+#              #
-#    Updated: 2024/05/27 15:10:18 by martirod         ###   ########.fr        #
+#    Updated: 2024/05/29 18:58:04 by martirod         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libftprintf.a
+
+SRC = ft_printf.c \
+
+OBJ = $(SRC:.c=.o)
+
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
+AR = ar rcs
+
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
+
+all: $(NAME)
+
+clean:
+	$(RM) $(OBJ)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

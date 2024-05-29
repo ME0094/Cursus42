@@ -6,13 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:21:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/27 20:22:58 by martirod         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:47:05 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) != 1)
+		return (-1);
+	return (1);
 }
