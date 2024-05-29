@@ -6,13 +6,13 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:10:09 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/29 20:22:09 by martirod         ###   ########.fr       */
+/*   Updated: 2024/05/29 20:34:16 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr(unsigned long long n)
+int	ft_putptr(void *n)
 {
 	int	len;
 	int	aux;
@@ -23,4 +23,8 @@ int	ft_putptr(unsigned long long n)
 		return (-1);
 	len += 2;
 	aux = ft_putnbr_hexa((unsigned long) n, 'x');
+	if (aux == -1)
+		return (-1);
+	len += aux;
+	return (len);
 }
