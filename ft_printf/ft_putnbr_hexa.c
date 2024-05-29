@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_hexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 15:20:42 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/27 15:52:24 by martirod         ###   ########.fr       */
+/*   Created: 2024/05/29 20:09:34 by martirod          #+#    #+#             */
+/*   Updated: 2024/05/29 20:12:42 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_strlen(char *s)
+int	ft_putnbr_hexa(unsigned long long n, char c)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (s[i])
+	count = 0;
+	if (n >= 16)
 	{
-		i++;
+		count += ft_putnbr_hexa(n / 16, c);
+		count += ft_putchar("0123456789abcdef"[n % 16]);
 	}
-	return (i);
+	else
+		count += ft_putchar("0123456789abcdef"[n % 16]);
+	return (count);
 }

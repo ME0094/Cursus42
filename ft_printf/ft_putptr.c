@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_nosign.c                                    :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 16:41:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/29 16:47:27 by martirod         ###   ########.fr       */
+/*   Created: 2024/05/29 20:10:09 by martirod          #+#    #+#             */
+/*   Updated: 2024/05/29 20:22:09 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_num_nosign(unsigned int n)
+int	ft_putptr(unsigned long long n)
 {
-	int	i;
+	int	len;
+	int	aux;
 
-	i = 0;
-	if (n > 9)
-	{
-		i = ft_num_nosign(n / 10);
-		if (i == -1)
-			return (-1);
-		n = n % 10;
-	}
-	if (n <= 9)
-	{
-		if (ft_putchar ((n + '0')) == -1)
-			return (-1);
-		i++;
-	}
-	return (i);
+	len = 0;
+	aux = 0;
+	if (ft_putstr("0x") == -1)
+		return (-1);
+	len += 2;
+	aux = ft_putnbr_hexa((unsigned long) n, 'x');
 }
