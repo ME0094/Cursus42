@@ -6,23 +6,35 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:09:34 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/29 20:29:49 by martirod         ###   ########.fr       */
+/*   Updated: 2024/05/30 13:47:22 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_hexa(unsigned long long n, char c)
+int	ft_putnbr_hexa(unsigned long nbr, char up)
 {
-	int	count;
+	int		len;
+	int		mod;
+	int		aux;
+	char	*base;
 
-	count = 0;
-	if (n >= 16)
-	{
-		count += ft_putnbr_hexa(n / 16, c);
-		count += ft_putchar("0123456789abcdef"[n % 16]);
-	}
+	mod = 0;
+	len = 0;
+	if (up == 'X')
+		base = "0123456789ABCDEF";
 	else
-		count += ft_putchar("0123456789abcdef"[n % 16]);
-	return (count);
+		base = "0123456789abcdef";
+	if (nbr > 15)
+	{
+		aux = ft_putnbr_hexa((nbr / 16), up);
+		if (aux == -1)
+			return (-1);
+		len += aux;
+	}
+	mod = nbr % 16;
+	if (write(1, &base[mod], 1) == -1)
+		return (-1);
+	len += 1;
+	return (len);
 }
