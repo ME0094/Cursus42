@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:20:55 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/29 20:29:27 by martirod         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:02:01 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putstr(char *str)
 {
