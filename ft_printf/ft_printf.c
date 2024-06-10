@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:36:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/10 17:51:04 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:38:32 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_conversion(const char type, va_list vargs)
 	else if (type == 'x' || type == 'X')
 		a += ft_putnbr_hexa(va_arg(vargs, unsigned int), type);
 	else if (type == 'p')
-		a += ft_putptr(va_arg(vargs, unsigned int));
+		a += ft_putptr(va_arg(vargs, uintptr_t));
 	else if (type == '%')
 		a += ft_putchar('%');
 	return (a);
