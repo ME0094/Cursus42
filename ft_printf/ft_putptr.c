@@ -6,13 +6,13 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:10:09 by martirod          #+#    #+#             */
-/*   Updated: 2024/05/29 20:34:16 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:33:19 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putptr(void *n)
+int	ft_putptr(unsigned long long n)
 {
 	int	len;
 	int	aux;
