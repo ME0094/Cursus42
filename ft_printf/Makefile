@@ -6,7 +6,7 @@
 #    By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/27 15:10:10 by martirod          #+#    #+#              #
-#    Updated: 2024/06/10 18:33:22 by martirod         ###   ########.fr        #
+#    Updated: 2024/06/11 18:15:08 by martirod         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = ft_printf.c ft_putchar.c ft_putnbr_hexa.c ft_putnbr.c ft_putptr.c ft_putst
 
 OBJ = $(SRC:.c=.o)
 
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 AR = ar rcs

@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:13:51 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/10 18:37:55 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/11 18:13:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdint.h>
+# include <stdio.h>
+# include <iostream.h>
 
 int		ft_printf(char const *s, ...);
 int		ft_putchar(char c);
