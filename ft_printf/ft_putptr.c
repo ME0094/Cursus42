@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 20:10:09 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/10 18:38:36 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/12 16:29:23 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 int	ft_putptr(uintptr_t n)
 {
-	int	len;
-	int	aux;
+	size_t		i;
 
-	len = 0;
-	aux = 0;
-	if (ft_putstr("0x") == -1)
-		return (-1);
-	len += 2;
-	aux = ft_putnbr_hexa((unsigned long) n, 'x');
-	if (aux == -1)
-		return (-1);
-	len += aux;
-	return (len);
+	i = 0;
+	if (!n)
+		return (ft_putstr("(nil)"));
+	i += ft_putstr("0x");
+	i += ft_putnbr_hexa(n, 'x');
+	return (i);
 }
