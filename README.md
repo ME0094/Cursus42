@@ -9,7 +9,8 @@
 <br>
 <br>
 
-### Contacto 
+# Contacto 
 
 ◦ Email: martirod@student.42malaga.com
-◦ LinkedIn: (https://www.linkedin.com/in/martin-eliseo/)
+
+◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
