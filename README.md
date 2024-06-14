@@ -9,9 +9,9 @@
 <br>
 <br>
 
-### Mi perfil de 42
-[AQUÍ](https://profile.intra.42.fr/users/martirod)
+## Mi perfil de 42
+[MARTIROD](https://profile.intra.42.fr/users/martirod)
 
-## Contacto 📥
+### Contacto 
 
 martirod@student.42malaga.com
