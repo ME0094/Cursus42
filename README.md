@@ -5,7 +5,7 @@
 <br>
 <br>
 ## ft_printf
-► [Reprogramamos printf](https://github.com/ME0094/Cursus42/tree/5eaa699febb18d26c32e3df830f74f21964800ce/ft_printf)
+► [Reprogramamos printf](https://github.com/ME0094/Cursus42/tree/master/ft_printf)
 <br>
 <br>
 
