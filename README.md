@@ -11,4 +11,5 @@
 
 ### Contacto 
 
-martirod@student.42malaga.com
+Email: martirod@student.42malaga.com
+LinkedIn: https://www.linkedin.com/in/martin-eliseo/
