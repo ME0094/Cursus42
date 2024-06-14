@@ -9,8 +9,8 @@
 <br>
 <br>
 
-## Mi perfil de 42
-[MARTIROD](https://profile.intra.42.fr/users/martirod)
+### Mi perfil de 42
+[martirod](https://profile.intra.42.fr/users/martirod)
 
 ### Contacto 
 
