@@ -9,7 +9,7 @@
 <br>
 <br>
 ## get_next_line
-► [Diseñar una función que devuelva una línea leída de un file descriptor..](https://github.com/ME0094/Cursus42/tree/master/get_next_line)
+► [Diseñar una función que devuelva una línea leída de un file descriptor.](https://github.com/ME0094/Cursus42/tree/master/get_next_line)
 <br>
 <br>
 
