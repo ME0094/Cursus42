@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:24:57 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/21 18:39:25 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:50:46 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
-	i =	0;
+	i = 0;
 	if (!s)
 		return (0);
 	while (s[i] != '\0')

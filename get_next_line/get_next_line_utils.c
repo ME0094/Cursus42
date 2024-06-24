@@ -6,16 +6,17 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:25:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/21 18:39:29 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:50:43 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 size_t	ft_strlen(const char *s)
 {
-	size_t i;
+	size_t	i;
 
-	i =	0;
+	i = 0;
 	if (!s)
 		return (0);
 	while (s[i] != '\0')
@@ -56,7 +57,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-		if (str == NULL)
+	if (str == NULL)
 		return (NULL);
 	i = -1;
 	j = 0;
