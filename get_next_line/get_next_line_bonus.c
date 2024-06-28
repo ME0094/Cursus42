@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:57 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/28 15:07:36 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/28 19:32:05 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@ char	*ft_line(char *save)
 	char	*line;
 
 	i = 0;
-	if (!save)
+	if (!save[i])
 		return (NULL);
-	while (save[i] != '\n' && save[i] != '\0')
+	while (save[i] && save[i] != '\n')
 		i++;
-	line = malloc((i + 1) * sizeof(char));
+	line = (char *) malloc(sizeof(*line) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (save[i] != '\n' && save[i] != '\0')
+	while (save[i] && save[i] != '\n')
+	{
+		line[i] = save[i];
+		i++;
+	}
+	if (save[i] == '\n')
 	{
 		line[i] = save[i];
 		i++;
@@ -43,32 +48,33 @@ char	*ft_save(char *save)
 
 	i = 0;
 	j = 0;
-	if (!save)
-		return (NULL);
-	while (save[i] != '\n' && save[i] != '\0')
+	while (save[i] && save[i] != '\n')
 		i++;
-	if (save[i] == '\0')
+	if (!save[i])
 	{
 		free(save);
 		return (NULL);
 	}
-	new_save = malloc((ft_strlen(save) - i + 1) * sizeof(char));
+	new_save = (char *) malloc(sizeof(*new_save) * (ft_strlen(save) - i + 1));
 	if (!new_save)
+	{
+		free(new_save);
 		return (NULL);
+	}
 	i++;
-	while (save[i] != '\0')
+	while (save[i])
 		new_save[j++] = save[i++];
 	new_save[j] = '\0';
 	free(save);
 	return (new_save);
 }
 
-char	ft_read_save(int fd, char *save)
+char	*ft_read_save(int fd, char *save)
 {
 	char	*buffer;
 	int		bytes;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer));
 	if (!buffer)
 		return (NULL);
 	bytes = 1;
@@ -93,7 +99,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*save[4096];
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 4096)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (0);
 	save[fd] = ft_read_save(fd, save[fd]);
 	if (!save[fd])

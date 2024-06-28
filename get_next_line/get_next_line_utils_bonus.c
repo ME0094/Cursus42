@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:24:57 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/28 15:11:26 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/28 19:31:43 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 size_t	ft_strlen(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -31,13 +29,12 @@ char	*ft_strchr(char *s, int c)
 	i = 0;
 	if (!s)
 		return (0);
-	i = 0;
-	if (c == '\0' )
+	if (c == '\0')
 		return ((char *)s + ft_strlen(s));
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			return ((char *)s + i);
+			return ((char *)&s[i]);
 		i++;
 	}
 	return (0);
