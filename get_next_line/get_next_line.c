@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:38 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/28 15:00:17 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:22:28 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_save(char *save)
 	return (new_save);
 }
 
-char	ft_read_save(int fd, char *save)
+char	*ft_read_save(int fd, char *save)
 {
 	char	*buffer;
 	int		bytes;
@@ -91,14 +91,14 @@ char	ft_read_save(int fd, char *save)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*save[4096];
+	static char	*save;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 4096)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	save[fd] = ft_read_save(fd, save[fd]);
-	if (!save[fd])
+	save = ft_read_save(fd, save);
+	if (!save)
 		return (NULL);
-	line = ft_line(save[fd]);
-	save[fd] = ft_save(save[fd]);
+	line = ft_line(save);
+	save = ft_save(save);
 	return (line);
 }

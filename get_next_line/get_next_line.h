@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:30 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/28 15:00:20 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:11:05 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # endif
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(char *s);
+char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 
 #endif
