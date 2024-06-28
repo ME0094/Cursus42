@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:38 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/25 15:39:39 by martirod         ###   ########.fr       */
+/*   Updated: 2024/06/28 15:00:17 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,49 +66,39 @@ char	*ft_save(char *save)
 char	ft_read_save(int fd, char *save)
 {
 	char	*buffer;
-	char	*tmp;
 	int		bytes;
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
-		return (-1);
-	bytes = read(fd, buffer, BUFFER_SIZE);
-	while (bytes > 0)
+		return (NULL);
+	bytes = 1;
+	while (!ft_strchr(save, '\n') && bytes != 0)
 	{
-		buffer[bytes] = '\0';
-		tmp = ft_strjoin(save, buffer);
-		free(save);
-		save = tmp;
-		if (ft_strchr(save, '\n'))
-			break ;
 		bytes = read(fd, buffer, BUFFER_SIZE);
+		if (bytes == -1)
+		{
+			free(buffer);
+			free(save);
+			return (NULL);
+		}
+		buffer[bytes] = '\0';
+		save = ft_strjoin(save, buffer);
 	}
 	free(buffer);
-	if (bytes == 0)
-	{
-		free(save);
-		return (0);
-	}
-	return (1);
+	return (save);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*save;
 	char		*line;
-	char		ret;
+	static char	*save[4096];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 4096)
+		return (0);
+	save[fd] = ft_read_save(fd, save[fd]);
+	if (!save[fd])
 		return (NULL);
-	ret = ft_read_save(fd, save);
-	if (ret == -1)
-		return (NULL);
-	line = ft_line(save);
-	save = ft_save(save);
-	if (ret == 0)
-	{
-		free(save);
-		save = NULL;
-	}
+	line = ft_line(save[fd]);
+	save[fd] = ft_save(save[fd]);
 	return (line);
 }
