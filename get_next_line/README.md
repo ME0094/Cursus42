@@ -1,3 +1,10 @@
 # get_next_line
-Este proyecto no solo te permitirá añadir una función bastante práctica a mi colección;
-también aprenderemos el increíble concepto de las variables estáticas en C.
+Diseñamos una función que devuelva una línea leída de un file descriptor.
+
+► [Explicación detallada en Notion.](https://www.notion.so/get_next_line-4d494f9d9a974eb8b0c33857835ae12b)
+
+# Contacto 
+
+◦ Email: martirod@student.42malaga.com
+
+◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
