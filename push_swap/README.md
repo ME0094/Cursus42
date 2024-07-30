@@ -1,5 +1,5 @@
 # push_swap
-Diseñamos una función que devuelva una línea leída de un file descriptor.
+Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones
 
 ► Ongoing
 
