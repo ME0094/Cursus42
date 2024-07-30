@@ -1,5 +1,5 @@
 # push_swap
-Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones
+Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones.
 
 ► Ongoing
 
