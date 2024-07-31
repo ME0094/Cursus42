@@ -6,13 +6,13 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 17:14:31 by martirod         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:43:12 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char *set)
 {
 	size_t	start;
 	size_t	end;
