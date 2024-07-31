@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/30 19:25:08 by martirod         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:00:25 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_stack
 {
@@ -26,9 +27,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+/* Stack */
+
+void	ft_stack_add_back(t_stack **stack, t_stack *new_node);
+t_stack	*ft_stack_new(int data, int position);
+int		ft_stack_size(t_stack *head);
+
 /* Initialization */
 
-int		ft_creating_tab(t_stack **stack_a);
+int		*ft_create_array_from_stack(t_stack *stack_a);
 int		ft_init_stack(t_stack **stack, int argc, char **argv);
 
 /* Validation */
@@ -52,11 +59,5 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 /* Free */
 
 /* Utils */
-
-/* Stack */
-
-void	ft_stackadd_back(t_stack **stack, t_stack *new);
-t_stack	*ft_stacknew(int value, int index);
-int		ft_lstsize(t_stack *lst);
 
 #endif

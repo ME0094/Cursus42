@@ -6,51 +6,54 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:50:23 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/30 18:56:39 by martirod         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:22:55 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stackadd_back(t_stack **stack, t_stack *new)
+void	ft_stack_add_back(t_stack **stack, t_stack *new_node)
 {
-	t_stack	*tmp;
+	t_stack	*current;
 
-	if (!stack || !new)
-		return ;
+	if (!stack || !new_node)
+		return (false);
 	if (!*stack)
 	{
-		*stack = new;
-		return ;
+		*stack = new_node;
+		return (true);
 	}
-	tmp = *stack;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
+	current = *stack;
+	while (current->next)
+		current = current->next;
+	current->next = new_node;
+	return (true);
 }
 
-t_stack	*ft_stacknew(int value, int index)
+t_stack	*ft_stack_new(int data, int position)
 {
 	t_stack	*new_node;
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
-	new_node->value = value;
-	new_node->index = index;
+	new_node->value = data;
+	new_node->index = position;
 	new_node->next = NULL;
 	return (new_node);
 }
 
-int	ft_lstsize(t_stack *lst)
+int	ft_stack_size(t_stack *head)
 {
-	int	size;
+	int		count;
+	t_stack	*current;
 
-	size = 0;
-	while (lst)
+	count = 0;
+	current = head;
+	while (head)
 	{
-		lst = lst->next;
-		size++;
+		current = current->next;
+		count++;
 	}
-	return (size);
+	return (count);
 }
