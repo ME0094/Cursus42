@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:18:50 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 16:33:56 by martirod         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:36:21 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 void	*ft_memset(void *b, int c, size_t len);
 size_t	ft_strlen(const char *s);
@@ -51,6 +55,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
+char	*get_next_line(int fd);
 
 typedef struct s_list
 {
