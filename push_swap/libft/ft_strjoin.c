@@ -6,26 +6,37 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:08 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/24 15:13:33 by martirod         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:33:26 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *str1, char const *str2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	len1;
-	size_t	len2;
-	char	*result;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	len1 = ft_strlen(str1);
-	len2 = ft_strlen(str2);
-	result = (char *)malloc(len1 + len2 + 1);
-	if (str1 == NULL || str2 == NULL)
-		return (0);
-	if (result == NULL)
-		return (0);
-	ft_strlcpy(result, str1, len1 + len2 + 1);
-	ft_strlcat(result, (char *) str2, len1 + len2 + 1);
-	return (result);
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (s1)
+		while (s1[++i] != '\0')
+			str[i] = s1[i];
+	while (s2[j] != '\0')
+		str[i++] = s2[j++];
+	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	if (s1 != (char *)malloc(1 * sizeof(char)))
+		free(s1);
+	return (str);
 }
