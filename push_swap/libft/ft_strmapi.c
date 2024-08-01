@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:50 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 17:22:16 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:59:17 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Applies the function `f` to each character of the string `s`
+ *  to create a new string.
+ */
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;

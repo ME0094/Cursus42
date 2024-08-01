@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:06 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:34:53 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:59:48 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Compares two strings up to a specified number of characters.
+ */
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	u1;

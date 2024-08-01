@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:38 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 16:35:30 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:04:56 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Retrieves a line from the given input string.
+ */
 char	*ft_line(char *save)
 {
 	int		i;
@@ -40,6 +43,10 @@ char	*ft_line(char *save)
 	return (line);
 }
 
+/**
+ * Removes the characters before and including the first newline character
+ *  in the given string.
+ */
 char	*ft_save(char *save)
 {
 	int		i;
@@ -69,6 +76,9 @@ char	*ft_save(char *save)
 	return (new_save);
 }
 
+/**
+ * Reads from a file descriptor and saves the content in a buffer.
+ */
 char	*ft_read_save(int fd, char *save)
 {
 	char	*buffer;
@@ -94,6 +104,9 @@ char	*ft_read_save(int fd, char *save)
 	return (save);
 }
 
+/**
+ * Reads the next line from a file descriptor.
+ */
 char	*get_next_line(int fd)
 {
 	char		*line;

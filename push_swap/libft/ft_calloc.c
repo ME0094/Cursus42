@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:03:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/24 14:03:20 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:42:55 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Allocates memory for an array of elements and initializes them to 0.
+ */
 void	*ft_calloc(size_t count, size_t size)
 {
 	size_t	total_size;

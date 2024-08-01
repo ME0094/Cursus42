@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:29 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:34:38 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:58:35 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Copies a string from source to destination,
+ *  up to a specified number of characters.
+ */
 size_t	ft_strlcpy(char *dest, const char *src, size_t nb)
 {
 	size_t	i;

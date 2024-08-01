@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:17 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:34:35 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:58:07 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Concatenates two strings,
+ *  ensuring that the resulting string is null-terminated.
+ */
 size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
 	size_t	i;

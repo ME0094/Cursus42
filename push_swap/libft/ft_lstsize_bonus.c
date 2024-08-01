@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:07:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/22 18:39:37 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:49:03 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Counts the number of elements in a linked list.
+ */
 int	ft_lstsize(t_list *lst)
 {
 	int	size;

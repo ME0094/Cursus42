@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:08 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 16:33:26 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:57:13 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Concatenates two strings.
+ */
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;

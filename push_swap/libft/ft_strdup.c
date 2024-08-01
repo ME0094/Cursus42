@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:44 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 11:45:22 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:56:25 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Duplicates a string.
+ */
 char	*ft_strdup(const char *string)
 {
 	size_t	length;

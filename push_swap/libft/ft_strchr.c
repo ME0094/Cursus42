@@ -6,15 +6,18 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:19 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 16:30:46 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:55:56 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Searches for the first occurrence of a character in a string.
+ */
 char	*ft_strchr(char *s, int c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!s)

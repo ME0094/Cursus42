@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:43 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/18 14:06:36 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:02:13 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Returns a substring of the given string.
+ */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*str;
