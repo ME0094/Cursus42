@@ -6,7 +6,7 @@
 #    By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/27 15:10:10 by martirod          #+#    #+#              #
-#    Updated: 2024/07/18 17:43:58 by martirod         ###   ########.fr        #
+#    Updated: 2024/08/01 17:52:57 by martirod         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
+RM = rm -f
 AR = ar rcs
 
 $(NAME): $(OBJ)
@@ -29,7 +29,7 @@ all: $(NAME)
 clean:
 	$(RM) $(OBJ)
 
-fclean: clean
+fclean:
 	$(RM) $(NAME)
 
 re: fclean all

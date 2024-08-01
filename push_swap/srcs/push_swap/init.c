@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/01 13:57:18 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:15:47 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ * Creates an array from a stack.
+ */
 int	*ft_create_array_from_stack(t_stack *stack_a)
 {
 	t_stack	*current;
@@ -35,6 +38,9 @@ int	*ft_create_array_from_stack(t_stack *stack_a)
 	return (array);
 }
 
+/**
+ * Initializes the stack with values from command line arguments.
+ */
 int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 {
 	int		index;
@@ -46,7 +52,7 @@ int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 	total_size = 0;
 	while (++index < argc)
 	{
-		tokens = ft_split(argv[index], token_count);
+		tokens = ft_split(argv[index], &token_count);
 		if (validate_arg(tokens) == 1)
 			return (freetab(tokens), free_s(stack_a),
 				write(2, "Error\n", 6), 1);

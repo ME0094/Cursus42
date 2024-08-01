@@ -18,7 +18,7 @@ OBJ = $(SRCS:.c=.o)
 
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
-CC = gcc
+CC = clang
 
 CFLAGS = -Wall -Wextra -Werror
 
