@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 18:26:48 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:57:18 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 	total_size = 0;
 	while (++index < argc)
 	{
-		tokens = ft_split(argv[index], " ");
+		tokens = ft_split(argv[index], token_count);
 		if (validate_arg(tokens) == 1)
 			return (freetab(tokens), free_s(stack_a),
 				write(2, "Error\n", 6), 1);
