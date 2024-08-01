@@ -6,22 +6,28 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:21:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/18 17:48:22 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:23:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/**
+ * Writes a single character to the standard output.
+ */
 int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
 
+/**
+ * Prints a long integer to the standard output.
+ */
 int	ft_putnbr(long nb)
 {
-	long		num;
-	int			len;
-	int			aux;
+	long	num;
+	int		len;
+	int		aux;
 
 	len = 0;
 	if (nb < 0)
@@ -45,6 +51,9 @@ int	ft_putnbr(long nb)
 	return (len);
 }
 
+/**
+ * Prints a hexadecimal number to the standard output.
+ */
 int	ft_putnbr_hexa(unsigned long nbr, char up)
 {
 	int		len;
@@ -72,6 +81,10 @@ int	ft_putnbr_hexa(unsigned long nbr, char up)
 	return (len);
 }
 
+/**
+ * Prints the hexadecimal representation of a pointer.
+ * If the pointer is NULL, it prints "(nil)".
+ */
 int	ft_putptr(uintptr_t n)
 {
 	size_t		i;
@@ -84,13 +97,17 @@ int	ft_putptr(uintptr_t n)
 	return (i);
 }
 
+/**
+ * Writes a string to the standard output.
+ * If the input string is NULL, it writes "(null)" instead.
+ */
 int	ft_putstr(char *str)
 {
 	int	len;
 
 	if (!str)
 	{
-		if (write (1, "(null)", 6) == -1)
+		if (write(1, "(null)", 6) == -1)
 			return (-1);
 		return (6);
 	}
