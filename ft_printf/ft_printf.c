@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:36:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/11 18:10:53 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:29:46 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/**
+ * This function handles the conversion of different types
+ *  in the ft_printf function.
+ */
 static int	ft_conversion(const char type, va_list vargs)
 {
 	int	a;
@@ -34,6 +38,13 @@ static int	ft_conversion(const char type, va_list vargs)
 	return (a);
 }
 
+/**
+ * @brief Implements a custom printf function.
+ *
+ * This function takes a format string and a variable number of arguments and
+ * prints the formatted output to the standard output. It supports basic
+ * conversion specifiers such as %d, %s, %c, etc.
+ */
 int	ft_printf(char const *str, ...)
 {
 	va_list	vargs;
