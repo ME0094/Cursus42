@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/18 16:10:32 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:07:27 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Counts the number of words in a string based on a given delimiter.
+ */
 static size_t	count_words(char const *s, char c)
 {
 	size_t	count;
@@ -31,6 +34,9 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
+/**
+ * Extracts a word from a string delimited by a specified character.
+ */
 static char	*extract_word(const char *s, char c)
 {
 	char	*word;
@@ -43,6 +49,9 @@ static char	*extract_word(const char *s, char c)
 	return (word);
 }
 
+/**
+ * Frees the memory allocated for a dynamically allocated 2D array.
+ */
 static void	free_tab(char **tab, size_t len)
 {
 	size_t	i;
@@ -56,6 +65,9 @@ static void	free_tab(char **tab, size_t len)
 	free(tab);
 }
 
+/**
+ * Extracts words from a string and stores them in an array.
+ */
 static void	extract_words(char **tab, const char *s, char c)
 {
 	size_t	i;
@@ -81,6 +93,9 @@ static void	extract_words(char **tab, const char *s, char c)
 	tab[i] = NULL;
 }
 
+/**
+ * Splits a string into an array of substrings based on a delimiter character.
+ */
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;

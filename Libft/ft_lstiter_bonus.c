@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:06:21 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/24 14:38:49 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:57:43 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Applies the function `f` to each element of the linked list `lst`.
+ */
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!lst || !f)

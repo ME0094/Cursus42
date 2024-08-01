@@ -6,12 +6,18 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:10:17 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:34:35 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:12:43 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Concatenates the string pointed to by `src` to the end of the string
+ * pointed to by `dest`. The total length of the resulting string is limited
+ * to `size - 1` characters, ensuring that there is enough space for the
+ * null-terminating character. The resulting string is always null-terminated.
+ */
 size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
 	size_t	i;

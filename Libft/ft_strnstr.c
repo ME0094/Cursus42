@@ -6,12 +6,17 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:16 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:34:57 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:18:29 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Searches for the first occurrence of the null-terminated string `needle`
+ * in the null-terminated string `haystack`, but only searches within the first
+ * `len` characters.
+ */
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;

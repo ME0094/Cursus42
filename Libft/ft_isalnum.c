@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:04:08 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:32:29 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:51:54 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Checks if the given character is alphanumeric.
+ */
 int	ft_isalnum(int c)
 {
 	if (((c >= 65 && c <= 90) || (c >= 97 && c <= 122))

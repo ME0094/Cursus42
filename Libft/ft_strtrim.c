@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 17:14:31 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:19:49 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Removes leading and trailing characters specified in the 'set' parameter
+ *  from the string 's1'.
+ */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;

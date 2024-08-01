@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:08:05 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/16 17:33:50 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:04:01 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Fills a block of memory with a specified value.
+ */
 void	*ft_memset(void *dest, int c, size_t count)
 {
 	unsigned char	*s;

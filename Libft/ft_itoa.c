@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 14:54:51 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 16:40:12 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:56:20 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Determines the sign of a given integer.
+ */
 static int	sign(int n)
 {
 	if (n < 0)
@@ -19,6 +22,9 @@ static int	sign(int n)
 	return (0);
 }
 
+/**
+ * Calculates the number of digits in an integer.
+ */
 static int	digit_count(int n)
 {
 	int	digit;
@@ -32,6 +38,9 @@ static int	digit_count(int n)
 	return (digit);
 }
 
+/**
+ * Converts an integer to a string representation.
+ */
 char	*ft_itoa(int n)
 {
 	int		is_negative;

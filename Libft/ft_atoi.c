@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:32:08 by martirod          #+#    #+#             */
-/*   Updated: 2024/04/17 11:45:49 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:45:12 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/**
+ * Converts a string to an integer.
+ */
 int	ft_atoi(const char *str)
 {
 	int	solution;
