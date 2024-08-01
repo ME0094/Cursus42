@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:24:57 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/28 19:31:43 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:34:52 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
+/**
+ * Calculates the length of a string.
+ */
 size_t	ft_strlen(char *s)
 {
 	int	i;
@@ -22,9 +25,12 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
+/**
+ * Searches for the first occurrence of the character 'c' in the string 's'.
+ */
 char	*ft_strchr(char *s, int c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -40,6 +46,9 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
+/**
+ * Concatenates two strings and returns the result.
+ */
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	i;

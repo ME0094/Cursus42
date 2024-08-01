@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:57 by martirod          #+#    #+#             */
-/*   Updated: 2024/06/28 19:32:05 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:33:32 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
+/**
+ * Retrieves a line from the given save buffer.
+ */
 char	*ft_line(char *save)
 {
 	int		i;
@@ -40,6 +43,10 @@ char	*ft_line(char *save)
 	return (line);
 }
 
+/**
+ * This function takes a string `save` and extracts the portion
+ *  after the first occurrence of a newline character ('\n').
+ */
 char	*ft_save(char *save)
 {
 	int		i;
@@ -69,6 +76,9 @@ char	*ft_save(char *save)
 	return (new_save);
 }
 
+/**
+ * Reads from a file descriptor and saves the content in a buffer.
+ */
 char	*ft_read_save(int fd, char *save)
 {
 	char	*buffer;
@@ -94,6 +104,9 @@ char	*ft_read_save(int fd, char *save)
 	return (save);
 }
 
+/**
+ * Reads the next line from a file descriptor.
+ */
 char	*get_next_line(int fd)
 {
 	char		*line;
