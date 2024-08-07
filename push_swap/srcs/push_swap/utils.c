@@ -6,13 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:02 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 17:08:23 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 17:33:53 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-#include <stdlib.h>
 
 /**
  * Converts a string to a long long integer.
@@ -43,6 +41,9 @@ long long int	ft_atoll(const char *nbr)
 	return (result * sign);
 }
 
+/**
+ * Validates the arguments in the tab array.
+ */
 int	validate_arg(char **tab)
 {
 	int	i;
@@ -66,4 +67,29 @@ int	validate_arg(char **tab)
 		i++;
 	}
 	return (0);
+}
+
+/**
+ * Returns the index of the minimum value in the given stack.
+ */
+int	get_index_of_min(t_stack *stack)
+{
+	int	minimum_value;
+	int	minimum_position;
+	int	current_position;
+
+	minimum_value = INT_MAX;
+	minimum_position = 0;
+	current_position = 0;
+	while (stack)
+	{
+		if (stack->value < minimum_value)
+		{
+			minimum_value = stack->value;
+			minimum_position = current_position;
+		}
+		stack = stack->next;
+		current_position++;
+	}
+	return (minimum_position);
 }

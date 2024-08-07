@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/01 18:15:47 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 17:15:04 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,19 @@ int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 	int		index;
 	int		token_count;
 	int		total_size;
-	char	**tokens;
+	char	**tab;
 
 	index = 0;
 	total_size = 0;
 	while (++index < argc)
 	{
-		tokens = ft_split(argv[index], &token_count);
-		if (validate_arg(tokens) == 1)
-			return (freetab(tokens), free_s(stack_a),
+		tab = ft_split(argv[index], &token_count);
+		if (validate_arg(tab) == 1)
+			return (freetab(tab), free_s(stack_a),
 				write(2, "Error\n", 6), 1);
-		push_to_stack_a(stack_a, tokens);
+		push_to_stack_a(stack_a, tab);
 		total_size += token_count;
-		freetab(tokens);
+		freetab(tab);
 	}
 	if (has_doubles(stack_a) == 1)
 		return (free_s(stack_a), write(2, "Error\n", 6), 1);
