@@ -56,6 +56,7 @@ $(DIR_OBJS):
 clean:
 	@make clean -C libft
 	@make clean -C libft/ft_printf
+	@rm -rf ${OBJS}
 	@rm -rf ${DIR_OBJS}
 
 fclean:	clean

@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:26:50 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 23:01:02 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 int	push_to_stack_a(t_stack **stack_a, char **tab)
 {
 	int	i;
-	t_list	*tmp;
 
 	i = -1;
 	while (tab[++i])
-		ft_lstadd_back(stack_a, ft_lstnew(ft_atoll(tab[i])));
+		ft_stack_add_back(stack_a, ft_stack_new(ft_atoll(tab[i])));
 	return (0);
 }
 
@@ -32,7 +31,7 @@ void	get_index(t_stack **stack_a, int *tab)
 	while (tmp != NULL)
 	{
 		i = 0;
-		while (i < ft_lstsize(*stack_a))
+		while (i < ft_stack_size(*stack_a))
 		{
 			if (tmp->value == tab[i])
 				tmp->index = i;
@@ -48,7 +47,7 @@ void	choose_algo(t_stack **stack_a, t_stack **stack_b)
 	int	*tab;
 
 	tab = NULL;
-	size = ft_lstsize(*stack_a);
+	size = ft_stack_size(*stack_a);
 	if (!*stack_a)
 		return ;
 	else if (size == 2)
@@ -59,7 +58,7 @@ void	choose_algo(t_stack **stack_a, t_stack **stack_b)
 		sorting_five_numbers(stack_a, stack_b);
 	else
 	{
-		tab = creating_tab(stack_a);
+		tab = ft_create_array_from_stack(stack_a);
 		sort_int_tab(tab, size);
 		get_index(stack_a, tab);
 		if (size <= 100)
@@ -79,11 +78,11 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	if (argc == 1)
 		return (1);
-	if (ft_init(&stack_a, argc, argv) == 1)
+	if (ft_init_stack(&stack_a, argc, argv) == 1)
 		return (1);
-	if (is_sorted(&stack_a) == 1)
+	if (ft_is_sorted(stack_a) == 1)
 		return (1);
 	choose_algo(&stack_a, &stack_b);
-	free_s(&stack_a);
-	free_s(&stack_b);
+	free_stack(&stack_a);
+	free_stack(&stack_b);
 }

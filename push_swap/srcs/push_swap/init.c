@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:43:01 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 22:57:21 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * Creates an array from a stack.
  */
-int	*ft_create_array_from_stack(t_stack *stack_a)
+int	*ft_create_array_from_stack(t_stack **stack_a)
 {
 	t_stack	*current;
 	int		*array;
@@ -23,10 +23,10 @@ int	*ft_create_array_from_stack(t_stack *stack_a)
 	int		index;
 
 	index = 0;
-	current = stack_a;
+	current = *stack_a;
 	if (!stack_a)
 		return (NULL);
-	size = ft_stack_size(stack_a);
+	size = ft_stack_size(*stack_a);
 	array = (int *)calloc(size, sizeof(int));
 	if (!array)
 		return (NULL);

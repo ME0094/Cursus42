@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:40:11 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 23:06:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ typedef struct s_stack
 /* Stack */
 
 void			ft_stack_add_back(t_stack **stack, t_stack *new_node);
-t_stack			*ft_stack_new(int data, int position);
+t_stack			*ft_stack_new(int position);
 int				ft_stack_size(t_stack *head);
 
 /* Initialization */
 
-int				*ft_create_array_from_stack(t_stack *stack_a);
+int				*ft_create_array_from_stack(t_stack **stack_a);
 int				ft_init_stack(t_stack **stack, int argc, char **argv);
 
 /* Validation */
@@ -67,6 +67,10 @@ void			sorting_three_numbers(t_stack **stack_a);
 int				find_minimum(t_stack *stack_a);
 void			push_smallest_to_b(t_stack **stack_a, t_stack **stack_b);
 void			sorting_five_numbers(t_stack **stack_a, t_stack **stack_b);
+void			pushing_back_to_a(t_stack **stack_a, t_stack **stack_b, int size);
+void			sorting_to_hundred(t_stack **stack_a, t_stack **stack_b, int size);
+void			sorting_two_numbers(t_stack **stack_a);
+void			sorting(t_stack **stack_a, t_stack **stack_b, int size);
 
 /* Push Swap */
 

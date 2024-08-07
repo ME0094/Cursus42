@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:26:43 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 23:08:01 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ long long int	ft_atoll(const char *nbr)
 /**
  * Validates the arguments in the tab array.
  */
-int	validate_arg(char **tab)
+int	ft_validate_arg(char **tab)
 {
 	int	i;
 	int	j;
@@ -69,7 +69,7 @@ int	validate_arg(char **tab)
 	return (0);
 }
 
-int	has_doubles(t_stack **stack_a)
+int	ft_has_doubles(t_stack **stack_a)
 {
 	t_stack	*current_node;
 	t_stack	*checker_node;
@@ -91,7 +91,7 @@ int	has_doubles(t_stack **stack_a)
 	return (0);
 }
 
-int	is_sorted(const t_stack *stack_a)
+int	ft_is_sorted(t_stack *stack_a)
 {
 	int	previous_value;
 
