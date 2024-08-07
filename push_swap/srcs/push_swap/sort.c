@@ -6,29 +6,37 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 17:58:44 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:25:57 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rr_or_rrb(t_stack *stack_b, int size)
+/**
+ * Modify the index of the stack to choose between rr or rrb.
+ */
+int	rr_or_rrb(t_stack **stack_b, int size)
 {
-	int	index;
+	int		index;
+	t_stack	*current;
 
 	index = 0;
-	if (!stack_b)
+	current = *stack_b;
+	if (!current)
 		return (-1);
-	while (stack_b)
+	while (current)
 	{
-		if (stack_b->index == size)
+		if (current->index == size)
 			return (index);
-		stack_b = stack_b->next;
+		current = current->next;
 		index++;
 	}
 	return (-1);
 }
 
+/**
+ * Sorts a three numbers stack.
+ */
 void	sorting_three_numbers(t_stack **stack_a)
 {
 	int	a;
@@ -49,6 +57,9 @@ void	sorting_three_numbers(t_stack **stack_a)
 	}
 }
 
+/**
+ * Finds the minimum value in a given stack.
+ */
 int	find_minimum(t_stack *stack_a)
 	{
 	int	minimum_value;
@@ -61,4 +72,41 @@ int	find_minimum(t_stack *stack_a)
 		stack_a = stack_a->next;
 	}
 	return (minimum_value);
+}
+
+/**
+ * Pushes the smallest element from stack A to stack B.
+ */
+void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*current;
+	int		min;
+	int		min_index;
+
+	current = *stack_a;
+	min = find_min(*stack_a);
+	min_index = get_index_of_min(&current);
+	if (min_index > ft_lstsize(*stack_a) / 2)
+	{
+		while ((*stack_a)->value != min)
+			ft_rra(stack_a);
+	}
+	else
+	{
+		while ((*stack_a)->value != min)
+			ft_ra(stack_a);
+	}
+	ft_pb(stack_a, stack_b);
+}
+
+/**
+ * Sorts an array using the push_swap algorithm.
+ */
+void	sorting_five_numbers(t_stack **stack_a, t_stack **stack_b)
+{
+	push_smallest_to_b(stack_a, stack_b);
+	push_smallest_to_b(stack_a, stack_b);
+	sorting_three_numbers(stack_a);
+	ft_pa(stack_a, stack_b);
+	ft_pa(stack_a, stack_b);
 }
