@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 18:25:57 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:34:13 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 }
 
 /**
- * Sorts an array using the push_swap algorithm.
+ * Sorts a five numbers stack.
  */
 void	sorting_five_numbers(t_stack **stack_a, t_stack **stack_b)
 {

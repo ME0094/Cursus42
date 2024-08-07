@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 17:36:59 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:44:03 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,41 @@ int	validate_arg(char **tab)
 		i++;
 	}
 	return (0);
+}
+
+int	has_doubles(t_stack **stack_a)
+{
+	t_stack	*current_node;
+	t_stack	*checker_node;
+
+	current_node = *stack_a;
+	if (!current_node)
+		return (0);
+	while (current_node->next)
+	{
+		checker_node = current_node->next;
+		while (checker_node)
+		{
+			if (current_node->value == checker_node->value)
+				return (1);
+			checker_node = checker_node->next;
+		}
+		current_node = current_node->next;
+	}
+	return (0);
+}
+
+int	is_sorted(const t_stack *stack)
+{
+	int	previous_value;
+
+	previous_value = INT_MIN;
+	while (stack)
+	{
+		if (stack->value < previous_value)
+			return (ft_printf("Error\n"), exit(1), 1);
+		previous_value = stack->value;
+		stack = stack->next;
+	}
+	return (1);
 }

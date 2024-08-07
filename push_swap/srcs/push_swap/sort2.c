@@ -6,7 +6,9 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/30 18:40:36 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:26:46 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
