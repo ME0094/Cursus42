@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 18:32:10 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 16:37:56 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <limits.h>
 
 typedef struct s_stack
 {
