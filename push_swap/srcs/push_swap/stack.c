@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:50:23 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/01 18:19:38 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 20:58:31 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Adds a new node to the back of a stack.
@@ -19,18 +19,10 @@ void	ft_stack_add_back(t_stack **stack, t_stack *new_node)
 {
 	t_stack	*current;
 
-	if (!stack || !new_node)
-		return (false);
-	if (!*stack)
-	{
-		*stack = new_node;
-		return (true);
-	}
 	current = *stack;
 	while (current->next)
 		current = current->next;
 	current->next = new_node;
-	return (true);
 }
 
 /**

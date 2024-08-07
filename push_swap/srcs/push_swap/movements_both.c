@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:33:05 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/01 18:17:55 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 20:26:39 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Swaps the top two elements of both stack A and stack B.

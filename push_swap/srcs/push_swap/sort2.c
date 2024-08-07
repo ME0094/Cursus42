@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 19:27:51 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 20:55:27 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Pushes back elements from stack B to stack A.
@@ -23,11 +23,11 @@ void	pushing_back_to_a(t_stack **stack_a, t_stack **stack_b, int size)
 	median = size / 2;
 	while (*stack_b)
 	{
-		location = rb_or_rrb(*stack_b, size);
+		location = rr_or_rrb(stack_b, size);
 		if (location <= median)
-			ft_rb(*stack_b);
+			ft_rb(stack_b);
 		else
-			ft_pa(*stack_a, stack_b);
+			ft_pa(stack_a, stack_b);
 		size--;
 	}
 }

@@ -4,7 +4,17 @@ LIBFT			=	libft.a libftprintf.a
 DIR_SRCS		=	srcs/push_swap
 DIR_BONUS		=	srcs/checker
 DIR_OBJS		=	objs
-SRCS_NAMES		=	
+SRCS_NAMES		= 	free.c \
+					init.c \
+					movements_a.c \
+					movements_b.c \
+					movements_both.c \
+					parse.c \
+					sort.c \
+					sort2.c \
+					stack.c \
+					utils.c \
+					push_swap.c
 SRCS_NAMES_B	=	
 
 SRCS            =   $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))

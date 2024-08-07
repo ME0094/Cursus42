@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 18:34:13 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 20:51:30 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Modify the index of the stack to choose between rr or rrb.
@@ -84,9 +84,9 @@ void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 	int		min_index;
 
 	current = *stack_a;
-	min = find_min(*stack_a);
-	min_index = get_index_of_min(&current);
-	if (min_index > ft_lstsize(*stack_a) / 2)
+	min = find_minimum(*stack_a);
+	min_index = get_index_of_min(current);
+	if (min_index > ft_stack_size(*stack_a) / 2)
 	{
 		while ((*stack_a)->value != min)
 			ft_rra(stack_a);

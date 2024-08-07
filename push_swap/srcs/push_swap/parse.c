@@ -6,11 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 18:44:03 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 20:26:43 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * Converts a string to a long long integer.
@@ -91,17 +91,17 @@ int	has_doubles(t_stack **stack_a)
 	return (0);
 }
 
-int	is_sorted(const t_stack *stack)
+int	is_sorted(const t_stack *stack_a)
 {
 	int	previous_value;
 
 	previous_value = INT_MIN;
-	while (stack)
+	while (stack_a)
 	{
-		if (stack->value < previous_value)
+		if (stack_a->value < previous_value)
 			return (ft_printf("Error\n"), exit(1), 1);
-		previous_value = stack->value;
-		stack = stack->next;
+		previous_value = stack_a->value;
+		stack_a = stack_a->next;
 	}
 	return (1);
 }
