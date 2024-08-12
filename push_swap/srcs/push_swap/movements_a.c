@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:05 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:26:30 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:02:54 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_ra(t_stack **stack_a)
 		return ;
 	tmp = (*stack_a)->next;
 	tmp2 = *stack_a;
-	while (tmp2->next)
+	while (tmp2->next->next)
 		tmp2 = tmp2->next;
 	tmp2->next = *stack_a;
 	(*stack_a)->next = NULL;

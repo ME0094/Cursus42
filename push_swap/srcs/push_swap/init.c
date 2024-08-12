@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/12 16:39:31 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:27:49 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	*ft_create_array_from_stack(t_stack **stack_a)
 {
 	t_stack	*current;
+	t_stack	*copy;
 	int		*array;
 	int		size;
 	int		index;
@@ -30,12 +31,13 @@ int	*ft_create_array_from_stack(t_stack **stack_a)
 	array = (int *)calloc(size, sizeof(int));
 	if (!array)
 		return (NULL);
+	copy = *stack_a;
 	while (current)
 	{
 		array[index++] = current->value;
 		current = current->next;
 	}
-	free_stack(stack_a);
+	free_stack(&copy);
 	return (array);
 }
 
@@ -56,8 +58,12 @@ int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 		if (!tab)
 			return (-1);
 		if (ft_validate_arg(tab) == 1)
-			return (free(tab), free_stack(stack_a),
-				write(2, "Error\n", 6), 1);
+		{
+			free(tab);
+			free_stack(stack_a);
+			write(2, "Error\n", 6);
+			return (1);
+		}
 		push_to_stack_a(stack_a, tab);
 		free(tab);
 	}

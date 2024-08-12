@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:51:30 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:25:10 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
  */
 int	rr_or_rrb(t_stack **stack_b, int size)
 {
-	int		index;
+	int		i;
 	t_stack	*current;
 
-	index = 0;
-	current = *stack_b;
-	if (!current)
+	if (!stack_b || !*stack_b)
 		return (-1);
+	i = 0;
+	current = *stack_b;
 	while (current)
 	{
 		if (current->index == size)
-			return (index);
+			break ;
 		current = current->next;
-		index++;
+		i++;
 	}
-	return (-1);
+	return (i);
 }
 
 /**
@@ -43,6 +43,8 @@ void	sorting_three_numbers(t_stack **stack_a)
 	int	b;
 	int	c;
 
+	if (!stack_a || !*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
+		return ;
 	a = (*stack_a)->value;
 	b = (*stack_a)->next->value;
 	c = (*stack_a)->next->next->value;
@@ -64,7 +66,7 @@ int	find_minimum(t_stack *stack_a)
 	{
 	int	minimum_value;
 
-	minimum_value = INT_MAX;
+	minimum_value = stack_a->value;
 	while (stack_a)
 	{
 		if (stack_a->value < minimum_value)
@@ -85,7 +87,7 @@ void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 
 	current = *stack_a;
 	min = find_minimum(*stack_a);
-	min_index = get_index_of_min(current);
+	min_index = get_index_of_min(&current);
 	if (min_index > ft_stack_size(*stack_a) / 2)
 	{
 		while ((*stack_a)->value != min)

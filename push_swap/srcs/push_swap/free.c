@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:43:41 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:29:21 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:46:13 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 
+	if (!stack || !*stack)
+		return ;
 	while (*stack)
 	{
 		tmp = *stack;

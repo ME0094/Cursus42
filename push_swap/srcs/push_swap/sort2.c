@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 22:49:51 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:22:18 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,23 @@ void	pushing_back_to_a(t_stack **stack_a, t_stack **stack_b, int size)
 	int	median;
 	int	location;
 
-	median = size / 2;
-	while (*stack_b)
+	if (!stack_a || !stack_b)
+		return ;
+	if (*stack_b == NULL)
+		return ;
+	size -= 1;
+	while (*stack_b != NULL)
 	{
+		median = size / 2;
 		location = rr_or_rrb(stack_b, size);
-		if (location <= median)
+		if ((*stack_b)->index == size)
+		{
+			ft_pa(stack_a, stack_b);
+			size--;
+		}
+		else if (location <= median && (*stack_b)->index != size)
 			ft_rb(stack_b);
-		else
+		else if (location > median && (*stack_b)->index != size)
 			ft_pa(stack_a, stack_b);
 		size--;
 	}
@@ -37,15 +47,24 @@ void	pushing_back_to_a(t_stack **stack_a, t_stack **stack_b, int size)
  */
 void	sorting_to_hundred(t_stack **stack_a, t_stack **stack_b, int size)
 {
+	int	i;
+
+	i = 0;
 	while (*stack_a)
 	{
-		if ((*stack_a)->index == 0)
+		if ((*stack_a)->index <= i && i > 1)
 		{
 			ft_pb(stack_a, stack_b);
 			ft_rb(stack_b);
+			i++;
 		}
-		else
+		else if ((*stack_a)->index <= (i + 15))
+		{
 			ft_pb(stack_a, stack_b);
+			i++;
+		}
+		else if ((*stack_a)->index >= i)
+			ft_ra(stack_a);
 	}
 	pushing_back_to_a(stack_a, stack_b, size);
 }
@@ -66,15 +85,24 @@ void	sorting_two_numbers(t_stack **stack_a)
  */
 void	sorting(t_stack **stack_a, t_stack **stack_b, int size)
 {
+	int	i;
+
+	i = 0;
 	while (*stack_a)
 	{
-		if ((*stack_a)->index == 0)
+		if ((*stack_a)->index <= i && i > 1)
 		{
 			ft_pb(stack_a, stack_b);
 			ft_rb(stack_b);
+			i++;
 		}
-		else
+		else if ((*stack_a)->index <= (i + 28))
+		{
 			ft_pb(stack_a, stack_b);
+			i++;
+		}
+		else if ((*stack_a)->index >= i)
+			ft_ra(stack_a);
 	}
 	pushing_back_to_a(stack_a, stack_b, size);
 }
