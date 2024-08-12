@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:26:34 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:41:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_sb(t_stack **stack_b)
 	(*stack_b)->next->index = tmp;
 	write(1, "sb\n", 3);
 }
+
 void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;

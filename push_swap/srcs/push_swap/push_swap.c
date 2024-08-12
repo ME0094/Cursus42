@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 23:01:02 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:47:27 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 int	push_to_stack_a(t_stack **stack_a, char **tab)
 {
-	int	i;
+	int		i;
+	t_stack	*new_node;
 
 	i = -1;
 	while (tab[++i])
-		ft_stack_add_back(stack_a, ft_stack_new(ft_atoll(tab[i])));
+	{
+		new_node = ft_stack_new(ft_atoll(tab[i]));
+		if (!new_node)
+			return (1);
+		ft_stack_add_back(stack_a, new_node);
+	}
 	return (0);
 }
 

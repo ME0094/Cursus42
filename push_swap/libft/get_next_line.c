@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:22:38 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/01 19:04:56 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:28:27 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*ft_save(char *save)
 	new_save = (char *) malloc(sizeof(*new_save) * (ft_strlen(save) - i + 1));
 	if (!new_save)
 	{
-		free(new_save);
+		free(save);
 		return (NULL);
 	}
 	i++;
@@ -82,6 +82,7 @@ char	*ft_save(char *save)
 char	*ft_read_save(int fd, char *save)
 {
 	char	*buffer;
+	char	*tmp;
 	int		bytes;
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(*buffer));
@@ -98,7 +99,9 @@ char	*ft_read_save(int fd, char *save)
 			return (NULL);
 		}
 		buffer[bytes] = '\0';
-		save = ft_strjoin(save, buffer);
+		tmp = ft_strjoin(save, buffer);
+		free(save);
+		save = tmp;
 	}
 	free(buffer);
 	return (save);
