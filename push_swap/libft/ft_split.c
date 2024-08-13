@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/12 17:18:09 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:55:33 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static void	extract_words(char **tab, const char *s, char c)
 			s++;
 	}
 	tab[i] = NULL;
-	free_tab(tab, i);
 }
 
 char	**ft_split(char const *s, char c)

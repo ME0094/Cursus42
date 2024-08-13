@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/12 18:57:51 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 23:01:02 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,24 @@
 
 int	push_to_stack_a(t_stack **stack_a, char **tab)
 {
-	int		i;
-	t_stack	*new_node;
+	int	i;
 
-	if (!stack_a || !tab)
-		return (1);
-	i = 0;
-	while (tab[i])
-	{
-		new_node = ft_stack_new(ft_atoll(tab[i]));
-		if (!new_node)
-			return (1);
-		ft_stack_add_back(stack_a, new_node);
-		i++;
-	}
+	i = -1;
+	while (tab[++i])
+		ft_stack_add_back(stack_a, ft_stack_new(ft_atoll(tab[i])));
 	return (0);
 }
 
 void	get_index(t_stack **stack_a, int *tab)
 {
 	int		i;
-	int		stack_size;
 	t_stack	*tmp;
 
-	if (!stack_a || !*stack_a || !tab)
-		return ;
-	stack_size = ft_stack_size(*stack_a);
 	tmp = *stack_a;
 	while (tmp != NULL)
 	{
 		i = 0;
-		while (i < stack_size)
+		while (i < ft_stack_size(*stack_a))
 		{
 			if (tmp->value == tab[i])
 				tmp->index = i;
@@ -98,5 +85,4 @@ int	main(int argc, char **argv)
 	choose_algo(&stack_a, &stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	return (0);
 }

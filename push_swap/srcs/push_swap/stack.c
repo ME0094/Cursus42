@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:50:23 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/12 17:06:59 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 22:38:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ void	ft_stack_add_back(t_stack **stack, t_stack *new_node)
 {
 	t_stack	*current;
 
-	if (*stack == NULL)
-	{
-		*stack = new_node;
-		new_node->next = NULL;
-		return ;
-	}
 	current = *stack;
 	while (current->next)
 		current = current->next;

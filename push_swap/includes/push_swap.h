@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/12 19:31:02 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/07 23:06:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void			get_index(t_stack **stack_a, int *tab);
 void			choose_algo(t_stack **stack_a, t_stack **stack_b);
 int				main(int argc, char **argv);
 
+
+
 /* Free */
 
 void			free_stack(t_stack **stack);
@@ -88,6 +90,6 @@ void			free_all(t_stack **stack_a, t_stack **stack_b, int *array);
 
 int				ft_tablen(char **tab);
 void			sort_int_tab(int *tab, int size);
-int				get_index_of_min(t_stack **stack_a);
+int				get_index_of_min(t_stack *stack_a);
 
 #endif
