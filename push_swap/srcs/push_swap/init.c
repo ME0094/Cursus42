@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 16:46:07 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:14:49 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 	int		total_size;
 	char	**array;
 
-	index = 0;
+	index = 1;
 	total_size = 0;
-	while (++index < argc)
+	while (index < argc)
 	{
 		array = ft_split(argv[index], " ", &token_count);
 		if (array == NULL)
@@ -56,7 +56,9 @@ int	ft_init_stack(t_stack **stack_a, int argc, char **argv)
 		if (ft_validate_arg(array) == 1)
 			return (free(array), ft_free_stack(stack_a),
 				write(2, "Error\n", 6), 1);
-		push_to_stack_a(stack_a, array);
+		if (push_to_stack_a(stack_a, array) == 1)
+			return (free(array), ft_free_stack(stack_a),
+				write(2, "Error\n", 6), 1);
 		total_size += token_count;
 	}
 	if (ft_check_duplicates(stack_a) == 1)

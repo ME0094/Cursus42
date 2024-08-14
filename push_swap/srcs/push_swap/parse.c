@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 16:41:48 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:15:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,19 @@ int	ft_check_duplicates(t_stack **stack_a)
 	t_stack	*current;
 	t_stack	*runner;
 
-	if (!stack_a)
+	if (!*stack_a)
 		return (0);
 	current = *stack_a;
-	while (current)
+	while (current != NULL)
 	{
 		runner = current->next;
-		while (runner)
+		while (runner != NULL)
 		{
 			if (current->value == runner->value)
+			{
+				ft_free_stack(stack_a);
 				return (1);
+			}
 			runner = runner->next;
 		}
 		current = current->next;
@@ -62,19 +65,18 @@ int	ft_check_duplicates(t_stack **stack_a)
 	return (0);
 }
 
-int	ft_is_sorted(t_stack *stack_a)
+int	ft_is_sorted(t_stack **stack_a)
 {
 	t_stack	*tmp;
 
-	if (stack_a == NULL)
-		return (1);
-	tmp = stack_a;
+	if (!*stack_a)
+		return (ft_printf("Error\n"), exit(1), 1);
+	tmp = *stack_a;
 	while (tmp->next != NULL)
 	{
-		if (tmp->value < tmp->next->value)
-			tmp = tmp->next;
-		else
+		if (tmp->value > tmp->next->value)
 			return (0);
+		tmp = tmp->next;
 	}
-	return (1);
+	return (ft_free_stack(stack_a), 1);
 }

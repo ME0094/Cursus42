@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 18:25:34 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:16:34 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_init_stack(&stack_a, argc, argv) == 1)
 		return (1);
-	if (ft_is_sorted(stack_a))
+	if (ft_is_sorted(&stack_a))
 		return (ft_free_stack(&stack_a), 0);
 	choose_algo(&stack_a, &stack_b);
 	ft_free_stack(&stack_a);

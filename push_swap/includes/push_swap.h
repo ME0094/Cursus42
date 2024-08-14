@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 18:01:55 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 19:50:52 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				ft_init_stack(t_stack **stack, int argc, char **argv);
 
 int				ft_validate_arg(char **tab);
 int				ft_check_duplicates(t_stack **stack_a);
-int				ft_is_sorted(t_stack *stack_a);
+int				ft_is_sorted(t_stack **stack_a);
 
 /* Movements */
 

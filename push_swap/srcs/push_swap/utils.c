@@ -6,17 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:02 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 18:13:21 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 19:45:08 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void	ft_print_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 /**
  * Calculates the length of a null-terminated array of strings.
