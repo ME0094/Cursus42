@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 23:06:40 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:01:55 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ int				ft_stack_size(t_stack *head);
 
 /* Initialization */
 
-int				*ft_create_array_from_stack(t_stack **stack_a);
+int				*ft_stack_to_array(t_stack *stack_a);
 int				ft_init_stack(t_stack **stack, int argc, char **argv);
 
 /* Validation */
 
-long long int	ft_atoll(const char *nbr);
 int				ft_validate_arg(char **tab);
-int				ft_has_doubles(t_stack **stack_a);
+int				ft_check_duplicates(t_stack **stack_a);
 int				ft_is_sorted(t_stack *stack_a);
 
 /* Movements */
@@ -62,13 +61,13 @@ void			ft_rrr(t_stack **stack_a, t_stack **stack_b);
 
 /* Sorting */
 
-int				rr_or_rrb(t_stack **stack_b, int size);
+int				rb_or_rrb(t_stack **stack_b, int size);
 void			sorting_three_numbers(t_stack **stack_a);
 int				find_minimum(t_stack *stack_a);
 void			push_smallest_to_b(t_stack **stack_a, t_stack **stack_b);
 void			sorting_five_numbers(t_stack **stack_a, t_stack **stack_b);
-void			pushing_back_to_a(t_stack **stack_a, t_stack **stack_b, int size);
-void			sorting_to_hundred(t_stack **stack_a, t_stack **stack_b, int size);
+void			pushing_back_a(t_stack **stack_a, t_stack **stack_b, int size);
+void			sorting_hundred(t_stack **stack_a, t_stack **stack_b, int size);
 void			sorting_two_numbers(t_stack **stack_a);
 void			sorting(t_stack **stack_a, t_stack **stack_b, int size);
 
@@ -79,17 +78,15 @@ void			get_index(t_stack **stack_a, int *tab);
 void			choose_algo(t_stack **stack_a, t_stack **stack_b);
 int				main(int argc, char **argv);
 
-
-
 /* Free */
 
-void			free_stack(t_stack **stack);
-void			free_all(t_stack **stack_a, t_stack **stack_b, int *array);
+void			ft_free_stack(t_stack **stack);
+void			ft_free_all(t_stack **stack_a, t_stack **stack_b, int *array);
 
 /* Utils */
 
 int				ft_tablen(char **tab);
 void			sort_int_tab(int *tab, int size);
-int				get_index_of_min(t_stack *stack_a);
+int				get_index_of_min(t_stack **stack_a);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 23:01:02 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 18:25:34 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	push_to_stack_a(t_stack **stack_a, char **tab)
 
 	i = -1;
 	while (tab[++i])
-		ft_stack_add_back(stack_a, ft_stack_new(ft_atoll(tab[i])));
+		ft_stack_add_back(stack_a, ft_stack_new(ft_atoi(tab[i])));
 	return (0);
 }
 
@@ -58,11 +58,11 @@ void	choose_algo(t_stack **stack_a, t_stack **stack_b)
 		sorting_five_numbers(stack_a, stack_b);
 	else
 	{
-		tab = ft_create_array_from_stack(stack_a);
+		tab = ft_stack_to_array(*stack_a);
 		sort_int_tab(tab, size);
 		get_index(stack_a, tab);
 		if (size <= 100)
-			sorting_to_hundred(stack_a, stack_b, size);
+			sorting_hundred(stack_a, stack_b, size);
 		else
 			sorting(stack_a, stack_b, size);
 	}
@@ -80,9 +80,10 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_init_stack(&stack_a, argc, argv) == 1)
 		return (1);
-	if (ft_is_sorted(stack_a) == 1)
-		return (1);
+	if (ft_is_sorted(stack_a))
+		return (ft_free_stack(&stack_a), 0);
 	choose_algo(&stack_a, &stack_b);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	ft_free_stack(&stack_a);
+	ft_free_stack(&stack_b);
+	return (0);
 }

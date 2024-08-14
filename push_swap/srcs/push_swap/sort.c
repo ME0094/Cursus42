@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/07 20:51:30 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:30:02 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * Modify the index of the stack to choose between rr or rrb.
  */
-int	rr_or_rrb(t_stack **stack_b, int size)
+int	rb_or_rrb(t_stack **stack_b, int size)
 {
 	int		index;
 	t_stack	*current;
@@ -27,11 +27,11 @@ int	rr_or_rrb(t_stack **stack_b, int size)
 	while (current)
 	{
 		if (current->index == size)
-			return (index);
+			break ;
 		current = current->next;
 		index++;
 	}
-	return (-1);
+	return (index);
 }
 
 /**
@@ -46,25 +46,32 @@ void	sorting_three_numbers(t_stack **stack_a)
 	a = (*stack_a)->value;
 	b = (*stack_a)->next->value;
 	c = (*stack_a)->next->next->value;
-	if (a > b)
+	if (a >= b && b <= c && a <= c)
 		ft_sa(stack_a);
-	if (b > c)
+	else if (a > b && b > c)
 	{
-		if (a > c)
-			ft_ra(stack_a);
-		else
-			ft_rra(stack_a);
+		ft_sa(stack_a);
+		ft_rra(stack_a);
 	}
+	else if (a >= b && b <= c && a >= c)
+		ft_ra(stack_a);
+	else if (a <= b && b >= c && a <= c)
+	{
+		ft_sa(stack_a);
+		ft_ra(stack_a);
+	}
+	else if (a <= b && b >= c && a >= c)
+		ft_rra(stack_a);
 }
 
 /**
  * Finds the minimum value in a given stack.
  */
 int	find_minimum(t_stack *stack_a)
-	{
+{
 	int	minimum_value;
 
-	minimum_value = INT_MAX;
+	minimum_value = stack_a->value;
 	while (stack_a)
 	{
 		if (stack_a->value < minimum_value)
@@ -85,7 +92,7 @@ void	push_smallest_to_b(t_stack **stack_a, t_stack **stack_b)
 
 	current = *stack_a;
 	min = find_minimum(*stack_a);
-	min_index = get_index_of_min(current);
+	min_index = get_index_of_min(&current);
 	if (min_index > ft_stack_size(*stack_a) / 2)
 	{
 		while ((*stack_a)->value != min)

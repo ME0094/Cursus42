@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:18:50 by martirod          #+#    #+#             */
-/*   Updated: 2024/07/31 16:43:41 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/13 20:08:13 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char *s1, char *set);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *str, char *charset, int *size);
 char	*get_next_line(int fd);
 
 typedef struct s_list

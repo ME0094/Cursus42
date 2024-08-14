@@ -6,104 +6,93 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/01 18:55:33 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/13 20:07:41 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * Counts the number of words in a string based on a given delimiter.
- */
-static size_t	count_words(char const *s, char c)
+void	freetab(char **tab)
 {
-	size_t	count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s != c)
-		{
-			count++;
-			while (*s && *s != c)
-				s++;
-		}
-		else
-			s++;
-	}
-	return (count);
-}
-
-/**
- * Extracts a word from a string delimited by a specified character.
- */
-static char	*extract_word(const char *s, char c)
-{
-	char	*word;
-	size_t	len;
-
-	len = 0;
-	while (s[len] && s[len] != c)
-		len++;
-	word = ft_substr(s, 0, len);
-	return (word);
-}
-
-/**
- * Frees the memory allocated for a dynamically allocated 2D array.
- */
-static void	free_tab(char **tab, size_t len)
-{
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < len)
-	{
-		free(tab[i]);
-		i++;
-	}
+	if (!tab)
+		return ;
+	while (tab[i] != NULL)
+		free(tab[i++]);
 	free(tab);
 }
 
-/**
- * Extracts words from a string and stores them in an array.
- */
-static void	extract_words(char **tab, const char *s, char c)
+int	ft_countdelim(char const *str, char *charset)
 {
-	size_t	i;
+	int	i;
+	int	counter;
 
 	i = 0;
-	while (*s)
+	counter = 0;
+	while (str && str[i])
 	{
-		if (*s != c)
-		{
-			tab[i] = extract_word(s, c);
-			if (!tab[i])
-			{
-				free_tab(tab, i);
-				return ;
-			}
+		while (str[i] && ft_strchr(charset, str[i]))
 			i++;
-			while (*s && *s != c)
-				s++;
-		}
-		else
-			s++;
+		if (str[i] == '\0')
+			break ;
+		counter++;
+		while (str[i] && !ft_strchr(charset, str[i]))
+			i++;
 	}
-	tab[i] = NULL;
+	return (counter);
 }
 
-char	**ft_split(char const *s, char c)
+char	*ft_strtsub(char const *str, int start, int end)
+{
+	int		i;
+	char	*var;
+
+	i = 0;
+	var = ft_calloc(sizeof(char), end - start + 1);
+	if (!var)
+		return (NULL);
+	while (((start + i) < end) && str[i])
+	{
+		var[i] = str[start + i];
+		i++;
+	}
+	return (var);
+}
+
+char	**to_tab(char **tab, char const *s, char *charset, int count)
+{
+	int	i;
+	int	index;
+	int	start;
+
+	i = 0;
+	index = 0;
+	while (index < count)
+	{
+		while (s[i] && ft_strchr(charset, s[i]))
+			i++;
+		start = i;
+		while (s[i] && (!ft_strchr(charset, s[i])))
+			i++;
+		tab[index] = ft_strtsub(s, start, i);
+		if (!tab[index++])
+			return (freetab(tab), NULL);
+	}
+	return (tab);
+}
+
+char	**ft_split(char *str, char *charset, int *size)
 {
 	char	**tab;
-	size_t	word_count;
 
-	if (!s)
-		return (NULL);
-	word_count = count_words(s, c);
-	tab = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!str || !*str)
+		return (ft_calloc(sizeof(char *) * 1, 1));
+	*size = ft_countdelim(str, charset);
+	tab = ft_calloc(sizeof(char *) * (*size + 1), 1);
 	if (!tab)
 		return (NULL);
-	extract_words(tab, s, c);
+	tab = to_tab(tab, str, charset, *size);
 	return (tab);
 }
