@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/19 18:50:29 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/19 20:16:08 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-void				ft_add_back_stack(t_stack **lst, t_stack *new);
+void				ft_add_back_s(t_stack **lst, t_stack *new);
 t_stack				*ft_new_stack(int n);
 int					ft_validate_argument(char **tab);
 int					is_sorted(t_stack **stack_a);

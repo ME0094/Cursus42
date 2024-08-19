@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/19 18:21:05 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/19 20:11:09 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ long long int	ft_atoll(char *nbr, t_stack **a, char **t)
 		{
 			res = res * 10 + nbr[i] - '0';
 			if (s == 1 && res > 2147483647)
-				return (freetab(t), free_stack(a), write(2, "Error\n", 6), exit(1), 0);
+				return (freetab(t), free_stack(a), write(2, "Error\n", 6));
 			else if (s == -1 && - res < -2147483648)
-				return (freetab(t), free_stack(a), write(2, "Error\n", 6), exit(1), 0);
+				return (freetab(t), free_stack(a), write(2, "Error\n", 6));
 			i++;
 		}
 	}
