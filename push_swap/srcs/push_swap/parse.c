@@ -6,16 +6,42 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 20:15:24 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:21:05 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/**
- * Validates the arguments in the tab array.
- */
-int	ft_validate_arg(char **tab)
+long long int	ft_atoll(char *nbr, t_stack **a, char **t)
+{
+	int				i;
+	int				s;
+	long long int	res;
+
+	i = 0;
+	s = 1;
+	res = 0;
+	while (nbr[i])
+	{
+		while ((nbr[i] >= 9 && nbr[i] <= 13) || nbr[i] == 32)
+			i++;
+		if (nbr[i] == '-' || nbr[i] == '+')
+			if (nbr[i++] == '-')
+				s = -1;
+		while (nbr[i] >= '0' && nbr[i] <= '9')
+		{
+			res = res * 10 + nbr[i] - '0';
+			if (s == 1 && res > 2147483647)
+				return (freetab(t), free_stack(a), write(2, "Error\n", 6), exit(1), 0);
+			else if (s == -1 && - res < -2147483648)
+				return (freetab(t), free_stack(a), write(2, "Error\n", 6), exit(1), 0);
+			i++;
+		}
+	}
+	return (res * s);
+}
+
+int	ft_validate_argument(char **tab)
 {
 	int	i;
 	int	j;
@@ -40,24 +66,20 @@ int	ft_validate_arg(char **tab)
 	return (0);
 }
 
-int	ft_check_duplicates(t_stack **stack_a)
+int	has_duplicates(t_stack **stack_a)
 {
 	t_stack	*current;
 	t_stack	*runner;
 
-	if (!*stack_a)
-		return (0);
 	current = *stack_a;
-	while (current != NULL)
+	while (current)
 	{
 		runner = current->next;
-		while (runner != NULL)
+		while (runner)
 		{
+			
 			if (current->value == runner->value)
-			{
-				ft_free_stack(stack_a);
-				return (1);
-			}
+				return(free_stack(stack_a), 1);
 			runner = runner->next;
 		}
 		current = current->next;
@@ -65,7 +87,7 @@ int	ft_check_duplicates(t_stack **stack_a)
 	return (0);
 }
 
-int	ft_is_sorted(t_stack **stack_a)
+int	is_sorted(t_stack **stack_a)
 {
 	t_stack	*tmp;
 
@@ -78,5 +100,6 @@ int	ft_is_sorted(t_stack **stack_a)
 			return (0);
 		tmp = tmp->next;
 	}
-	return (ft_free_stack(stack_a), 1);
+	return (free_stack(stack_a), 1);
 }
+

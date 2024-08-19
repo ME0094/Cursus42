@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/13 20:07:41 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/19 18:45:58 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ char	**to_tab(char **tab, char const *s, char *charset, int count)
 			i++;
 		tab[index] = ft_strtsub(s, start, i);
 		if (!tab[index++])
-			return (freetab(tab), NULL);
+		{
+			freetab(tab);
+			return (NULL);
+		}
 	}
 	return (tab);
 }

@@ -6,13 +6,18 @@ DIR_BONUS		=	srcs/checker
 DIR_OBJS		=	objs
 SRCS_NAMES		= 	free.c \
 					init.c \
+					move.c \
 					movements_a.c \
-					movements_b.c \
-					movements_both.c \
 					parse.c \
+					position.c \
+					push.c \
+					rev_rotate.c \
+					rotate.c \
+					sort_big.c \
 					sort.c \
 					sort2.c \
 					stack.c \
+					swap.c \
 					utils.c \
 					push_swap.c
 SRCS_NAMES_B	=	

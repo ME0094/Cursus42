@@ -6,15 +6,12 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:02 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/14 19:45:08 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/15 21:05:42 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/**
- * Calculates the length of a null-terminated array of strings.
- */
 int	ft_tablen(char **tab)
 {
 	int	i;
@@ -27,9 +24,6 @@ int	ft_tablen(char **tab)
 	return (i);
 }
 
-/**
- * Sorts an integer array in ascending order.
- */
 void	sort_int_tab(int *tab, int size)
 {
 	int	i;
@@ -38,10 +32,10 @@ void	sort_int_tab(int *tab, int size)
 
 	i = 0;
 	j = 0;
-	while (j < ((size - 1)))
+	while (i < ((size) - 1))
 	{
 		j = 0;
-		while (j < ((size) - 1))
+		while (j < ((size) - i - 1))
 		{
 			if (tab[j] > tab[j + 1])
 			{
@@ -51,14 +45,11 @@ void	sort_int_tab(int *tab, int size)
 			}
 			j++;
 		}
-		i--;
+		i++;
 	}
 }
 
-/**
- * Returns the index of the minimum value in the given stack.
- */
-int	get_index_of_min(t_stack **stack_a)
+int	find_minimum_index(t_stack **stack_a)
 {
 	t_stack	*current;
 	int		minimum_value;
@@ -66,7 +57,7 @@ int	get_index_of_min(t_stack **stack_a)
 	int		current_position;
 
 	current = *stack_a;
-	minimum_value = find_minimum(current);
+	minimum_value = find_min(current);
 	minimum_position = 0;
 	current_position = 0;
 	while (current)
