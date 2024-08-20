@@ -6,69 +6,76 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:02 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/15 21:05:42 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:36:32 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	ft_tablen(char **tab)
+void	free_stack(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
+}
+
+void	exit_error(t_stack **stack_a, t_stack **stack_b)
+{
+	if (stack_a == NULL || *stack_a != NULL)
+		free_stack(stack_a);
+	if (stack_b == NULL || *stack_b != NULL)
+		free_stack(stack_b);
+	write(2, "Error\n", 6);
+	exit (1);
+}
+
+long int	ft_atoi_ps(const char *str)
+{
+	long int	nb;
+	int			isneg;
+	int			i;
+
+	nb = 0;
+	isneg = 1;
+	i = 0;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
+	{
+		isneg *= -1;
+		i++;
+	}
+	while (is_digit(str[i]))
+	{
+		nb = (nb * 10) + (str[i] - '0');
+		i++;
+	}
+	return (nb * isneg);
+}
+
+void	ft_putstr_ps(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!tab)
-		return (0);
-	while (tab[i])
-		i++;
-	return (i);
-}
-
-void	sort_int_tab(int *tab, int size)
-{
-	int	i;
-	int	j;
-	int	tmp;
-
-	i = 0;
-	j = 0;
-	while (i < ((size) - 1))
+	while (str[i])
 	{
-		j = 0;
-		while (j < ((size) - i - 1))
-		{
-			if (tab[j] > tab[j + 1])
-			{
-				tmp = tab[j];
-				tab[j] = tab[j + 1];
-				tab[j + 1] = tmp;
-			}
-			j++;
-		}
+		write(1, &str[i], 1);
 		i++;
 	}
 }
 
-int	find_minimum_index(t_stack **stack_a)
+int	nb_abs(int nb)
 {
-	t_stack	*current;
-	int		minimum_value;
-	int		minimum_position;
-	int		current_position;
-
-	current = *stack_a;
-	minimum_value = find_min(current);
-	minimum_position = 0;
-	current_position = 0;
-	while (current)
-	{
-		if (current->value == minimum_value)
-		{
-			minimum_position = current_position;
-			break ;
-		}
-		current = current->next;
-		current_position++;
-	}
-	return (minimum_position);
+	if (nb < 0)
+		return (nb * -1);
+	return (nb);
 }

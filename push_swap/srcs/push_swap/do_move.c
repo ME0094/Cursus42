@@ -1,55 +1,79 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   do_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:37:31 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/15 21:01:34 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:28:05 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int *create_tab(t_stack *stack_a)
+static void	
+	do_rev_rotate_both(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
-	t_stack	*current;
-	int		*array;
-	int		index;
-
-	index = 0;
-	current = stack_a;
-	if (!stack_a)
-		return (NULL);
-	array = malloc(sizeof(int) * ft_lstsize(stack_a));
-	if (!array)
-		return (NULL);
-	while (current)
+	while (*cost_a < 0 && *cost_b < 0)
 	{
-		array[index++] = (current)->value;
-		(current) = (current)->next;
+		(*cost_a)++;
+		(*cost_b)++;
+		rrr(a, b);
 	}
-	return (array);
 }
 
-int	initialize_stack(t_stack **stack_a, int argc, char **argv)
+static void	do_rotate_both(t_stack **a, t_stack **b, int *cost_a, int *cost_b)
 {
-	int		i;
-	int		n;
-	char	**tab;
-
-	i = 0;
-	while (++i < argc)
+	while (*cost_a > 0 && *cost_b > 0)
 	{
-		tab = ft_split(argv[i], " ", &n);
-		if (ft_validate_argument(tab) == 1)
-			return (freetab(tab), free_stack(stack_a),
-				write(2, "Error\n", 6), 1);
-		push_to_a(stack_a, tab);
-		freetab(tab);
+		(*cost_a)--;
+		(*cost_b)--;
+		rr(a, b);
 	}
-	if (has_duplicates(stack_a) == 1)
-		return (free_stack(stack_a), write(2, "Error\n", 6), 1);
-	return (0);
+}
+
+static void	do_rotate_a(t_stack **a, int *cost)
+{
+	while (*cost)
+	{
+		if (*cost > 0)
+		{
+			ra(a);
+			(*cost)--;
+		}
+		else if (*cost < 0)
+		{
+			rra(a);
+			(*cost)++;
+		}
+	}
+}
+
+static void	do_rotate_b(t_stack **b, int *cost)
+{
+	while (*cost)
+	{
+		if (*cost > 0)
+		{
+			rb(b);
+			(*cost)--;
+		}
+		else if (*cost < 0)
+		{
+			rrb(b);
+			(*cost)++;
+		}
+	}
+}
+
+void	do_move(t_stack **a, t_stack **b, int cost_a, int cost_b)
+{
+	if (cost_a < 0 && cost_b < 0)
+		do_rev_rotate_both(a, b, &cost_a, &cost_b);
+	else if (cost_a > 0 && cost_b > 0)
+		do_rotate_both(a, b, &cost_a, &cost_b);
+	do_rotate_a(a, &cost_a);
+	do_rotate_b(b, &cost_b);
+	pa(a, b);
 }

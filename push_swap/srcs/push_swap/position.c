@@ -1,88 +1,96 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/19 20:15:32 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:29:57 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int	push_to_a(t_stack **stack_a, char **tab)
+static void	get_position(t_stack **stack)
 {
-	int	i;
+	t_stack	*tmp;
+	int		i;
 
-	i = -1;
-	while (tab[++i])
-		ft_add_back_s(stack_a, ft_new_stack(ft_atoll(tab[i], stack_a, tab)));
-	return (0);
+	tmp = *stack;
+	i = 0;
+	while (tmp)
+	{
+		tmp->pos = i;
+		tmp = tmp->next;
+		i++;
+	}
 }
 
-void	get_index(t_stack **stack_a, int *tab)
+int	get_lowest_index_position(t_stack **stack)
 {
-	int		i;
 	t_stack	*tmp;
+	int		lowest_index;
+	int		lowest_pos;
 
-	tmp = *stack_a;
-	while (tmp != NULL)
+	tmp = *stack;
+	lowest_index = INT_MAX;
+	get_position(stack);
+	lowest_pos = tmp->pos;
+	while (tmp)
 	{
-		i = 0;
-		while (i < ft_lstsize(*stack_a))
+		if (tmp->index < lowest_index)
 		{
-			if (tmp->value == tab[i])
-				tmp->index = i;
-			i++;
+			lowest_index = tmp->index;
+			lowest_pos = tmp->pos;
 		}
 		tmp = tmp->next;
 	}
+	return (lowest_pos);
 }
 
-void	choose_algo(t_stack **stack_a, t_stack **stack_b)
+static int	get_target(t_stack **a, int b_idx, int target_idx, int target_pos)
 {
-	int	size;
-	int	*tab;
+	t_stack	*tmp_a;
 
-	tab = NULL;
-	size = ft_lstsize(*stack_a);
-	if (!*stack_a)
-		return ;
-	else if (size == 2)
-		sort_two(stack_a);
-	else if (size == 3)
-		sort_three(stack_a);
-	else if (size == 5)
-		sorting_five_numbers(stack_a, stack_b);
-	else
+	tmp_a = *a;
+	while (tmp_a)
 	{
-		tab = create_tab(*stack_a);
-		sort_int_tab(tab, size);
-		get_index(stack_a, tab);
-		if (size <= 100)
-			sorting_to_hundred(stack_a, stack_b, size);
-		else
-			sorting(stack_a, stack_b, size);
+		if (tmp_a->index > b_idx && tmp_a->index < target_idx)
+		{
+			target_idx = tmp_a->index;
+			target_pos = tmp_a->pos;
+		}
+		tmp_a = tmp_a->next;
 	}
-	free(tab);
+	if (target_idx != INT_MAX)
+		return (target_pos);
+	tmp_a = *a;
+	while (tmp_a)
+	{
+		if (tmp_a->index < target_idx)
+		{
+			target_idx = tmp_a->index;
+			target_pos = tmp_a->pos;
+		}
+		tmp_a = tmp_a->next;
+	}
+	return (target_pos);
 }
 
-int	main(int argc, char **argv)
+void	get_target_position(t_stack **a, t_stack **b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*tmp_b;
+	int		target_pos;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc == 1)
-		return (1);
-	if (initialize_stack(&stack_a, argc, argv) == 1)
-		return (1);
-	if (is_sorted(&stack_a) == 1)
-		return (1);
-	choose_algo(&stack_a, &stack_b);
-	free_stack(&stack_a);
-	free_stack(&stack_b);
+	tmp_b = *b;
+	get_position(a);
+	get_position(b);
+	target_pos = 0;
+	while (tmp_b)
+	{
+		target_pos = get_target(a, tmp_b->index, INT_MAX, target_pos);
+		tmp_b->target_pos = target_pos;
+		tmp_b = tmp_b->next;
+	}
 }

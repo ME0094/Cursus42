@@ -1,54 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:50:23 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/19 20:16:23 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/20 17:47:32 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_add_back_s(t_stack **lst, t_stack *new)
+static void	rotate(t_stack **stack)
 {
-	t_stack	*current;
+	t_stack	*tmp;
+	t_stack	*tail;
 
-	current = *lst;
-	if (current == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	while (current->next)
-		current = current->next;
-	current->next = new;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	tail = get_stack_bottom(*stack);
+	tmp->next = NULL;
+	tail->next = tmp;
 }
 
-t_stack	*ft_new_stack(int n)
+void	ra(t_stack **stack_a)
 {
-	t_stack	*new_node;
-
-	new_node = malloc(sizeof(t_stack));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->value = n;
-	new_node->index = -1;
-	new_node->next = NULL;
-	return (new_node);
+	rotate(stack_a);
+	ft_putstr_ps("ra\n");
 }
 
-int	ft_lstsize(t_stack *lst)
+void	rb(t_stack **stack_b)
 {
-	int		size;
+	rotate(stack_b);
+	ft_putstr_ps("rb\n");
+}
 
-	size = 0;
-	while (lst)
-	{
-		lst = lst->next;
-		size++;
-	}
-	return (size);
+void	rr(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putstr_ps("rr\n");
 }
