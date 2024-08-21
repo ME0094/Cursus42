@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:57:29 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:02:15 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_stack
 void		free_stack(t_stack **stack);
 void		exit_error(t_stack **stack_a, t_stack **stack_b);
 long int	ft_atoi_ps(const char *str);
-void		ft_putstr_ps(char *str);
 int			nb_abs(int nb);
 
 // Stack functions
@@ -52,8 +51,6 @@ int			get_lowest_index_position(t_stack **stack);
 // Checking the input
 
 int			is_correct_input(char **av, int ac);
-int			is_digit(char c);
-int			is_sign(char c);
 
 // Sorting
 

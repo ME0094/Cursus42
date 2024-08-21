@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:29:41 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:08:45 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Checks if a stack is sorted in ascending order.
+ */
 int	is_sorted(t_stack *stack)
 {
 	while (stack->next != NULL)
@@ -23,6 +26,9 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+/**
+ * Executes the push_swap algorithm on the given stacks.
+ */
 static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	if (stack_size == 2 && !is_sorted(*stack_a))
@@ -33,6 +39,12 @@ static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
 		sort(stack_a, stack_b);
 }
 
+/**
+ * The main function of the program.
+ *
+ * It takes command line arguments
+ * and performs operations on the stacks.
+ */
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;

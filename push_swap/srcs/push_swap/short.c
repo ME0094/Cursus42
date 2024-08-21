@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 20:26:33 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:31:47 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:14:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Pushes elements from stack A to stack B
+ * until there are only three elements left in stack A.
+ */
 static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
 {
 	int	stack_size;
@@ -39,6 +43,9 @@ static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+/**
+ * Finds the highest index in a given stack.
+ */
 static int	find_highest_index(t_stack *stack)
 {
 	int		index;
@@ -53,6 +60,9 @@ static int	find_highest_index(t_stack *stack)
 	return (index);
 }
 
+/**
+ * Sorts a small stack in ascending order.
+ */
 void	tiny_sort(t_stack **stack)
 {
 	int		highest;
@@ -68,6 +78,10 @@ void	tiny_sort(t_stack **stack)
 		sa(stack);
 }
 
+/**
+ * Shifts the elements of a stack
+ * to position the lowest index elementat the top.
+ */
 static void	shift_stack(t_stack **stack_a)
 {
 	int	lowest_pos;
@@ -93,6 +107,9 @@ static void	shift_stack(t_stack **stack_a)
 	}
 }
 
+/**
+ * Sorts the stacks using a specific algorithm.
+ */
 void	sort(t_stack **stack_a, t_stack **stack_b)
 {
 	push_all_save_three(stack_a, stack_b);

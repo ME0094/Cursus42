@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:47:15 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:11:48 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Reverses the order of elements in a stack
+ * by rotating it in the opposite direction.
+ */
 static void	rev_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -26,21 +30,30 @@ static void	rev_rotate(t_stack **stack)
 	before_tail->next = NULL;
 }
 
+/**
+ * Reverses the order of elements in the stack A.
+ */
 void	rra(t_stack **stack_a)
 {
 	rev_rotate(stack_a);
-	ft_putstr_ps("rra\n");
+	ft_putstr("rra\n");
 }
 
+/**
+ * Reverses the order of elements in stack B.
+ */
 void	rrb(t_stack **stack_b)
 {
 	rev_rotate(stack_b);
-	ft_putstr_ps("rrb\n");
+	ft_putstr("rrb\n");
 }
 
+/**
+ * Reverses the order of elements in both stack A and stack B.
+ */
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rev_rotate(stack_a);
 	rev_rotate(stack_b);
-	ft_putstr_ps("rrr\n");
+	ft_putstr("rrr\n");
 }

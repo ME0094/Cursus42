@@ -7,7 +7,6 @@ DIR_OBJS		=	objs
 SRCS_NAMES		= 	cost.c \
 					do_move.c \
 					init.c \
-					input_check_utils.c \
 					input_check.c \
 					main.c \
 					position.c \

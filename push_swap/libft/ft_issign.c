@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_check_utils.c                                :+:      :+:    :+:   */
+/*   ft_issign.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/30 18:33:05 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:28:39 by martirod         ###   ########.fr       */
+/*   Created: 2024/08/21 16:32:12 by martirod          #+#    #+#             */
+/*   Updated: 2024/08/21 16:34:13 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "libft.h"
 
-int	is_digit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	is_sign(char c)
+int	ft_issign(char c)
 {
 	return (c == '+' || c == '-');
 }

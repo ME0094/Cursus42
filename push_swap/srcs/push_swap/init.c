@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:05 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:38:31 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:06:40 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Fills a stack with values from command line arguments.
+ */
 t_stack	*fill_stack_values(int ac, char **av)
 {
 	t_stack		*stack_a;
@@ -35,6 +38,10 @@ t_stack	*fill_stack_values(int ac, char **av)
 	return (stack_a);
 }
 
+/**
+ * Assigns an index to each element in the stack.
+ * The index represents the position of the element in the stack.
+ */
 void	assign_index(t_stack *stack_a, int stack_size)
 {
 	t_stack	*ptr;

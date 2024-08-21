@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:29:57 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:09:42 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Assigns a position to each element in the stack.
+ *
+ */
 static void	get_position(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -27,6 +31,9 @@ static void	get_position(t_stack **stack)
 	}
 }
 
+/**
+ * Get the lowest index position in the stack.
+ */
 int	get_lowest_index_position(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -49,6 +56,9 @@ int	get_lowest_index_position(t_stack **stack)
 	return (lowest_pos);
 }
 
+/**
+ * Finds the target position in the stack based on the given parameters.
+ */
 static int	get_target(t_stack **a, int b_idx, int target_idx, int target_pos)
 {
 	t_stack	*tmp_a;
@@ -78,6 +88,10 @@ static int	get_target(t_stack **a, int b_idx, int target_idx, int target_pos)
 	return (target_pos);
 }
 
+/**
+ * Calculates the target position for each element in stack B
+ * based on their index.
+ */
 void	get_target_position(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp_b;

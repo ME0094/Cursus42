@@ -6,12 +6,16 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:43:41 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:27:46 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:04:06 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Calculates the cost for each element in stack B based on its position
+ *  and target position in stack A.
+ */
 void	get_cost(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
@@ -35,6 +39,9 @@ void	get_cost(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+/**
+ * Performs the cheapest move between two stacks.
+ */
 void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp;

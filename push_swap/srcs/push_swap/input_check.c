@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:28:54 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:07:50 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Checks if the given argument is a number.
+ */
 static int	arg_is_number(char *av)
 {
 	int	i;
@@ -19,15 +22,18 @@ static int	arg_is_number(char *av)
 	i = 0;
 	if (av[0] == '\0')
 		return (0);
-	if (is_sign(av[i]) && av[i + 1] != '\0')
+	if (ft_issign(av[i]) && av[i + 1] != '\0')
 		i++;
-	while (av[i] && is_digit(av[i]))
+	while (av[i] && ft_isdigit(av[i]))
 		i++;
-	if (av[i] != '\0' && !is_digit(av[i]))
+	if (av[i] != '\0' && !ft_isdigit(av[i]))
 		return (0);
 	return (1);
 }
 
+/**
+ * Checks if there are any duplicates in the given array of numbers.
+ */
 static int	have_duplicates(int *num, int tmp, int max)
 {
 	int	i;
@@ -42,6 +48,9 @@ static int	have_duplicates(int *num, int tmp, int max)
 	return (0);
 }
 
+/**
+ * Checks if the input is correct.
+ */
 int	is_correct_input(char **av, int ac)
 {
 	int	i;
@@ -56,7 +65,7 @@ int	is_correct_input(char **av, int ac)
 	{
 		if (!arg_is_number(av[i]))
 			return (0);
-		num[i] = ft_atoi(av[i]);
+		num[i] = ft_atoi_ps(av[i]);
 		temp = num[i];
 		if (have_duplicates(num, temp, i))
 			return (0);

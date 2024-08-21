@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 20:26:43 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:32:26 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:15:21 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+/**
+ * Returns the bottom element of the stack.
+ */
 t_stack	*get_stack_bottom(t_stack *stack)
 {
 	while (stack && stack->next != NULL)
@@ -19,6 +22,9 @@ t_stack	*get_stack_bottom(t_stack *stack)
 	return (stack);
 }
 
+/**
+ * Returns the node before the bottom node in the stack.
+ */
 t_stack	*get_stack_before_bottom(t_stack *stack)
 {
 	while (stack && stack->next && stack->next->next != NULL)
@@ -26,6 +32,9 @@ t_stack	*get_stack_before_bottom(t_stack *stack)
 	return (stack);
 }
 
+/**
+ * Creates a new stack node with the given value.
+ */
 t_stack	*stack_new(int value)
 {
 	t_stack	*new;
@@ -43,6 +52,9 @@ t_stack	*stack_new(int value)
 	return (new);
 }
 
+/**
+ * Adds a new element to the bottom of the stack.
+ */
 void	stack_add_bottom(t_stack **stack, t_stack *new)
 {
 	t_stack	*tail;
@@ -58,6 +70,9 @@ void	stack_add_bottom(t_stack **stack, t_stack *new)
 	tail->next = new;
 }
 
+/**
+ * Get the size of a stack.
+ */
 int	get_stack_size(t_stack	*stack)
 {
 	int	size;
