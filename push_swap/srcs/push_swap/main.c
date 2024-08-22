@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/21 17:08:45 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:27:54 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 /**
  * Checks if a stack is sorted in ascending order.
  */
-int	is_sorted(t_stack *stack)
+int	is_stack_sorted(t_stack *stack)
 {
-	while (stack->next != NULL)
+	if (!stack)
+		return (1);
+	while (stack->next)
 	{
 		if (stack->value > stack->next->value)
 			return (0);
@@ -26,17 +28,22 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+
 /**
  * Executes the push_swap algorithm on the given stacks.
  */
-static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
-{
-	if (stack_size == 2 && !is_sorted(*stack_a))
-		sa(stack_a);
-	else if (stack_size == 3)
-		tiny_sort(stack_a);
-	else if (stack_size > 3 && !is_sorted(*stack_a))
-		sort(stack_a, stack_b);
+static void push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size) {
+    if (stack_size <= 2) {
+        // Handle small stack sizes efficiently
+        if (stack_size == 2 && !is_stack_sorted(*stack_a)) {
+            swap_a(stack_a);
+        }
+    } else {
+        // Sort for larger stack sizes
+        if (!is_stack_sorted(*stack_a)) {
+            sort_stack(stack_a, stack_b);
+        }
+    }
 }
 
 /**
@@ -51,12 +58,15 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 	int		stack_size;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (ac < 2)
 		return (0);
-	if (!is_correct_input(av, ac))
-		exit_error(NULL, NULL);
-	stack_b = NULL;
-	stack_a = fill_stack_values(ac, av);
+	if (!validate_input(av, ac))
+		handle_error(NULL, NULL);
+	stack_a = initialize_stack(ac, av);
+	if (!stack_a)
+		handle_error(NULL, NULL);
 	stack_size = get_stack_size(stack_a);
 	assign_index(stack_a, stack_size + 1);
 	push_swap(&stack_a, &stack_b, stack_size);
@@ -64,3 +74,4 @@ int	main(int ac, char **av)
 	free_stack(&stack_b);
 	return (0);
 }
+

@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 20:26:33 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/21 17:14:24 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:15:28 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,67 +16,82 @@
  * Pushes elements from stack A to stack B
  * until there are only three elements left in stack A.
  */
-static void	push_all_save_three(t_stack **stack_a, t_stack **stack_b)
+void push_all_save_three(t_stack **stack_a, t_stack **stack_b)
 {
-	int	stack_size;
-	int	pushed;
-	int	i;
+    int total_size;
+    int elements_pushed;
+    int index;
 
-	stack_size = get_stack_size(*stack_a);
-	pushed = 0;
-	i = 0;
-	while (stack_size > 6 && i < stack_size && pushed < stack_size / 2)
-	{
-		if ((*stack_a)->index <= stack_size / 2)
-		{
-			pb(stack_a, stack_b);
-			pushed++;
-		}
-		else
-			ra(stack_a);
-		i++;
-	}
-	while (stack_size - pushed > 3)
-	{
-		pb(stack_a, stack_b);
-		pushed++;
-	}
+    total_size = get_stack_size(*stack_a);
+    elements_pushed = 0;
+    index = 0;
+    while (total_size > 6 && index < total_size && elements_pushed < total_size / 2)
+    {
+        if ((*stack_a)->index <= total_size / 2)
+        {
+            push_to_b(stack_a, stack_b); // Push to stack_b
+            elements_pushed++;
+        }
+        else
+        {
+            rotate_a(stack_a); // Rotate stack_a
+        }
+        index++;
+    }
+    while (total_size - elements_pushed > 3)
+    {
+        push_to_b(stack_a, stack_b); // Push to stack_b
+        elements_pushed++;
+    }
 }
+
 
 /**
  * Finds the highest index in a given stack.
  */
-static int	find_highest_index(t_stack *stack)
+static int find_highest_index(t_stack *stack)
 {
-	int		index;
+    if (!stack)
+        return -1; // Return an error value if the stack is empty
 
-	index = stack->index;
-	while (stack)
-	{
-		if (stack->index > index)
-			index = stack->index;
-		stack = stack->next;
-	}
-	return (index);
+    int highest_index = stack->index;
+    t_stack *current = stack->next;
+
+    while (current)
+    {
+        if (current->index > highest_index)
+            highest_index = current->index;
+        current = current->next;
+    }
+
+    return highest_index;
 }
 
 /**
  * Sorts a small stack in ascending order.
  */
-void	tiny_sort(t_stack **stack)
+void sort_small_stack(t_stack **stack)
 {
-	int		highest;
+    if (!stack || !*stack || is_stack_sorted(*stack))
+        return;
 
-	if (is_sorted(*stack))
-		return ;
-	highest = find_highest_index(*stack);
-	if ((*stack)->index == highest)
-		ra(stack);
-	else if ((*stack)->next->index == highest)
-		rra(stack);
-	if ((*stack)->index > (*stack)->next->index)
-		sa(stack);
+    int highest = find_highest_index(*stack);
+
+    if ((*stack)->index == highest)
+    {
+        rotate_a(stack);
+    }
+    else if ((*stack)->next && (*stack)->next->index == highest)
+    {
+        reverse_rotate_a(stack);
+    }
+
+    if ((*stack)->index > (*stack)->next->index)
+    {
+        swap_a(stack);
+    }
 }
+
 
 /**
  * Shifts the elements of a stack
@@ -87,13 +102,15 @@ static void	shift_stack(t_stack **stack_a)
 	int	lowest_pos;
 	int	stack_size;
 
+	if (!stack_a || !*stack_a)
+		return ;
 	stack_size = get_stack_size(*stack_a);
-	lowest_pos = get_lowest_index_position(stack_a);
+	lowest_pos = find_lowest_index_position(stack_a);
 	if (lowest_pos > stack_size / 2)
 	{
 		while (lowest_pos < stack_size)
 		{
-			rra(stack_a);
+			reverse_rotate_a(stack_a);
 			lowest_pos++;
 		}
 	}
@@ -101,7 +118,7 @@ static void	shift_stack(t_stack **stack_a)
 	{
 		while (lowest_pos > 0)
 		{
-			ra(stack_a);
+			rotate_a(stack_a);
 			lowest_pos--;
 		}
 	}
@@ -110,16 +127,18 @@ static void	shift_stack(t_stack **stack_a)
 /**
  * Sorts the stacks using a specific algorithm.
  */
-void	sort(t_stack **stack_a, t_stack **stack_b)
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
+	if (!stack_a || !*stack_a || !stack_b)
+		return ;
 	push_all_save_three(stack_a, stack_b);
-	tiny_sort(stack_a);
+	sort_small_stack(stack_a);
 	while (*stack_b)
 	{
-		get_target_position(stack_a, stack_b);
-		get_cost(stack_a, stack_b);
-		do_cheapest_move(stack_a, stack_b);
+		determine_target_positions(stack_a, stack_b);
+		calculate_costs(stack_a, stack_b);
+		execute_cheapest_move(stack_a, stack_b);
 	}
-	if (!is_sorted(*stack_a))
+	if (!is_stack_sorted(*stack_a))
 		shift_stack(stack_a);
 }

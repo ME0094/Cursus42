@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:02 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/21 17:20:40 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:09:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_stack(t_stack **stack)
  * Exits the program with an error message
  *  and frees the memory allocated for the stacks.
  */
-void	exit_error(t_stack **stack_a, t_stack **stack_b)
+void	handle_error(t_stack **stack_a, t_stack **stack_b)
 {
 	if (stack_a && *stack_a)
 		free_stack(stack_a);
@@ -74,7 +74,7 @@ long int	ft_atoi_ps(const char *str)
 /**
  * Calculates the absolute value of a given integer.
  */
-int	nb_abs(int nb)
+int	absolute_value(int nb)
 {
 	if (nb < 0)
 		return (nb * -1);

@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/21 17:11:48 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:04:00 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,51 @@
  * Reverses the order of elements in a stack
  * by rotating it in the opposite direction.
  */
-static void	rev_rotate(t_stack **stack)
+void reverse_rotate(t_stack **stack)
 {
-	t_stack	*tmp;
-	t_stack	*tail;
-	t_stack	*before_tail;
+    // Check if stack is empty or has only one element
+    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+        return;
 
-	tail = get_stack_bottom(*stack);
-	before_tail = get_stack_before_bottom(*stack);
-	tmp = *stack;
-	*stack = tail;
-	(*stack)->next = tmp;
-	before_tail->next = NULL;
+    t_stack *tail = get_stack_bottom(*stack); // Get the bottom element of the stack
+    t_stack *before_tail = get_stack_penultimate(*stack); // Get the element before the bottom
+
+    // Check if before_tail is valid
+    if (before_tail == NULL)
+        return;
+
+    t_stack *temp = *stack; // Store the current top of the stack
+
+    *stack = tail; // Move the bottom element to the top
+    (*stack)->next = temp; // Link the new top to the old top
+    before_tail->next = NULL; // Set the new bottom's next to NULL
 }
+
 
 /**
  * Reverses the order of elements in the stack A.
  */
-void	rra(t_stack **stack_a)
+void	reverse_rotate_a(t_stack **stack_a)
 {
-	rev_rotate(stack_a);
+	reverse_rotate(stack_a);
 	ft_putstr("rra\n");
 }
 
 /**
  * Reverses the order of elements in stack B.
  */
-void	rrb(t_stack **stack_b)
+void	reverse_rotate_b(t_stack **stack_b)
 {
-	rev_rotate(stack_b);
+	reverse_rotate(stack_b);
 	ft_putstr("rrb\n");
 }
 
 /**
  * Reverses the order of elements in both stack A and stack B.
  */
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b)
 {
-	rev_rotate(stack_a);
-	rev_rotate(stack_b);
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 	ft_putstr("rrr\n");
 }

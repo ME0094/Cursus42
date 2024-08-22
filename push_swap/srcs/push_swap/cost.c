@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:43:41 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/21 17:04:06 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/22 19:10:03 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * Calculates the cost for each element in stack B based on its position
  *  and target position in stack A.
  */
-void	get_cost(t_stack **stack_a, t_stack **stack_b)
+void	calculate_costs(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
@@ -42,24 +42,27 @@ void	get_cost(t_stack **stack_a, t_stack **stack_b)
 /**
  * Performs the cheapest move between two stacks.
  */
-void	do_cheapest_move(t_stack **stack_a, t_stack **stack_b)
+void	execute_cheapest_move(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp;
-	int		cheapest;
-	int		cost_a;
-	int		cost_b;
+	
+    if (!stack_a || !stack_b) {
+        return;
+    }
 
-	tmp = *stack_b;
-	cheapest = INT_MAX;
-	while (tmp)
-	{
-		if (nb_abs(tmp->cost_a) + nb_abs(tmp->cost_b) < nb_abs(cheapest))
-		{
-			cheapest = nb_abs(tmp->cost_b) + nb_abs(tmp->cost_a);
-			cost_a = tmp->cost_a;
-			cost_b = tmp->cost_b;
-		}
-		tmp = tmp->next;
-	}
-	do_move(stack_a, stack_b, cost_a, cost_b);
+    t_stack *tmp = *stack_b;
+    int cheapest = INT_MAX;
+    int cost_a = 0;
+    int cost_b = 0;
+
+    while (tmp) {
+        int total_cost = absolute_value(tmp->cost_a) + absolute_value(tmp->cost_b);
+        if (total_cost < absolute_value(cheapest)) {
+            cheapest = total_cost;
+            cost_a = tmp->cost_a;
+            cost_b = tmp->cost_b;
+        }
+        tmp = tmp->next;
+    }
+
+    do_move(stack_a, stack_b, cost_a, cost_b);
 }
