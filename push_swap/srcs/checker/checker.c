@@ -6,11 +6,9 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/20 17:56:23 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:55:14 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 void	execute_commands(char *command, t_stack **stack_a, t_stack **stack_b)
 {
