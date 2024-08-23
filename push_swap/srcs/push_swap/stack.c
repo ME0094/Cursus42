@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 20:26:43 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:26:33 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:53:19 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,39 +35,39 @@ t_stack	*get_stack_penultimate(t_stack *stack)
 /**
  * Creates a new stack node with the given value.
  */
-t_stack *create_stack_node(int value)
+t_stack	*create_stack_node(int value)
 {
-    t_stack *new = (t_stack *)malloc(sizeof(t_stack));
-    if (!new)
-        return NULL;
+	t_stack	*new;
 
-    new->value = value;
-    new->index = 0;
-    new->pos = -1;
-    new->target_pos = -1;
-    new->cost_a = -1;
-    new->cost_b = -1;
-    new->next = NULL;
-
-    return new;
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->index = 0;
+	new->pos = -1;
+	new->target_pos = -1;
+	new->cost_a = -1;
+	new->cost_b = -1;
+	new->next = NULL;
+	return (new);
 }
 
 /**
  * Adds a new element to the bottom of the stack.
  */
-void add_node_to_stack_bottom(t_stack **stack, t_stack *new)
+void	add_node_to_stack_bottom(t_stack **stack, t_stack *new)
 {
-    if (!new)
-        return;
+	t_stack	*tail;
 
-    if (!*stack)
-    {
-        *stack = new;
-        return;
-    }
-
-    t_stack *tail = get_stack_bottom(*stack);
-    tail->next = new;
+	if (!new)
+		return ;
+	if (!*stack)
+	{
+		*stack = new;
+		return ;
+	}
+	tail = get_stack_bottom(*stack);
+	tail->next = new;
 }
 
 /**

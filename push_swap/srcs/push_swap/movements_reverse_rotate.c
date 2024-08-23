@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   movements_reverse_rotate.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:04:00 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:37:37 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,23 @@
  * Reverses the order of elements in a stack
  * by rotating it in the opposite direction.
  */
-void reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
-    // Check if stack is empty or has only one element
-    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-        return;
+	t_stack	*temp;
+	t_stack	*tail;
+	t_stack	*before_tail;
 
-    t_stack *tail = get_stack_bottom(*stack); // Get the bottom element of the stack
-    t_stack *before_tail = get_stack_penultimate(*stack); // Get the element before the bottom
-
-    // Check if before_tail is valid
-    if (before_tail == NULL)
-        return;
-
-    t_stack *temp = *stack; // Store the current top of the stack
-
-    *stack = tail; // Move the bottom element to the top
-    (*stack)->next = temp; // Link the new top to the old top
-    before_tail->next = NULL; // Set the new bottom's next to NULL
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return ;
+	tail = get_stack_bottom(*stack);
+	before_tail = get_stack_penultimate(*stack);
+	if (before_tail == NULL)
+		return ;
+	temp = *stack;
+	*stack = tail;
+	(*stack)->next = temp;
+	before_tail->next = NULL;
 }
-
 
 /**
  * Reverses the order of elements in the stack A.

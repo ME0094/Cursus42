@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:42:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:27:54 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:47:33 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,19 @@ int	is_stack_sorted(t_stack *stack)
 	return (1);
 }
 
-
 /**
  * Executes the push_swap algorithm on the given stacks.
  */
-static void push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size) {
-    if (stack_size <= 2) {
-        // Handle small stack sizes efficiently
-        if (stack_size == 2 && !is_stack_sorted(*stack_a)) {
-            swap_a(stack_a);
-        }
-    } else {
-        // Sort for larger stack sizes
-        if (!is_stack_sorted(*stack_a)) {
-            sort_stack(stack_a, stack_b);
-        }
-    }
+static void	push_swap(t_stack **stack_a, t_stack **stack_b, int stack_size)
+{
+	if (stack_size <= 2)
+	{
+		if (stack_size == 2 && !is_stack_sorted(*stack_a))
+			swap_a(stack_a);
+		return ;
+	}
+	if (!is_stack_sorted(*stack_a))
+		sort_stack(stack_a, stack_b);
 }
 
 /**
@@ -74,4 +71,3 @@ int	main(int ac, char **av)
 	free_stack(&stack_b);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:44:02 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:09:24 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:54:02 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
  */
 void	free_stack(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack	*current_node;
 
 	if (!stack || !(*stack))
 		return ;
 	while (*stack)
 	{
-		tmp = (*stack)->next;
+		current_node = (*stack)->next;
 		free(*stack);
-		*stack = tmp;
+		*stack = current_node;
 	}
 	*stack = NULL;
 }
@@ -74,7 +74,7 @@ long int	ft_atoi_ps(const char *str)
 /**
  * Calculates the absolute value of a given integer.
  */
-int	absolute_value(int nb)
+int	abs_val(int nb)
 {
 	if (nb < 0)
 		return (nb * -1);

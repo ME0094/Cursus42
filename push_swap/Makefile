@@ -5,17 +5,17 @@ DIR_SRCS		=	srcs/push_swap
 DIR_BONUS		=	srcs/checker
 DIR_OBJS		=	objs
 SRCS_NAMES		= 	cost.c \
-					do_move.c \
 					init.c \
 					input_check.c \
-					main.c \
+					movements_push.c \
+					movements_reverse_rotate.c \
+					movements_rotate.c \
+					movements_swap.c \
+					movements.c \
 					position.c \
-					push.c \
-					reverse_rotate.c \
-					rotate.c \
-					short.c \
+					push_swap.c \
+					sorting.c \
 					stack.c \
-					swap.c \
 					utils.c
 SRCS_NAMES_B	=	
 

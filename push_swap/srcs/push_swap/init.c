@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:05 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:20:42 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:32:41 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,64 +15,53 @@
 /**
  * Fills a stack with values from command line arguments.
  */
-t_stack *initialize_stack(int ac, char **av) {
-    t_stack *stack_a = NULL;
-    int i = 1;
+t_stack	*initialize_stack(int argc, char **argv)
+{
+	t_stack		*stack;
+	long int	number;
+	int			index;
 
-    while (i < ac) {
-        long int nb = ft_atoi_ps(av[i]);
-
-        // Check for overflow/underflow and exit if necessary
-        if (nb > INT_MAX || nb < INT_MIN) {
-            handle_error(&stack_a, NULL);
-        }
-
-        // Create a new stack element and add it to the bottom
-		t_stack	*new_element = create_stack_node((int)nb);
-
-        if (stack_a == NULL) {
-            stack_a = new_element;
-        } else {
-            add_node_to_stack_bottom(&stack_a, new_element);
-        }
-
-        i++;
-    }
-
-    return stack_a;
+	stack = NULL;
+	index = 1;
+	while (index < argc)
+	{
+		number = ft_atoi_ps(argv[index]);
+		if (number > INT_MAX || number < INT_MIN)
+			handle_error(&stack, NULL);
+		if (index == 1)
+			stack = create_stack_node((int)number);
+		else
+			add_node_to_stack_bottom(&stack, create_stack_node((int)number));
+		index++;
+	}
+	return (stack);
 }
-
-
 
 /**
  * Assigns an index to each element in the stack.
  * The index represents the position of the element in the stack.
  */
-void assign_index(t_stack *stack_a, int stack_size)
+void	assign_index(t_stack *stack, int size)
 {
-    t_stack *ptr;
-    t_stack *highest;
-    int value;
+	t_stack	*current_node;
+	t_stack	*max_node;
+	int		max_value;
 
-    while (--stack_size > 0)
-    {
-        ptr = stack_a;
-        value = INT_MIN;
-        highest = NULL;
-
-        while (ptr)
-        {
-            if (ptr->index == 0 && ptr->value > value)
-            {
-                value = ptr->value;
-                highest = ptr;
-            }
-            ptr = ptr->next;
-        }
-
-        if (highest != NULL)
-        {
-            highest->index = stack_size;
-        }
-    }
+	while (--size > 0)
+	{
+		current_node = stack;
+		max_node = NULL;
+		max_value = INT_MIN;
+		while (current_node)
+		{
+			if (current_node->index == 0 && current_node->value > max_value)
+			{
+				max_value = current_node->value;
+				max_node = current_node;
+			}
+			current_node = current_node->next;
+		}
+		if (max_node != NULL)
+			max_node->index = size;
+	}
 }

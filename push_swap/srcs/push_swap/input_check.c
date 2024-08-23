@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:27:03 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:33:49 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,37 @@
 /**
  * Checks if the given argument is a number.
  */
-static int	arg_is_number(char *av)
+static int	is_number(char *arg)
 {
-	int	i;
+	int	index;
 
-	i = 0;
-	if (av[0] == '\0')
+	index = 0;
+	if (arg[0] == '\0')
 		return (0);
-	if (ft_issign(av[i]) && av[i + 1] != '\0')
-		i++;
-    while (av[i])
-    {
-        if (!ft_isdigit(av[i]))
-            return 0;
-        i++;
-    }
-
-    return 1;
+	if (ft_issign(arg[index]) && arg[index + 1] != '\0')
+		index++;
+	while (arg[index])
+	{
+		if (!ft_isdigit(arg[index]))
+			return (0);
+		index++;
+	}
+	return (1);
 }
 
 /**
  * Checks if there are any duplicates in the given array of numbers.
  */
-static int	have_duplicates(int *num, int tmp, int max)
+static int	has_duplicates(int *numbers, int value, int size)
 {
-	int	i;
+	int	index;
 
-	i = 1;
-	while (i < max)
+	index = 1;
+	while (index < size)
 	{
-		if (tmp == num[i])
+		if (value == numbers[index])
 			return (1);
-		i++;
+		index++;
 	}
 	return (0);
 }
@@ -54,28 +53,28 @@ static int	have_duplicates(int *num, int tmp, int max)
 /**
  * Checks if the input is correct.
  */
-int	validate_input(char **av, int ac)
+int	validate_input(char **args, int count)
 {
-	int	i;
-	int	*num;
-	int	nb_zeros;
-	int	temp;
+	int	index;
+	int	*numbers;
+	int	zero_count;
+	int	current_num;
 
-	nb_zeros = 0;
-	i = 1;
-	num = malloc(sizeof(int) * ac);
-	while (av[i])
+	zero_count = 0;
+	index = 1;
+	numbers = malloc(sizeof(int) * count);
+	while (args[index])
 	{
-		if (!arg_is_number(av[i]))
+		if (!is_number(args[index]))
 			return (0);
-		num[i] = ft_atoi_ps(av[i]);
-		temp = num[i];
-		if (have_duplicates(num, temp, i))
+		numbers[index] = ft_atoi_ps(args[index]);
+		current_num = numbers[index];
+		if (has_duplicates(numbers, current_num, index))
 			return (0);
-		i++;
+		index++;
 	}
-	free(num);
-	if (nb_zeros > 1)
+	free(numbers);
+	if (zero_count > 1)
 		return (0);
 	return (1);
 }

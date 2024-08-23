@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:24:27 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:24:45 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:00:55 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_stack
 void	free_stack(t_stack **stack);
 void	handle_error(t_stack **stack_a, t_stack **stack_b);
 long	ft_atoi_ps(const char *str);
-int		absolute_value(int nb);
+int		abs_val(int nb);
 
 /* Stack management functions */
 t_stack	*create_stack_node(int value);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   movements_push.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:40:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/22 19:02:19 by martirod         ###   ########.fr       */
+/*   Updated: 2024/08/23 19:35:08 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 /**
  * Moves the top element from the source stack to the destination stack.
  */
-void push(t_stack **src, t_stack **dest)
+void	push(t_stack **src, t_stack **dest)
 {
-    // Check if source stack is empty or pointers are invalid
-    if (src == NULL || dest == NULL || *src == NULL)
-        return;
+	t_stack	*temp;
 
-    t_stack *temp = (*src)->next; // Store the next element of source stack
-
-    (*src)->next = *dest; // Link the current top of source to the top of destination
-    *dest = *src; // Move the top element from source to destination
-    *src = temp; // Update the top of source stack to the next element
+	if (src == NULL || dest == NULL || *src == NULL)
+		return ;
+	temp = (*src)->next;
+	(*src)->next = *dest;
+	*dest = *src;
+	*src = temp;
 }
 
 /**
