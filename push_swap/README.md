@@ -1,7 +1,7 @@
 # push_swap
 Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones.
 
-► Ongoing
+► [Explicación detallada en Notion.](https://www.notion.so/push_swap-88358e73b0244bcb8de473879c5da05a)
 
 # Contacto 
 
