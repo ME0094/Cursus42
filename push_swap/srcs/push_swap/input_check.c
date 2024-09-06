@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:25:54 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/23 19:33:49 by martirod         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:26:49 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,45 @@ static int	has_duplicates(int *numbers, int value, int size)
 }
 
 /**
- * Checks if the input is correct.
+ * Helper function for input validation.
  */
+int	ft_help_function(char **args, int *numbers, int index)
+{
+	int	current_num;
+
+	while (args[index])
+	{
+		if (!is_number(args[index]))
+		{
+			free(numbers);
+			return (0);
+		}
+		numbers[index] = ft_atoi_ps(args[index]);
+		current_num = numbers[index];
+		if (has_duplicates(numbers, current_num, index))
+		{
+			free(numbers);
+			return (0);
+		}
+		index++;
+	}
+	return (1);
+}
+
+/**
+* Checks if the input is correct.
+*/
 int	validate_input(char **args, int count)
 {
 	int	index;
 	int	*numbers;
 	int	zero_count;
-	int	current_num;
 
 	zero_count = 0;
 	index = 1;
 	numbers = malloc(sizeof(int) * count);
-	while (args[index])
-	{
-		if (!is_number(args[index]))
-			return (0);
-		numbers[index] = ft_atoi_ps(args[index]);
-		current_num = numbers[index];
-		if (has_duplicates(numbers, current_num, index))
-			return (0);
-		index++;
-	}
+	if (!ft_help_function(args, numbers, index))
+		return (0);
 	free(numbers);
 	if (zero_count > 1)
 		return (0);
