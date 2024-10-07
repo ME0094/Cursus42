@@ -12,11 +12,11 @@
 ► [Diseñamos una función que devuelva una línea leída de un file descriptor.](https://github.com/ME0094/Cursus42/tree/master/get_next_line)
 <br>
 <br>
-## push_swap
-► [Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones.](https://github.com/ME0094/Cursus42/tree/master/push_swap)
-<br>
-<br>
 ## pipex
+► [Recrea en C la forma en que dos comandos se canalizan juntos a través de una pipe en el shell.](https://github.com/ME0094/Cursus42/tree/master/pipex)
+<br>
+<br>
+## push_swap
 ► [Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones.](https://github.com/ME0094/Cursus42/tree/master/push_swap)
 <br>
 <br>
