@@ -1,7 +1,7 @@
 NAME			=	push_swap
 NAME_B			=	checker
 LIBFT			=	libft.a libftprintf.a
-DIR_SRCS		=	srcs/push_swap
+DIR_SRCS		=	srcs/mandatory
 DIR_BONUS		=	srcs/checker
 DIR_OBJS		=	objs
 SRCS_NAMES		= 	cost.c \
