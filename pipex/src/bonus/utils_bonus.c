@@ -1,24 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 14:45:04 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/09 17:21:53 by martirod         ###   ########.fr       */
+/*   Created: 2024/10/09 17:28:31 by martirod          #+#    #+#             */
+/*   Updated: 2024/10/09 17:28:33 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
-# include "../libft/ft_printf/ft_printf.h"
-
-#endif
+#include "../../include/pipex.h"

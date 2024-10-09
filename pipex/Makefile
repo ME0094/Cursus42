@@ -76,8 +76,9 @@ git:
 # Use make git m="msg to commit" to commit and push in one line
 
 val: all
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
-	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_B)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex
 
 #/check:
 #   clang-tidy -checks=-*,readability-*,performance-*, portability-*,modernize-*,security-*,misc-*,clang-diagnostic-*,header-check -fix -header-check-option=-Werror -p .
