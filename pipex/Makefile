@@ -69,15 +69,15 @@ fclean:	clean
 re:	fclean all
 
 git:
-			@git add -A
-			@git commit -m "$m"
-			@git push
-			@echo "Commit sent to GitHub"
+	@git add -A
+	@git commit -m "$m"
+	@git push
+	@echo "Commit sent to GitHub"
 # Use make git m="msg to commit" to commit and push in one line
 
 val: all
-    valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
-    valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_B)
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME_B)
 
 #/check:
 #   clang-tidy -checks=-*,readability-*,performance-*, portability-*,modernize-*,security-*,misc-*,clang-diagnostic-*,header-check -fix -header-check-option=-Werror -p .
