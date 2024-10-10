@@ -6,96 +6,86 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:11 by martirod          #+#    #+#             */
-/*   Updated: 2024/08/19 18:45:58 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:37:48 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	freetab(char **tab)
+static int	count_words(char const *s, char c)
 {
-	int	i;
+	int		count;
+	int		i;
 
 	i = 0;
-	if (!tab)
+	count = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i])
+			count++;
+		while (s[i] != c && s[i])
+			i++;
+	}
+	return (count);
+}
+
+static void	ft_free_tab(char **tab)
+{
+	char	**pos;
+
+	if (tab == NULL)
 		return ;
-	while (tab[i] != NULL)
-		free(tab[i++]);
+	pos = tab;
+	while (*pos != NULL)
+		free(*(pos++));
 	free(tab);
 }
 
-int	ft_countdelim(char const *str, char *charset)
-{
-	int	i;
-	int	counter;
-
-	i = 0;
-	counter = 0;
-	while (str && str[i])
-	{
-		while (str[i] && ft_strchr(charset, str[i]))
-			i++;
-		if (str[i] == '\0')
-			break ;
-		counter++;
-		while (str[i] && !ft_strchr(charset, str[i]))
-			i++;
-	}
-	return (counter);
-}
-
-char	*ft_strtsub(char const *str, int start, int end)
+static char	*ft_str(char const *s, char c)
 {
 	int		i;
-	char	*var;
+	char	*ptr;
 
 	i = 0;
-	var = ft_calloc(sizeof(char), end - start + 1);
-	if (!var)
-		return (NULL);
-	while (((start + i) < end) && str[i])
-	{
-		var[i] = str[start + i];
+	while (s[i] && s[i] != c)
 		i++;
+	ptr = malloc(sizeof(char) * (i + 1));
+	if (!(ptr))
+	{
+		free(ptr);
+		return (NULL);
 	}
-	return (var);
+	ft_strlcpy(ptr, s, i + 1);
+	return (ptr);
 }
 
-char	**to_tab(char **tab, char const *s, char *charset, int count)
+char	**ft_split(char const *s, char c)
 {
-	int	i;
-	int	index;
-	int	start;
+	int		i;
+	int		strs_len;
+	char	**ptr;
 
-	i = 0;
-	index = 0;
-	while (index < count)
+	if (!s)
+		return (0);
+	strs_len = count_words(s, c);
+	ptr = ft_calloc(sizeof(char *), (strs_len + 1));
+	if (!(ptr))
+		return (NULL);
+	i = -1;
+	while (++i < strs_len)
 	{
-		while (s[i] && ft_strchr(charset, s[i]))
-			i++;
-		start = i;
-		while (s[i] && (!ft_strchr(charset, s[i])))
-			i++;
-		tab[index] = ft_strtsub(s, start, i);
-		if (!tab[index++])
+		while (s[0] == c)
+			s++;
+		ptr[i] = ft_str(s, c);
+		if (!(ptr[i]))
 		{
-			freetab(tab);
+			ft_free_tab(ptr);
 			return (NULL);
 		}
+		s += ft_strlen(ptr[i]);
 	}
-	return (tab);
-}
-
-char	**ft_split(char *str, char *charset, int *size)
-{
-	char	**tab;
-
-	if (!str || !*str)
-		return (ft_calloc(sizeof(char *) * 1, 1));
-	*size = ft_countdelim(str, charset);
-	tab = ft_calloc(sizeof(char *) * (*size + 1), 1);
-	if (!tab)
-		return (NULL);
-	tab = to_tab(tab, str, charset, *size);
-	return (tab);
+	ptr[i] = 0;
+	return (ptr);
 }
