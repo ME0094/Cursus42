@@ -4,20 +4,10 @@ LIBFT			=	libft.a libftprintf.a
 DIR_SRCS		=	src/mandatory
 DIR_BONUS		=	src/bonus
 DIR_OBJS		=	objs
-SRCS_NAMES		= 	cost.c \
-					init.c \
-					input_check.c \
-					movements_push.c \
-					movements_reverse_rotate.c \
-					movements_rotate.c \
-					movements_swap.c \
-					movements.c \
-					position.c \
-					push_swap.c \
-					sorting.c \
-					stack.c \
-					utils.c
-SRCS_NAMES_B	=	
+SRCS_NAMES		= 	pipex.c \
+					utils.c 
+SRCS_NAMES_B	=	pipex_bonus.c \
+					utils_bonus.c 
 
 SRCS            =   $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
 SRCS_B          =   $(addprefix $(DIR_BONUS)/,$(SRCS_NAMES_B))
