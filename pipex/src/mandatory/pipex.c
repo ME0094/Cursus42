@@ -6,140 +6,125 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 22:29:34 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 00:15:15 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/pipex.h"
+#include "pipex.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/wait.h>
 
-/* Function to handle the first child process */
-static int	open_input_file(char *file)
+void	ft_child_1(int *fd, char **argv, char **envp)
 {
-	int input_fd = get_file_descriptor(file, 0);
-	if (input_fd < 0)
+	int		fd_infile;
+	char	**argv_sp;
+	char	*path;
+
+	close(fd[0]);
+	fd_infile = ft_get_fd(argv[1], 0);
+	if (fd_infile < 0)
 	{
 		perror("Error opening input file");
 		exit(EXIT_FAILURE);
 	}
-	return input_fd;
-}
-
-static void	execute_command(char *cmd, char **envp)
-{
-	printf("Debug: Entering execute_command\n");
-	char **cmd_args = ft_split(cmd, ' ');
-	printf("Debug: Command arguments split\n");
-	char *cmd_path = get_command_path(cmd_args, envp);
-	printf("Debug: Command path obtained\n");
-	if (execve(cmd_path, cmd_args, envp) == -1)
+	if (dup2(fd_infile, STDIN_FILENO) < 0)
 	{
-		ft_putstr_fd("pipex: command not found: ", 2);
-		ft_putendl_fd(cmd_args[0], 2);
-		free_string_array(cmd_args);
-		free(cmd_path);
+		perror("Error duplicating file descriptor for input file");
+		exit(EXIT_FAILURE);
+	}
+	close(fd_infile);
+	if (dup2(fd[1], STDOUT_FILENO) < 0)
+	{
+		perror("Error duplicating file descriptor for pipe");
+		exit(EXIT_FAILURE);
+	}
+	close(fd[1]);
+	argv_sp = ft_split(argv[2], ' ');
+	path = ft_get_path(argv_sp, envp);
+	if (execve(path, argv_sp, envp) == -1)
+	{
+		perror("Error executing command");
+		ft_free(argv_sp);
+		free(path);
 		exit(EXIT_FAILURE);
 	}
 }
 
-static void setup_input(int *pipe_fd, char *file)
+void	ft_child_2(int *fd, char **argv, char **envp)
 {
-	int input_fd = open_input_file(file);
-	close(pipe_fd[0]);
-	dup2(input_fd, STDIN_FILENO);
-	close(input_fd);
-}
+	int		fd_outfile;
+	char	**argv_sp;
+	char	*path;
 
-static void setup_output(int *pipe_fd)
-{
-	dup2(pipe_fd[1], STDOUT_FILENO);
-	close(pipe_fd[1]);
-}
-
-static void execute_first_child(int *pipe_fd, char **argv, char **envp)
-{
-	setup_input(pipe_fd, argv[1]);
-	setup_output(pipe_fd);
-	execute_command(argv[2], envp);
-}
-
-/* Function to handle the second child process */
-static int	open_output_file(char *file)
-{
-	int output_fd = get_file_descriptor(file, 1);
-	if (output_fd < 0)
+	close(fd[1]);
+	fd_outfile = ft_get_fd(argv[4], 1);
+	if (fd_outfile < 0)
 	{
 		perror("Error opening output file");
 		exit(EXIT_FAILURE);
 	}
-	return output_fd;
-}
-
-static void setup_output_file(int *pipe_fd, char *file)
-{
-	int output_fd = open_output_file(file);
-	close(pipe_fd[1]);
-	dup2(pipe_fd[0], STDIN_FILENO);
-	close(pipe_fd[0]);
-	dup2(output_fd, STDOUT_FILENO);
-	close(output_fd);
-}
-
-static void execute_second_child(int *pipe_fd, char **argv, char **envp)
-{
-	setup_output_file(pipe_fd, argv[4]);
-	execute_command(argv[3], envp);
-}
-
-/* Function to handle the piping and forking */
-static void	create_pipe(int *pipe_fd)
-{
-	if (pipe(pipe_fd) == -1)
+	if (dup2(fd[0], STDIN_FILENO) < 0)
 	{
-		perror("Error creating pipe");
+		perror("Error duplicating file descriptor for pipe");
+		exit(EXIT_FAILURE);
+	}
+	close(fd[0]);
+	if (dup2(fd_outfile, STDOUT_FILENO) < 0)
+	{
+		perror("Error duplicating file descriptor for output file");
+		exit(EXIT_FAILURE);
+	}
+	close(fd_outfile);
+	argv_sp = ft_split(argv[3], ' ');
+	path = ft_get_path(argv_sp, envp);
+	if (execve(path, argv_sp, envp) == -1)
+	{
+		perror("Error executing command");
+		ft_free(argv_sp);
+		free(path);
 		exit(EXIT_FAILURE);
 	}
 }
 
-static pid_t	fork_process()
+void	ft_pipex(char **argv, char **envp)
 {
-	pid_t pid = fork();
+	pid_t	pid;
+	int		fd[2];
+
+	if (pipe(fd) < 0)
+	{
+		perror("Error creating pipe");
+		exit(EXIT_FAILURE);
+	}
+	pid = fork();
 	if (pid < 0)
 	{
 		perror("Error forking process");
 		exit(EXIT_FAILURE);
 	}
-	return pid;
-}
-
-static void fork_and_handle_first_child(int *pipe_fd, char **argv, char **envp)
-{
-	pid_t pid = fork_process();
 	if (pid == 0)
-		execute_first_child(pipe_fd, argv, envp);
-}
-
-static void fork_and_handle_second_child(int *pipe_fd, char **argv, char **envp)
-{
-	pid_t pid = fork_process();
-	if (pid == 0)
-		execute_second_child(pipe_fd, argv, envp);
+		ft_child_1(fd, argv, envp);
 	else
 	{
-		close(pipe_fd[0]);
-		close(pipe_fd[1]);
+		pid = fork();
+		if (pid < 0)
+		{
+			perror("Error forking process");
+			exit(EXIT_FAILURE);
+		}
+		if (pid == 0)
+			ft_child_2(fd, argv, envp);
+		else
+		{
+			close(fd[0]);
+			close(fd[1]);
+			waitpid(pid, NULL, 0);
+		}
 	}
-	waitpid(pid, NULL, 0);
 }
 
-static void handle_piping_and_forking(char **argv, char **envp)
-{
-	int pipe_fd[2];
-	create_pipe(pipe_fd);
-	fork_and_handle_first_child(pipe_fd, argv, envp);
-	fork_and_handle_second_child(pipe_fd, argv, envp);
-}
-
-/* Main function */
 int	main(int argc, char **argv, char **envp)
 {
 	if (argc != 5)
@@ -147,7 +132,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_putstr_fd("Invalid argument number. Check and try again\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	check_commands(argc, argv, envp, 2);
-	handle_piping_and_forking(argv, envp);
+	ft_check_cmd(argc, argv, envp, 2);
+	ft_pipex(argv, envp);
 	return (0);
 }
