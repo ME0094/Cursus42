@@ -2,6 +2,7 @@
 
 ### Introducción
 El proyecto `ft_printf` consiste en reimplementar la función `printf` de la biblioteca estándar de C.
+
 El objetivo es comprender mejor el funcionamiento interno de esta función y mejorar nuestras habilidades en programación en C.
 
 ► [Explicación detallada en Notion.](https://www.notion.so/ft_printf-b23b71c3eb1c46ed9c80a06facde0b40)
@@ -66,9 +67,6 @@ Este proyecto está licenciado bajo la Licencia MIT.
 ### Contacto
 Para cualquier consulta o información adicional, comunícate con:
 
-◦ Email: martirod@student.42malaga.com
-
-◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
 
 ◦ Email: martirod@student.42malaga.com
 
