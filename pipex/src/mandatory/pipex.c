@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 00:24:50 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 00:38:50 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,34 +78,47 @@ void	ft_child_2(int *fd, char **argv, char **envp)
 	execute_command(path, argv_sp, envp);
 }
 
+void	handle_pipe_error(void)
+{
+	perror("Error creating pipe");
+	exit(EXIT_FAILURE);
+}
+
+void	handle_fork_error(void)
+{
+	perror("Error forking process");
+	exit(EXIT_FAILURE);
+}
+
+void	child_process_logic_1(int *fd, char **argv, char **envp)
+{
+	ft_child_1(fd, argv, envp);
+}
+
+void	child_process_logic_2(int *fd, char **argv, char **envp)
+{
+	ft_child_2(fd, argv, envp);
+}
+
 void	ft_pipex(char **argv, char **envp)
 {
 	pid_t	pid;
 	int		fd[2];
 
 	if (pipe(fd) < 0)
-	{
-		perror("Error creating pipe");
-		exit(EXIT_FAILURE);
-	}
+		handle_pipe_error();
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("Error forking process");
-		exit(EXIT_FAILURE);
-	}
+		handle_fork_error();
 	if (pid == 0)
-		ft_child_1(fd, argv, envp);
+		child_process_logic_1(fd, argv, envp);
 	else
 	{
 		pid = fork();
 		if (pid < 0)
-		{
-			perror("Error forking process");
-			exit(EXIT_FAILURE);
-		}
+			handle_fork_error();
 		if (pid == 0)
-			ft_child_2(fd, argv, envp);
+			child_process_logic_2(fd, argv, envp);
 		else
 		{
 			close(fd[0]);

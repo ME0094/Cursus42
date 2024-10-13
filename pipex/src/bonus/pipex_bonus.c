@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:14:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 00:23:56 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 00:39:26 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,30 @@ static void	ft_child(char *cmd, char **envp)
 	}
 }
 
-static void	ft_pipex(char *cmd, char **envp)
+void	child_process_logic(int *fd, char *cmd, char **envp)
+{
+	close(fd[0]);
+	if (dup2(fd[1], STDOUT_FILENO) < 0)
+	{
+		perror("Error duplicating file descriptor for pipe");
+		exit(EXIT_FAILURE);
+	}
+	close(fd[1]);
+	ft_child(cmd, envp);
+}
+
+void	ft_pipex(char *cmd, char **envp)
 {
 	pid_t	pid;
 	int		fd[2];
 
 	if (pipe(fd) < 0)
-	{
-		perror("Error creating pipe");
-		exit(EXIT_FAILURE);
-	}
+		handle_pipe_error();
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("Error forking process");
-		exit(EXIT_FAILURE);
-	}
+		handle_fork_error();
 	if (pid == 0)
-	{
-		close(fd[0]);
-		if (dup2(fd[1], STDOUT_FILENO) < 0)
-		{
-			perror("Error duplicating file descriptor for pipe");
-			exit(EXIT_FAILURE);
-		}
-		close(fd[1]);
-		ft_child(cmd, envp);
-	}
+		child_process_logic(fd, cmd, envp);
 	else
 	{
 		close(fd[1]);
@@ -113,36 +110,43 @@ int	ft_check_input(char **argv)
 	return (i);
 }
 
+void	validate_arguments(int argc)
+{
+	if (argc < 5)
+	{
+		ft_putstr_fd("Too few arguments. Check and try again", 2);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	handle_fork_and_process(int argc, char **argv, char **envp, int i)
+{
+	int	pid;
+
+	pid = fork();
+	if (pid < 0)
+	{
+		perror("Error forking process");
+		exit(EXIT_FAILURE);
+	}
+	if (pid == 0)
+	{
+		while (i < (argc - 2))
+			ft_pipex(argv[i++], envp);
+		ft_child(argv[i], envp);
+	}
+	else
+		wait(NULL);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int	i;
-	int	pid;
 
-	if (argc < 5)
-	{
-		ft_putstr_fd("Too few arguments. Check and try again
-", 2);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		i = ft_check_input(argv);
-		ft_check_cmd(argc, argv, envp, i);
-		ft_dups(argc, argv);
-		pid = fork();
-		if (pid < 0)
-		{
-			perror("Error forking process");
-			exit(EXIT_FAILURE);
-		}
-		if (pid == 0)
-		{
-			while (i < (argc - 2))
-				ft_pipex(argv[i++], envp);
-			ft_child(argv[i], envp);
-		}
-		else
-			wait(NULL);
-	}
+	validate_arguments(argc);
+	i = ft_check_input(argv);
+	ft_check_cmd(argc, argv, envp, i);
+	ft_dups(argc, argv);
+	handle_fork_and_process(argc, argv, envp, i);
 	return (0);
 }
