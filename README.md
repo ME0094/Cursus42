@@ -1,5 +1,9 @@
 <h1>Cursus 42!</h1>
 
+## Descripción
+Cursus42 es una colección de proyectos y ejercicios para el plan de estudios de 42.
+Incluye proyectos y retos diseñados para mejorar las habilidades y conocimientos de programación.
+
 ## Libft
 ► [Programamos algunas funciones de la librería estándar de C.](https://github.com/ME0094/Cursus42/tree/master/Libft)
 <br>
@@ -20,6 +24,20 @@
 ► [Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones.](https://github.com/ME0094/Cursus42/tree/master/push_swap)
 <br>
 <br>
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos para contribuir:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama para tu característica o corrección de errores.
+3. Haz commit de tus cambios.
+4. Envía tus cambios a tu fork.
+5. Crea una solicitud de extracción.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT.
 
 # Contacto 
 
