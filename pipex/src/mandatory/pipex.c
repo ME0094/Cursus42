@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 19:59:32 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:21:52 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,24 @@ static void	execute_command(char *cmd, char **envp)
 	}
 }
 
-static void	handle_first_child(int *pipe_fd, char **argv, char **envp)
+static void setup_input(int *pipe_fd, char *file)
 {
-	printf("Debug: Entering handle_first_child\n");
-	int input_fd = open_input_file(argv[1]);
-	printf("Debug: Input file opened\n");
+	int input_fd = open_input_file(file);
 	close(pipe_fd[0]);
 	dup2(input_fd, STDIN_FILENO);
 	close(input_fd);
+}
+
+static void setup_output(int *pipe_fd)
+{
 	dup2(pipe_fd[1], STDOUT_FILENO);
 	close(pipe_fd[1]);
+}
+
+static void execute_first_child(int *pipe_fd, char **argv, char **envp)
+{
+	setup_input(pipe_fd, argv[1]);
+	setup_output(pipe_fd);
 	execute_command(argv[2], envp);
 }
 
@@ -66,16 +74,19 @@ static int	open_output_file(char *file)
 	return output_fd;
 }
 
-static void	handle_second_child(int *pipe_fd, char **argv, char **envp)
+static void setup_output_file(int *pipe_fd, char *file)
 {
-	printf("Debug: Entering handle_second_child\n");
-	int output_fd = open_output_file(argv[4]);
-	printf("Debug: Output file opened\n");
+	int output_fd = open_output_file(file);
 	close(pipe_fd[1]);
 	dup2(pipe_fd[0], STDIN_FILENO);
 	close(pipe_fd[0]);
 	dup2(output_fd, STDOUT_FILENO);
 	close(output_fd);
+}
+
+static void execute_second_child(int *pipe_fd, char **argv, char **envp)
+{
+	setup_output_file(pipe_fd, argv[4]);
 	execute_command(argv[3], envp);
 }
 
@@ -100,28 +111,32 @@ static pid_t	fork_process()
 	return pid;
 }
 
-static void	handle_piping_and_forking(char **argv, char **envp)
+static void fork_and_handle_first_child(int *pipe_fd, char **argv, char **envp)
 {
-	printf("Debug: Entering handle_piping_and_forking\n");
-	int pipe_fd[2];
-	create_pipe(pipe_fd);
-	printf("Debug: Pipe created\n");
 	pid_t pid = fork_process();
-	printf("Debug: First fork done\n");
 	if (pid == 0)
-		handle_first_child(pipe_fd, argv, envp);
+		execute_first_child(pipe_fd, argv, envp);
+}
+
+static void fork_and_handle_second_child(int *pipe_fd, char **argv, char **envp)
+{
+	pid_t pid = fork_process();
+	if (pid == 0)
+		execute_second_child(pipe_fd, argv, envp);
 	else
 	{
-		pid = fork_process();
-		if (pid == 0)
-			handle_second_child(pipe_fd, argv, envp);
-		else
-		{
-			close(pipe_fd[0]);
-			close(pipe_fd[1]);
-		}
+		close(pipe_fd[0]);
+		close(pipe_fd[1]);
 	}
 	waitpid(pid, NULL, 0);
+}
+
+static void handle_piping_and_forking(char **argv, char **envp)
+{
+	int pipe_fd[2];
+	create_pipe(pipe_fd);
+	fork_and_handle_first_child(pipe_fd, argv, envp);
+	fork_and_handle_second_child(pipe_fd, argv, envp);
 }
 
 /* Main function */

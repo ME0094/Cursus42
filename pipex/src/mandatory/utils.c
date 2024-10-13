@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:28:09 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 19:03:18 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:22:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,27 @@ int	get_file_descriptor(char *file, int mode)
 }
 
 /* Function to check the validity of commands */
-void	check_commands(int argc, char **argv, char **envp, int i)
+static char *validate_command(char *cmd, char **envp)
 {
-	char	*cmd_path;
-	char	**cmd_args;
+	char **cmd_args = ft_split(cmd, ' ');
+	char *cmd_path = get_command_path(cmd_args, envp);
+	if (!cmd_path)
+	{
+		free(cmd_path);
+		ft_putstr_fd("invalid CMD: ", 2);
+		ft_putendl_fd(cmd_args[0], 2);
+		free_string_array(cmd_args);
+		exit(EXIT_FAILURE);
+	}
+	free_string_array(cmd_args);
+	return cmd_path;
+}
 
+void check_commands(int argc, char **argv, char **envp, int i)
+{
 	while (i <= (argc - 2))
 	{
-		cmd_args = ft_split(argv[i], ' ');
-		cmd_path = get_command_path(cmd_args, envp);
-		if (!cmd_path)
-		{
-			free(cmd_path);
-			ft_putstr_fd("invalid CMD: ", 2);
-			ft_putendl_fd(cmd_args[0], 2);
-			free_string_array(cmd_args);
-			exit(EXIT_FAILURE);
-		}
-		free_string_array(cmd_args);
+		char *cmd_path = validate_command(argv[i], envp);
 		free(cmd_path);
 		i++;
 	}

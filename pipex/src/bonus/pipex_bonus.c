@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:14:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 19:19:29 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:20:59 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,18 @@ static void	handle_child_process(char *cmd, char **envp)
 }
 
 /* Function to handle piping and forking */
-static void	handle_piping_and_forking(char *cmd, char **envp)
+static void create_pipe(int *pipe_fd)
 {
-	pid_t	pid;
-	int		pipe_fd[2];
-
 	if (pipe(pipe_fd) == -1)
 	{
 		perror("Error creating pipe");
 		exit(EXIT_FAILURE);
 	}
-	pid = fork();
+}
+
+static void fork_and_handle_child(char *cmd, char **envp, int *pipe_fd)
+{
+	pid_t pid = fork();
 	if (pid < 0)
 	{
 		perror("Error forking process");
@@ -54,6 +55,13 @@ static void	handle_piping_and_forking(char *cmd, char **envp)
 		close(pipe_fd[0]);
 		wait(NULL);
 	}
+}
+
+static void handle_piping_and_forking(char *cmd, char **envp)
+{
+	int pipe_fd[2];
+	create_pipe(pipe_fd);
+	fork_and_handle_child(cmd, envp, pipe_fd);
 }
 
 /* Function to handle file descriptors */
@@ -105,35 +113,40 @@ static void	execute_command(char *cmd_path, char **cmd_args, char **envp)
 }
 
 /* Main function */
-int	main(int argc, char **argv, char **envp)
+static void validate_arguments(int argc)
 {
-	int	i;
-	int	pid;
-
 	if (argc < 5)
 	{
-		ft_putstr_fd("Too few arguments. Check and try again\n", 2);
+		ft_putstr_fd("Too few arguments. Check and try again
+", 2);
 		exit(EXIT_FAILURE);
 	}
-	else
+}
+
+static void fork_and_execute(int argc, char **argv, char **envp, int i)
+{
+	int pid = fork();
+	if (pid < 0)
 	{
-		i = check_input_arguments(argv);
-		check_commands(argc, argv, envp, i);
-		handle_file_descriptors(argc, argv);
-		pid = fork();
-		if (pid < 0)
-		{
-			perror("Error forking process");
-			exit(EXIT_FAILURE);
-		}
-		if (pid == 0)
-		{
-			while (i < (argc - 2))
-				handle_piping_and_forking(argv[i++], envp);
-			handle_child_process(argv[i], envp);
-		}
-		else
-			wait(NULL);
+		perror("Error forking process");
+		exit(EXIT_FAILURE);
 	}
+	if (pid == 0)
+	{
+		while (i < (argc - 2))
+			handle_piping_and_forking(argv[i++], envp);
+		handle_child_process(argv[i], envp);
+	}
+	else
+		wait(NULL);
+}
+
+int main(int argc, char **argv, char **envp)
+{
+	validate_arguments(argc);
+	int i = check_input_arguments(argv);
+	check_commands(argc, argv, envp, i);
+	handle_file_descriptors(argc, argv);
+	fork_and_execute(argc, argv, envp, i);
 	return (0);
 }

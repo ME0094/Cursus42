@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 15:19:50 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 20:12:46 by martirod         ###   ########.fr       */
+/*   Created: 2024/10/13 20:14:28 by martirod          #+#    #+#             */
+/*   Updated: 2024/10/13 20:17:32 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_BONUS_H
-# define PIPEX_BONUS_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/wait.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "../libft/libft.h"
-# include "../libft/ft_printf/ft_printf.h"
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*result;
+	size_t	len1;
+	size_t	len2;
 
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	result = (char *)malloc(len1 + len2 + 1);
+	if (!result)
+		return (NULL);
+	ft_strlcpy(result, s1, sizeof(result));
+	ft_strlcat(result, s2, sizeof(result));
+	free(s1);
+	return (result);
+}
