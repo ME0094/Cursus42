@@ -40,6 +40,7 @@ Incluye proyectos y retos diseñados para mejorar las habilidades y conocimiento
 Este proyecto está licenciado bajo la Licencia MIT.
 
 # Contacto 
+Para cualquier consulta o información adicional, comunícate con:
 
 ◦ Email: martirod@student.42malaga.com
 
