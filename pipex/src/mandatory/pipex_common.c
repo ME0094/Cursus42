@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_child.c                                      :+:      :+:    :+:   */
+/*   pipex_common.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 20:57:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 22:34:32 by martirod         ###   ########.fr       */
+/*   Created: 2024/10/13 22:32:02 by martirod          #+#    #+#             */
+/*   Updated: 2024/10/13 22:36:06 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-static int open_input_file(char *file)
-{
-    int input_fd = get_file_descriptor(file, 0);
-    if (input_fd < 0)
-    {
-        perror("Error opening input file");
-        exit(EXIT_FAILURE);
-    }
-    return input_fd;
-}
-
-static void execute_command(char *cmd, char **envp)
+void execute_command(char *cmd, char **envp)
 {
     printf("Debug: Entering execute_command\n");
     char **cmd_args = ft_split(cmd, ' ');
@@ -40,7 +29,7 @@ static void execute_command(char *cmd, char **envp)
     }
 }
 
-static void setup_input(int *pipe_fd, char *file)
+void setup_input(int *pipe_fd, char *file)
 {
     int input_fd = open_input_file(file);
     close(pipe_fd[0]);
@@ -48,31 +37,20 @@ static void setup_input(int *pipe_fd, char *file)
     close(input_fd);
 }
 
-static void setup_output(int *pipe_fd)
+void setup_output(int *pipe_fd)
 {
     dup2(pipe_fd[1], STDOUT_FILENO);
     close(pipe_fd[1]);
 }
 
-static void execute_first_child(int *pipe_fd, char **argv, char **envp)
+void execute_first_child(int *pipe_fd, char **argv, char **envp)
 {
     setup_input(pipe_fd, argv[1]);
     setup_output(pipe_fd);
     execute_command(argv[2], envp);
 }
 
-static int open_output_file(char *file)
-{
-    int output_fd = get_file_descriptor(file, 1);
-    if (output_fd < 0)
-    {
-        perror("Error opening output file");
-        exit(EXIT_FAILURE);
-    }
-    return output_fd;
-}
-
-static void setup_output_file(int *pipe_fd, char *file)
+void setup_output_file(int *pipe_fd, char *file)
 {
     int output_fd = open_output_file(file);
     close(pipe_fd[1]);
@@ -82,8 +60,29 @@ static void setup_output_file(int *pipe_fd, char *file)
     close(output_fd);
 }
 
-static void execute_second_child(int *pipe_fd, char **argv, char **envp)
+void execute_second_child(int *pipe_fd, char **argv, char **envp)
 {
     setup_output_file(pipe_fd, argv[4]);
     execute_command(argv[3], envp);
+}
+
+void handle_file_descriptors(int argc, char **argv)
+{
+    int input_fd;
+    int output_fd;
+
+    if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
+    {
+        input_fd = get_file_descriptor(argv[2], 0);
+        output_fd = get_file_descriptor(argv[argc - 1], 2);
+    }
+    else
+    {
+        input_fd = get_file_descriptor(argv[1], 0);
+        output_fd = get_file_descriptor(argv[argc - 1], 1);
+    }
+    dup2(input_fd, STDIN_FILENO);
+    close(input_fd);
+    dup2(output_fd, STDOUT_FILENO);
+    close(output_fd);
 }
