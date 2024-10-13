@@ -4,9 +4,15 @@ LIBFT			=	libft.a libftprintf.a
 DIR_SRCS		=	src/mandatory
 DIR_BONUS		=	src/bonus
 DIR_OBJS		=	objs
-SRCS_NAMES		= 	pipex.c \
-					utils.c 
-SRCS_NAMES_B	=	pipex_bonus.c \
+SRCS_NAMES		= 	pipex_1.c \
+					pipex_2.c \
+					pipex_3.c \
+					pipex_child_1.c \
+					pipex_child_2.c \
+					utils_1.c \
+					utils_2.c 
+SRCS_NAMES_B	=	pipex_bonus_1.c \
+					pipex_bonus_2.c \
 					utils_bonus.c 
 
 SRCS            =   $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
