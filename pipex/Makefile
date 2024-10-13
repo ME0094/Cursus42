@@ -71,8 +71,6 @@ git:
 #	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
 #	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex
 #
-#check:
-#   clang-tidy -checks=-*,readability-*,performance-*, portability-*,modernize-*,security-*,misc-*,clang-diagnostic-*,header-check -fix -header-check-option=-Werror -p .
 #/
 
 .PHONY:	all clean fclean re bonus
