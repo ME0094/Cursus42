@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 18:00:28 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:22:22 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void ft_pipex(char **argv, char **envp) {
         handle_fork_error();
     }
     if (pid == 0) {
-        child_process_logic_1(fd, argv, envp);
+        ft_child_1(fd, argv, envp);
     } else {
         pid = fork();
         if (pid < 0) {
             handle_fork_error();
         }
         if (pid == 0) {
-            child_process_logic_2(fd, argv, envp);
+            ft_child_2(fd, argv, envp);
         } else {
             close(fd[0]);
             close(fd[1]);
