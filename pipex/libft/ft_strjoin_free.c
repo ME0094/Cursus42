@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:14:28 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/13 20:17:32 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:18:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	result = (char *)malloc(len1 + len2 + 1);
 	if (!result)
 		return (NULL);
-	ft_strlcpy(result, s1, sizeof(result));
-	ft_strlcat(result, s2, sizeof(result));
+	ft_strlcpy(result, s1, len1 + len2 + 1);
+	ft_strlcat(result, s2, len1 + len2 + 1);
 	free(s1);
 	return (result);
 }

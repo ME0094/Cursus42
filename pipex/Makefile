@@ -6,9 +6,9 @@ DIR_BONUS		=	src/bonus
 DIR_OBJS		=	objs
 SRCS_NAMES		= 	pipex.c main.c \
 					child_processes.c dup_operations.c error_handling.c execute_command.c \
-					file_operations.c util_command.c util_path.c \
+					file_operations.c util_command.c util_path.c
 SRCS_NAMES_B	=	pipex_bonus.c main_bonus.c \
-					child_bonus.c dups_bonus.c validate_bonus.c \ 
+					child_bonus.c dups_bonus.c validate_bonus.c
 
 SRCS            =   $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
 SRCS_B          =   $(addprefix $(DIR_BONUS)/,$(SRCS_NAMES_B))
