@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:45:04 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 18:27:22 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:37:30 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
 
+typedef int	t_pid;
 void	validate_arguments(int argc);
 int		ft_check_input(char **argv);
 void	ft_check_cmd(int argc, char **argv, char **envp, int i);
@@ -40,5 +41,7 @@ void	execute_command(char *path, char **argv_sp, char **envp);
 void	ft_dups(int argc, char **argv);
 void	ft_child(char *cmd, char **envp);
 char	*ft_get_path(char **argv_sp, char **envp);
+void	ft_child_1(int *fd, char **argv, char **envp);
+void	ft_child_2(int *fd, char **argv, char **envp);
 
 #endif

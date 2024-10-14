@@ -6,36 +6,34 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 19:22:22 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:38:09 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-void ft_pipex(char **argv, char **envp) {
-    t_pid pid;
-    int fd[2];
+void	ft_pipex(char **argv, char **envp)
+{
+	t_pid	pid;
+	int		fd[2];
 
-    if (pipe(fd) < 0) {
-        handle_pipe_error();
-    }
-    pid = fork();
-    if (pid < 0) {
-        handle_fork_error();
-    }
-    if (pid == 0) {
-        ft_child_1(fd, argv, envp);
-    } else {
-        pid = fork();
-        if (pid < 0) {
-            handle_fork_error();
-        }
-        if (pid == 0) {
-            ft_child_2(fd, argv, envp);
-        } else {
-            close(fd[0]);
-            close(fd[1]);
-            waitpid(pid, NULL, 0);
-        }
-    }
+	if (pipe(fd) < 0)
+		handle_pipe_error();
+	pid = fork();
+	if (pid < 0)
+		handle_fork_error();
+	if (pid == 0)
+		ft_child_1(fd, argv, envp);
+	else
+		pid = fork();
+	if (pid < 0)
+		handle_fork_error();
+	if (pid == 0)
+		ft_child_2(fd, argv, envp);
+	else
+	{
+		close(fd[0]);
+		close(fd[1]);
+		waitpid(pid, NULL, 0);
+	}
 }
