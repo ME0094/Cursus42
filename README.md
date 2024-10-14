@@ -1,7 +1,6 @@
 <h1>Cursus 42!</h1>
 
-## Descripción
-Cursus42 es una colección de proyectos y ejercicios para el plan de estudios de 42.
+Una colección de proyectos y ejercicios para el plan de estudios de 42.
 Incluye proyectos y retos diseñados para mejorar las habilidades y conocimientos de programación.
 
 ## Libft
