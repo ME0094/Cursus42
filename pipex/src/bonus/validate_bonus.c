@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:13:51 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 18:40:37 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:43:06 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	handle_fork_and_process(int argc, char **argv, char **envp, int i)
 	if (pid == 0)
 	{
 		while (i < (argc - 2))
-			ft_pipex(argv[i++], envp);
+			ft_pipex(&argv[i++], envp);
 		ft_child(argv[i], envp);
 	}
 	else
