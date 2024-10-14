@@ -1,6 +1,9 @@
 NAME = pipex
 NAME_B = pipex_bonus
-LIBFT = libft.a libftprintf.a
+LIBFT_DIR = libft
+LIBFTPRINTF_DIR = libft/ft_printf
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
 DIR_SRCS = src/mandatory
 DIR_BONUS = src/bonus
 DIR_OBJS = objs
