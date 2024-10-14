@@ -6,14 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:16:10 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 15:30:51 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:53:00 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 void handle_error(const char *msg) {
     perror(msg);

@@ -6,13 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:20:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 15:31:23 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:54:07 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 static char **ft_make_path(char **argv_sp, char **envp) {
     char *path_str;

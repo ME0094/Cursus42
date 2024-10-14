@@ -6,13 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 17:42:02 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:53:58 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
-#include <unistd.h>
-#include <sys/wait.h>
 
 void ft_pipex(char **argv, char **envp) {
     pid_t pid;

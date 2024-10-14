@@ -6,15 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 17:28:09 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 15:31:03 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:53:25 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
 
 void ft_free(char **ptr) {
     int i = 0;

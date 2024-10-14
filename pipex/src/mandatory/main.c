@@ -6,12 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:17:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 15:31:08 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:53:36 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
-#include <stdlib.h>
 
 int main(int argc, char **argv, char **envp) {
     if (argc != 5) {

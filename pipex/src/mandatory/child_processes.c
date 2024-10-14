@@ -6,13 +6,11 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:16:56 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 15:30:33 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:52:24 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 void ft_child_1(int *fd, char **argv, char **envp) {
     int fd_infile;
