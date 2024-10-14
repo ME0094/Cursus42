@@ -6,18 +6,20 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:17:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 17:53:36 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:30:12 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-int main(int argc, char **argv, char **envp) {
-    if (argc != 5) {
-        ft_putstr_fd("Invalid argument number. Check and try again\n", 2);
-        exit(EXIT_FAILURE);
-    }
-    ft_check_cmd(argc, argv, envp, 2);
-    ft_pipex(argv, envp);
-    return 0;
+int	main(int argc, char **argv, char **envp)
+{
+	if (argc != 5)
+	{
+		ft_putstr_fd("Invalid argument number. Check and try again\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	ft_check_cmd(argc, argv, envp, 2);
+	ft_pipex(argv, envp);
+	return (0);
 }
