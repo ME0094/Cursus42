@@ -6,7 +6,7 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:45:04 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 17:42:32 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:51:27 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,30 @@
 # include "../libft/ft_printf/ft_printf.h"
 
 void child_process(int *pipefd, char **argv, char **envp);
-void child_process_logic_1(int *fd, char **argv, char **envp);
-void child_process_logic_2(int *fd, char **argv, char **envp);
-void dup_and_close(int oldfd, int newfd);
-void handle_error(const char *msg);
+void child_process_logic(int *fd, char *cmd, char **envp);
 void handle_pipe_error(void);
 void handle_fork_error(void);
-void execute_command(char *path, char **argv_sp, char **envp);
 void ft_free(char **ptr);
-int open_file(char *file, int flags, const char *error_msg);
 int ft_get_fd(char *file, int mode);
-int main(int argc, char **argv, char **envp);
-void pipex(int argc, char **argv, char **envp);
 void ft_pipex(char **argv, char **envp);
-void check_command(char *arg, char **envp);
+void child_process_logic_1(int *fd, char **argv, char **envp);
+void child_process_logic_2(int *fd, char **argv, char **envp);
+void handle_error(const char *msg);
+void dup_and_close(int oldfd, int newfd);
+void execute_command(char *path, char **argv_sp, char **envp);
 void ft_check_cmd(int argc, char **argv, char **envp, int i);
+void validate_arguments(int argc);
+int ft_check_input(char **argv);
+void ft_dups(int argc, char **argv);
+void handle_fork_and_process(int argc, char **argv, char **envp, int i);
+void ft_child(char *cmd, char **envp);
+char *ft_get_path(char **argv_sp, char **envp);
+void ft_check_cmd(int argc, char **argv, char **envp, int i);
+void validate_arguments(int argc);
+int ft_check_input(char **argv);
+void ft_dups(int argc, char **argv);
+void handle_fork_and_process(int argc, char **argv, char **envp, int i);
+void ft_child(char *cmd, char **envp);
 char *ft_get_path(char **argv_sp, char **envp);
 
 #endif
