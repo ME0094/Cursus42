@@ -88,9 +88,7 @@ Libft/
 ```
 
 ## Contribuye
-¡Las contribuciones son bienvenidas!
-
-Por favor, sigue estos pasos para contribuir:
+¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos para contribuir:
 
 1. Haz un fork del repositorio.
 2. Crea una nueva rama para tu característica o corrección de errores.
