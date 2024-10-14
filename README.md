@@ -1,6 +1,7 @@
 <h1>Cursus 42!</h1>
 
 Una colección de proyectos y ejercicios para el plan de estudios de 42.
+
 Incluye proyectos y retos diseñados para mejorar las habilidades y conocimientos de programación.
 
 ## Libft
