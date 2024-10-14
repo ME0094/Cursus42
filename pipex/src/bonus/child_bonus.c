@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:11:57 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 18:30:50 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:55:29 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
+/*
+** Executes a command in a child process.
+*/
 void	ft_child(char *cmd, char **envp)
 {
 	char	**cmd_sp;
@@ -28,6 +31,9 @@ void	ft_child(char *cmd, char **envp)
 	}
 }
 
+/*
+** @brief Executes the logic for a child process in a pipeline.
+*/
 void	child_process_logic(int *fd, char *cmd, char **envp)
 {
 	close(fd[0]);
