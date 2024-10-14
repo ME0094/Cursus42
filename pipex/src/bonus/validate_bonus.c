@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   validate_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 15:31:13 by martirod         ###   ########.fr       */
+/*   Created: 2024/10/14 15:13:51 by martirod          #+#    #+#             */
+/*   Updated: 2024/10/14 15:30:29 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
 
-void ft_pipex(char **argv, char **envp) {
-    pid_t pid;
-    int fd[2];
-
-    if (pipe(fd) < 0) {
-        handle_pipe_error();
+void validate_arguments(int argc) {
+    if (argc < 5) {
+        ft_putstr_fd("Too few arguments. Check and try again", 2);
+        exit(EXIT_FAILURE);
     }
-    pid = fork();
+}
+
+void handle_fork_and_process(int argc, char **argv, char **envp, int i) {
+    pid_t pid = fork();
     if (pid < 0) {
-        handle_fork_error();
+        perror("Error forking process");
+        exit(EXIT_FAILURE);
     }
     if (pid == 0) {
-        child_process_logic_1(fd, argv, envp);
+        while (i < (argc - 2)) {
+            ft_pipex(argv[i++], envp);
+        }
+        ft_child(argv[i], envp);
     } else {
-        pid = fork();
-        if (pid < 0) {
-            handle_fork_error();
-        }
-        if (pid == 0) {
-            child_process_logic_2(fd, argv, envp);
-        } else {
-            close(fd[0]);
-            close(fd[1]);
-            waitpid(pid, NULL, 0);
-        }
+        wait(NULL);
     }
 }
