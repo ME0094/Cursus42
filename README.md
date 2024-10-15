@@ -25,18 +25,6 @@ Incluye proyectos y retos diseñados para mejorar las habilidades y conocimiento
 <br>
 <br>
 
-## Contribuciones
-
-¡Las contribuciones son bienvenidas!
-
-Por favor, sigue estos pasos para contribuir:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tu característica o corrección de errores.
-3. Haz commit de tus cambios.
-4. Envía tus cambios a tu fork.
-5. Crea una solicitud de extracción.
-
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT.
