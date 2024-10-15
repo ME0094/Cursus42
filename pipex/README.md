@@ -1,5 +1,5 @@
 # pipex
-El proyecto `pipex` imita el comportamiento del comando pipe (`|`) de Unix. Recrea en C la forma en que dos comandos se canalizan juntos a través de una pipe en el shell.
+El proyecto `pipex` recrea en C la forma en que dos comandos se canalizan juntos a través de una pipe (`|`) en el shell.
 
 Toma cuatro argumentos: dos comandos y dos archivos. Ejecuta el primer comando, canaliza su salida al segundo comando y escribe la salida final al segundo archivo.
 
