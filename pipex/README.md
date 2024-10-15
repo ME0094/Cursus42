@@ -89,7 +89,3 @@ Este proyecto está licenciado bajo la Licencia MIT.
 ◦ Email: martirod@student.42malaga.com
 
 ◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
-
-
-Licencia
-Este proyecto está bajo licencia MIT.
