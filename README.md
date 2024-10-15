@@ -21,7 +21,7 @@ Incluye proyectos y retos diseñados para mejorar las habilidades y conocimiento
 <br>
 <br>
 ## push_swap
-► [Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número posible de acciones.](https://github.com/ME0094/Cursus42/tree/master/push_swap)
+► [Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número de acciones.](https://github.com/ME0094/Cursus42/tree/master/push_swap)
 <br>
 <br>
 
