@@ -1,7 +1,5 @@
 # pipex
-`pipex` es un proyecto que imita el comportamiento del comando pipe (`|`) de Unix.
-
-Recrea en C la forma en que dos comandos se canalizan juntos a través de una pipe en el shell.
+El proyecto `pipex` es un proyecto que imita el comportamiento del comando pipe (`|`) de Unix. Recrea en C la forma en que dos comandos se canalizan juntos a través de una pipe en el shell.
 
 Toma cuatro argumentos: dos comandos y dos archivos. Ejecuta el primer comando, canaliza su salida al segundo comando y escribe la salida final al segundo archivo.
 
@@ -72,7 +70,7 @@ pipex/
 └── ...
 ```
 
-## Contribución
+## Contribuciones
 
 ¡Se agradecen las contribuciones! Sigue estos pasos para contribuir:
 
@@ -84,7 +82,7 @@ pipex/
 
 ## Licencia
 
-Este proyecto está bajo licencia MIT.
+Este proyecto está licenciado bajo la Licencia MIT.
 
 # Contacto 
 
