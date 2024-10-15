@@ -1,5 +1,5 @@
 # push_swap
-El proyecto `push_swap` consiste en ordenar una pila de datos utilizando un conjunto limitado de instrucciones y el menor número posible de acciones.
+El proyecto `push_swap` consiste en ordenar una pila de datos utilizando un conjunto limitado de instrucciones y el menor número de acciones.
 
 El objetivo es mejorar nuestras habilidades en algoritmos y estructuras de datos.
 
