@@ -71,8 +71,7 @@ pipex/
 ```
 
 ## Contribuciones
-
-¡Se agradecen las contribuciones! Sigue estos pasos para contribuir:
+¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos para contribuir:
 
 1. Bifurca el repositorio.
 2. Crea una nueva rama (`git checkout -b feature-branch`).
