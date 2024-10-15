@@ -3,7 +3,7 @@ El proyecto `pipex` recrea en C la forma en que dos comandos se canalizan juntos
 
 Toma cuatro argumentos: dos comandos y dos archivos. Ejecuta el primer comando, canaliza su salida al segundo comando y escribe la salida final al segundo archivo.
 
-► [Explicación detallada en Notion.](https://www.notion.so/push_swap-88358e73b0244bcb8de473879c5da05a)
+► [Explicación detallada en Notion.](https://www.notion.so/pipex-120c02c1e3b380b58c9eff8afcd20bf4)
 
 ## Características
 
