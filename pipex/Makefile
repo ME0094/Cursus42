@@ -21,7 +21,7 @@ SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
 SRCS_BONUS = $(addprefix $(DIR_BONUS)/,$(SRCS_BONUS_NAMES))
 
 HEAD = -Ilibft/includes -Iincludes
-CC = clang
+CC = gcc -g -o
 CFLAGS = -Wall -Werror -Wextra -g
 MAKEFLAGS = --no-print-directory
 
