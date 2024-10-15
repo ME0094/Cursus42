@@ -38,7 +38,7 @@ Para ejecutar el programa, utiliza el siguiente comando:
 - `cmd1`: El primer comando a ejecutar.
 - `cmd2`: El segundo comando a ejecutar.
 - `file2`: El archivo de salida.
-- 
+
 ### Ejemplo
 ```sh
 ./pipex infile "ls -l" "wc -l" outfile
