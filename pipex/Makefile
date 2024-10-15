@@ -22,7 +22,7 @@ SRCS_BONUS = $(addprefix $(DIR_BONUS)/,$(SRCS_BONUS_NAMES))
 
 HEAD = -Ilibft/includes -Iincludes
 CC = gcc -g -o
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -gdwarf-2
 MAKEFLAGS = --no-print-directory
 
 all: $(LIBFT) $(NAME)
@@ -67,6 +67,7 @@ git:
 val: all
 	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
 	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex_bonus
 
 .PHONY:	all clean fclean re bonus
