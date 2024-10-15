@@ -12,15 +12,14 @@ SRCS_NAMES = pipex.c main.c \
     child_processes.c dup_operations.c error_handling.c execute_command.c \
     file_operations.c util_command.c util_path.c
 
-SRCS_NAMES_B = pipex_bonus.c main_bonus.c \
+SRCS_BONUS_NAMES = pipex_bonus.c main_bonus.c \
     child_bonus.c dups_bonus.c validate_bonus.c \
-    child_processes_bonus.c dup_operations.c error_handling.c execute_command.c \
-    file_operations.c util_command.c util_path.c
+	../mandatory/error_handling.c ../mandatory/util_command.c \
+	../mandatory/util_path.c ../mandatory/file_operations.c
 
 SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
-SRCS_B = $(addprefix $(DIR_BONUS)/,$(SRCS_NAMES_B))
-OBJS = $(SRCS:.c=.o)
-OBJS_B = $(SRCS_B:.c=.o) $(OBJS)
+SRCS_BONUS = $(addprefix $(DIR_BONUS)/,$(SRCS_BONUS_NAMES))
+
 HEAD = -Ilibft/includes -Iincludes
 CC = clang
 CFLAGS = -Wall -Werror -Wextra -g
@@ -28,51 +27,46 @@ MAKEFLAGS = --no-print-directory
 
 all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJS)
-    $(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(HEAD) -o $(NAME)
-
 bonus: $(LIBFT) $(NAME_B)
 
-$(NAME_B): $(OBJS_B)
-    $(CC) $(CFLAGS) $(OBJS_B) $(LIBFT) $(HEAD) -o $(NAME_B)
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $^ $(LIBFT) $(HEAD) -o $@
 
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c | $(DIR_OBJS)
-    $(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-
-$(DIR_OBJS)/%.o: $(DIR_BONUS)/%.c | $(DIR_OBJS)
-    $(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-
-$(DIR_OBJS):
-    mkdir -p $(DIR_OBJS)
+$(NAME_B): $(SRCS_BONUS)
+	$(CC) $(CFLAGS) $^ $(LIBFT) $(HEAD) -o $@
 
 $(LIBFT):
-    @make -C libft
-    @make -C libft/ft_printf
+	@make -C libft
+	@make -C libft/ft_printf
 
 clean:
-    @make clean -C libft
-    @make clean -C libft/ft_printf
-    @rm -rf $(OBJS)
-    @rm -rf $(DIR_OBJS)
+	@make clean -C libft
+	@make clean -C libft/ft_printf
+	@rm -f $(DIR_SRCS)/*.o
+	@rm -f $(DIR_BONUS)/*.o
+	@rm -rf $(DIR_OBJS)
+	@rm -rf $(NAME)
+	@rm -rf $(NAME_B)
 
 fclean: clean
-    @make fclean -C libft
-    @make fclean -C libft/ft_printf
-    @rm -rf $(LIBFT)
-    @rm -rf $(NAME)
-    @rm -rf $(NAME_B)
+	@make fclean -C libft
+	@make fclean -C libft/ft_printf
+	@rm -rf $(LIBFT)
+	@rm -rf $(NAME)
+	@rm -rf $(NAME_B)
 
 re: fclean all
 
 git:
-    @git add -A
-    @git commit -m "$m"
-    @git push
-    @echo "Commit sent to GitHub"
+	@git add -A
+	@git commit -m "$m"
+	@git push
+	@echo "Commit sent to GitHub"
+# Use make git m="msg to commit" to commit and push in one line
 
 val: all
-    valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
-    valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
-    valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex
 
-.PHONY: all clean fclean re bonus
+.PHONY:	all clean fclean re bonus
