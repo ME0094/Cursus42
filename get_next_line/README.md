@@ -60,11 +60,11 @@ El algoritmo utilizado en `get_next_line` se basa en la lectura de bloques de da
 ## Contribuciones
 ¡Las contribuciones son bienvenidas! Por favor, sigue estos pasos para contribuir:
 
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tu característica o corrección de errores.
-3. Haz commit de tus cambios.
-4. Envía tus cambios a tu fork.
-5. Crea una solicitud de extracción.
+1. Bifurca el repositorio.
+2. Crea una nueva rama (`git checkout -b feature-branch`).
+3. Confirma tus cambios (`git commit -m 'Add some feature'`).
+4. Publica en la rama (`git push origin feature-branch`).
+5. Crea una solicitud de incorporación de cambios.
 
 ## Licencia
 Este proyecto está licenciado bajo la Licencia MIT.
