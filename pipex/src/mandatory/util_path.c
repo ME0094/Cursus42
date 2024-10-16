@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:20:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 19:42:35 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:10:11 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
+/**
+ * Constructs an array of possible executable paths.
+ */
 static char	**ft_make_path(char **argv_sp, char **envp)
 {
 	char	*path_str;
@@ -34,6 +37,9 @@ static char	**ft_make_path(char **argv_sp, char **envp)
 	return (path_sp);
 }
 
+/**
+ * Retrieves the valid path for a given command.
+ */
 char	*ft_get_path(char **argv_sp, char **envp)
 {
 	int		i;
