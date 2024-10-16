@@ -67,7 +67,7 @@ git:
 val: all
 	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
 	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex_bonus
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex infile "ls -l" "wc -l" outfile
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex_bonus "ls -l" "wc -l" outfile
 
 .PHONY:	all clean fclean re bonus
