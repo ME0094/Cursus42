@@ -6,12 +6,18 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:14:53 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 18:37:12 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:48:49 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
+/**
+ * This file contains the implementation of the ft_pipex function,
+ * which sets up a pipe and forks a child process
+ * to handle specific logic. 
+ * The parent process waits for the child process to complete.
+ */
 void	ft_pipex(char **argv, char **envp)
 {
 	pid_t	pid;
