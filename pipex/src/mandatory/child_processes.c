@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:16:56 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 19:22:32 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:51:05 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
+/**
+ * Executes the first child process in a pipeline.
+ */
 void	ft_child_1(int *fd, char **argv, char **envp)
 {
 	int		fd_infile;
@@ -29,6 +32,9 @@ void	ft_child_1(int *fd, char **argv, char **envp)
 	execute_command(path, argv_sp, envp);
 }
 
+/**
+ * Executes the second child process in a pipeline.
+ */
 void	ft_child_2(int *fd, char **argv, char **envp)
 {
 	int		fd_outfile;
