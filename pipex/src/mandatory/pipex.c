@@ -6,12 +6,17 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:15:20 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 19:38:09 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:07:29 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
+/**
+ * Executes a pipe operation between two child processes.
+ * @argv: The argument vector containing command line arguments.
+ * @envp: The environment vector containing environment variables.
+ */
 void	ft_pipex(char **argv, char **envp)
 {
 	t_pid	pid;
