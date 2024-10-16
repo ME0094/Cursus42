@@ -6,16 +6,17 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:13:35 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 19:58:27 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:46:25 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-/*
-** Duplicates file descriptors for input and output files
-** based on the provided arguments.
-*/
+/**
+ * The ft_dups function duplicates file descriptors for input and output files
+ * based on the provided arguments. It handles the special case where the first
+ * argument is "here_doc" and sets up the file descriptors accordingly.
+ */
 void	ft_dups(int argc, char **argv)
 {
 	int	fdin;
@@ -45,9 +46,9 @@ void	ft_dups(int argc, char **argv)
 	close(fdout);
 }
 
-/*
-**Checks the input arguments to determine if "here_doc" is present.
-*/
+/**
+ * Checks the input arguments to determine if the first argument is "here_doc".
+ */
 int	ft_check_input(char **argv)
 {
 	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])) == 0)
