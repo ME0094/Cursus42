@@ -6,12 +6,15 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:17:32 by martirod          #+#    #+#             */
-/*   Updated: 2024/10/14 19:30:12 by martirod         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:06:48 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
+/**
+ * Validates the number of arguments passed to the program
+ */
 int	main(int argc, char **argv, char **envp)
 {
 	if (argc != 5)
