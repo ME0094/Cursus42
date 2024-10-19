@@ -72,6 +72,5 @@ Este proyecto está licenciado bajo la Licencia MIT.
 ## Contacto
 Para cualquier consulta o información adicional, comunícate con:
 
-◦ Email: martirod@student.42malaga.com
-
-◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
+- **LinkedIn:** [Martín Eliseo](https://www.linkedin.com/in/martin-eliseo/)
+- **Email:** martirod@student.42malaga.com
