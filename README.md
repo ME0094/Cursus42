@@ -14,11 +14,11 @@ Una colección de proyectos diseñados para desarrollar habilidades de programac
 
 ## Proyectos Destacados
 
-- **Libft**: Implementación de funciones de la librería estándar de C.
-- **ft_printf**: Reimplementación de la función printf.
-- **get_next_line**: Función que devuelve una línea leída de un file descriptor.
-- **pipex**: Recreación de la canalización de comandos en C a través de una pipe en el shell.
-- **push_swap**: Ordenación de datos en un stack con un conjunto limitado de instrucciones.
+- **[Libft](https://github.com/ME0094/Cursus42/tree/main/Libft)**: Implementación de funciones de la librería estándar de C.
+- **[ft_printf](https://github.com/ME0094/Cursus42/tree/main/ft_printf)**: Reimplementación de la función printf.
+- **[get_next_line](https://github.com/ME0094/Cursus42/tree/main/get_next_line)**: Función que devuelve una línea leída de un file descriptor.
+- **[pipex](https://github.com/ME0094/Cursus42/tree/main/pipex)**: Recreación de la canalización de comandos en C a través de una pipe en el shell.
+- **[push_swap](https://github.com/ME0094/Cursus42/tree/main/push_swap)**: Ordenación de datos en un stack con un conjunto limitado de instrucciones.
 
 ## Instalación
 
@@ -56,5 +56,5 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE
 ## Contacto
 Para cualquier consulta o información adicional, comunícate con:
 
-- **Email:** martirod@student.42malaga.com
 - **LinkedIn:** [Perfil de Martin Eliseo](https://www.linkedin.com/in/martin-eliseo/)
+- **Email:** martirod@student.42malaga.com
