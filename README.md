@@ -22,10 +22,30 @@ Una colección de proyectos diseñados para desarrollar habilidades de programac
 
 ## Instalación
 
+### Requisitos previos
+
+* Git instalado en tu sistema operativo.
+* Un compilador de C (como GCC) instalado en tu sistema operativo.
+
+### Pasos de instalación
+
+1. Clona el repositorio utilizando el comando:
 ```bash
 git clone https://github.com/ME0094/Cursus42.git
+```
+2. Cambia al directorio del proyecto:
+```bash
 cd Cursus42
 ```
+3. Compila los proyectos utilizando el comando:
+```bash
+make
+```
+4. Ejecuta los proyectos utilizando el comando:
+```bash
+./nombre_del_proyecto
+```
+Reemplaza `nombre_del_proyecto` con el nombre del proyecto que deseas ejecutar.
 
 ## Uso
 
