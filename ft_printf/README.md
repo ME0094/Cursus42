@@ -63,10 +63,8 @@ Para compilar y usar la biblioteca `ft_printf`, sigue estos pasos:
 ### Licencia
 Este proyecto está licenciado bajo la Licencia MIT.
 
-### Contacto
+## Contacto
 Para cualquier consulta o información adicional, comunícate con:
 
-
-◦ Email: martirod@student.42malaga.com
-
-◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
+- **LinkedIn:** [Martín Eliseo](https://www.linkedin.com/in/martin-eliseo/)
+- **Email:** martirod@student.42malaga.com
