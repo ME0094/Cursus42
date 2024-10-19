@@ -4,18 +4,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/ME0094/Cursus42)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![C](https://img.shields.io/badge/language-C-orange.svg)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/ME0094/Cursus42)
-![GitHub repo size](https://img.shields.io/github/repo-size/ME0094/Cursus42)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![C](https://img.shields.io/badge/language-C-orange.svg)
 ![42 School](https://img.shields.io/badge/42-School-brightgreen.svg)
-![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
-![Made with](https://img.shields.io/badge/Made%20with-VSCode-1f425f.svg)
-![Ask Me Anything](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)
-![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
-![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
-
 
 ## Introducción
 
