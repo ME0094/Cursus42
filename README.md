@@ -1,6 +1,17 @@
 # Cursus 42 - Proyectos de Programación
 
-Una colección de proyectos diseñados para desarrollar habilidades de programación en el marco del plan de estudios de 42.
+![GitHub last commit](https://img.shields.io/github/last-commit/ME0094/Cursus42)
+![GitHub repo size](https://img.shields.io/github/repo-size/ME0094/Cursus42)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![C](https://img.shields.io/badge/language-C-orange.svg)
+
+## Introducción
+
+Bienvenido al repositorio de proyectos del Cursus 42. Este conjunto de proyectos forma parte del innovador programa educativo de la Escuela 42, diseñado para desarrollar habilidades de programación de alto nivel a través de un enfoque práctico y colaborativo.
+
+El Cursus 42 se basa en el aprendizaje entre pares y la resolución de problemas, desafiando a los estudiantes a dominar conceptos fundamentales de programación y ciencias de la computación. Cada proyecto en este repositorio representa un paso en el viaje de aprendizaje, abordando temas específicos y construyendo gradualmente un conjunto completo de habilidades de desarrollo de software.
+
+Estos proyectos no solo demuestran competencia técnica en C, sino que también reflejan la capacidad de abordar problemas complejos, trabajar con restricciones específicas y producir código eficiente y bien estructurado.
 
 ## Tabla de Contenidos
 
