@@ -1,37 +1,60 @@
-<h1>Cursus 42!</h1>
+# Cursus 42 - Proyectos de Programación
 
-Una colección de proyectos y ejercicios para el plan de estudios de 42.
+Una colección de proyectos diseñados para desarrollar habilidades de programación en el marco del plan de estudios de 42.
 
-Incluye proyectos y retos diseñados para mejorar las habilidades y conocimientos de programación.
+## Tabla de Contenidos
 
-## Libft
-► [Programamos algunas funciones de la librería estándar de C.](https://github.com/ME0094/Cursus42/tree/master/Libft)
-<br>
-<br>
-## ft_printf
-► [Reprogramamos printf.](https://github.com/ME0094/Cursus42/tree/master/ft_printf)
-<br>
-<br>
-## get_next_line
-► [Diseñamos una función que devuelva una línea leída de un file descriptor.](https://github.com/ME0094/Cursus42/tree/master/get_next_line)
-<br>
-<br>
-## pipex
-► [Recrea en C la forma en que dos comandos se canalizan juntos a través de una pipe en el shell.](https://github.com/ME0094/Cursus42/tree/master/pipex)
-<br>
-<br>
-## push_swap
-► [Ordenamos datos en un stack, con un conjunto limitado de instrucciones, y utilizando el menor número de acciones.](https://github.com/ME0094/Cursus42/tree/master/push_swap)
-<br>
-<br>
+- [Introducción](#introducción)
+- [Proyectos Destacados](#proyectos-destacados)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
+
+## Proyectos Destacados
+
+- **Libft**: Implementación de funciones de la librería estándar de C.
+- **ft_printf**: Reimplementación de la función printf.
+- **get_next_line**: Función que devuelve una línea leída de un file descriptor.
+- **pipex**: Recreación de la canalización de comandos en C a través de una pipe en el shell.
+- **push_swap**: Ordenación de datos en un stack con un conjunto limitado de instrucciones.
+
+## Instalación
+
+```bash
+git clone https://github.com/ME0094/Cursus42.git
+cd Cursus42
+```
+
+## Uso
+
+Ejemplo de uso de `ft_printf`:
+
+```c
+#include "ft_printf.h"
+
+int main() {
+    ft_printf("Hello, World!\n");
+    return 0;
+}
+```
+
+## Contribuciones
+
+Si deseas contribuir, sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz commit (`git commit -m 'Añadir nueva funcionalidad'`).
+4. Envía un pull request.
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT.
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
-# Contacto 
+## Contacto
 Para cualquier consulta o información adicional, comunícate con:
 
-◦ Email: martirod@student.42malaga.com
-
-◦ Linkedin: https://www.linkedin.com/in/martin-eliseo/
+- **Email:** martirod@student.42malaga.com
+- **LinkedIn:** [Perfil de Martin Eliseo](https://www.linkedin.com/in/martin-eliseo/)
