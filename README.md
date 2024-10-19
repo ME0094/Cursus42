@@ -88,5 +88,5 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE
 ## Contacto
 Para cualquier consulta o información adicional, comunícate con:
 
-- **LinkedIn:** [Perfil de Martin Eliseo](https://www.linkedin.com/in/martin-eliseo/)
+- **LinkedIn:** [Martín Eliseo](https://www.linkedin.com/in/martin-eliseo/)
 - **Email:** martirod@student.42malaga.com
