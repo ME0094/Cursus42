@@ -15,10 +15,10 @@ Una colección de proyectos diseñados para desarrollar habilidades de programac
 ## Proyectos Destacados
 
 - **[Libft](https://github.com/ME0094/Cursus42/tree/master/Libft)**: Implementación de funciones de la librería estándar de C.
-- **[ft_printf](https://github.com/ME0094/Cursus42/tree/main/ft_printf)**: Reimplementación de la función printf.
-- **[get_next_line](https://github.com/ME0094/Cursus42/tree/main/get_next_line)**: Función que devuelve una línea leída de un file descriptor.
-- **[pipex](https://github.com/ME0094/Cursus42/tree/main/pipex)**: Recreación de la canalización de comandos en C a través de una pipe en el shell.
-- **[push_swap](https://github.com/ME0094/Cursus42/tree/main/push_swap)**: Ordenación de datos en un stack con un conjunto limitado de instrucciones.
+- **[ft_printf](https://github.com/ME0094/Cursus42/tree/master/ft_printf)**: Reimplementación de la función printf.
+- **[get_next_line](https://github.com/ME0094/Cursus42/tree/master/get_next_line)**: Función que devuelve una línea leída de un file descriptor.
+- **[pipex](https://github.com/ME0094/Cursus42/tree/master/pipex)**: Recreación de la canalización de comandos en C a través de una pipe en el shell.
+- **[push_swap](https://github.com/ME0094/Cursus42/tree/master/push_swap)**: Ordenación de datos en un stack con un conjunto limitado de instrucciones.
 
 ## Instalación
 
