@@ -1,74 +1,61 @@
-NAME			=	push_swap
-NAME_B			=	checker
-LIBFT			=	libft.a libftprintf.a
-DIR_SRCS		=	srcs/mandatory
-DIR_BONUS		=	srcs/checker
-DIR_OBJS		=	objs
-SRCS_NAMES		= 	cost.c \
-					init.c \
-					input_check.c \
-					movements_push.c \
-					movements_reverse_rotate.c \
-					movements_rotate.c \
-					movements_swap.c \
-					movements.c \
-					position.c \
-					push_swap.c \
-					sorting.c \
-					stack.c \
-					utils.c
-SRCS_NAMES_B	=	
+NAME = pipex
+NAME_B = pipex_bonus
+LIBFT_DIR = libft
+LIBFTPRINTF_DIR = libft/ft_printf
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
+DIR_SRCS = src/mandatory
+DIR_BONUS = src/bonus
+DIR_OBJS = objs
 
-SRCS            =   $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
-SRCS_B          =   $(addprefix $(DIR_BONUS)/,$(SRCS_NAMES_B))
-OBJS            =   $(SRCS:.c=.o)
-OBJS_B          =   $(SRCS_B:.c=.o)
-HEAD			=	-Ilibft/includes -Iincludes
-CC				=	clang
-CFLAGS			=	-Wall -Werror -Wextra -g
-MAKEFLAGS		=	--no-print-directory
+SRCS_NAMES = pipex.c main.c \
+    child_processes.c dup_operations.c error_handling.c execute_command.c \
+    file_operations.c util_command.c util_path.c
 
-all: ${NAME}
+SRCS_BONUS_NAMES = pipex_bonus.c main_bonus.c \
+    child_bonus.c dups_bonus.c validate_bonus.c \
+	../mandatory/error_handling.c ../mandatory/util_command.c \
+	../mandatory/util_path.c ../mandatory/file_operations.c
 
-${NAME}: $(OBJS)
+SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
+SRCS_BONUS = $(addprefix $(DIR_BONUS)/,$(SRCS_BONUS_NAMES))
+
+HEAD = -Ilibft/includes -Iincludes
+CC = gcc -g -o
+CFLAGS = -Wall -Werror -Wextra -g -gdwarf-2
+MAKEFLAGS = --no-print-directory
+
+all: $(LIBFT) $(NAME)
+
+bonus: $(LIBFT) $(NAME_B)
+
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $^ $(LIBFT) $(HEAD) -o $@
+
+$(NAME_B): $(SRCS_BONUS)
+	$(CC) $(CFLAGS) $^ $(LIBFT) $(HEAD) -o $@
+
+$(LIBFT):
 	@make -C libft
 	@make -C libft/ft_printf
-	@cp libft/libft.a libft/ft_printf/libftprintf.a .
-	$(CC) $(CFLAGS) $(OBJS) ${LIBFT} ${HEAD} -o $(NAME)
-	@echo "\033[34;5mpush_swap mandatory\033[0m"
-
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-
-bonus: ${NAME_B}
-
-${NAME_B}: $(OBJS_B)
-	@make -C libft
-	@make -C libft/ft_printf
-	@cp libft/libft.a libft/ft_printf/libftprintf.a .
-	$(CC) $(CFLAGS) $(OBJS_B) ${LIBFT} ${HEAD} -o $(NAME_B)
-	@echo "\033[39;5mpush_swap bonus\033[0m"
-
-$(DIR_OBJS)/%.o: $(DIR_BONUS)/%.c | $(DIR_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEAD)
-
-$(DIR_OBJS):
-	mkdir -p $(DIR_OBJS)
 
 clean:
 	@make clean -C libft
 	@make clean -C libft/ft_printf
-	@rm -rf ${OBJS}
-	@rm -rf ${DIR_OBJS}
+	@rm -f $(DIR_SRCS)/*.o
+	@rm -f $(DIR_BONUS)/*.o
+	@rm -rf $(DIR_OBJS)
+	@rm -rf $(NAME)
+	@rm -rf $(NAME_B)
 
-fclean:	clean
+fclean: clean
 	@make fclean -C libft
 	@make fclean -C libft/ft_printf
-	@rm -rf ${LIBFT}
-	@rm -rf ${NAME}
-	@rm -rf ${NAME_B}
+	@rm -rf $(LIBFT)
+	@rm -rf $(NAME)
+	@rm -rf $(NAME_B)
 
-re:	fclean all
+re: fclean all
 
 git:
 	@git add -A
@@ -76,5 +63,11 @@ git:
 	@git push
 	@echo "Commit sent to GitHub"
 # Use make git m="msg to commit" to commit and push in one line
+
+val: all
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex infile "ls -l" "wc -l" outfile
+	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex_bonus "ls -l" "wc -l" outfile
 
 .PHONY:	all clean fclean re bonus
