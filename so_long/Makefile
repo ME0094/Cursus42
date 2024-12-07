@@ -48,4 +48,4 @@ git:
 	@echo "Commit sent to GitHub"
 # Use make git m="msg to commit" to commit and push in one line
 
-.PHONY:	all clean fclean re bonus
+.PHONY:	all clean fclean re
