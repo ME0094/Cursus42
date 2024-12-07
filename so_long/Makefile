@@ -64,10 +64,4 @@ git:
 	@echo "Commit sent to GitHub"
 # Use make git m="msg to commit" to commit and push in one line
 
-val: all
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME)
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./$(NAME_B)
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex infile "ls -l" "wc -l" outfile
-	valgrind -s -q --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes ./pipex_bonus "ls -l" "wc -l" outfile
-
 .PHONY:	all clean fclean re bonus
