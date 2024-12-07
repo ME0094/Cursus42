@@ -4,8 +4,10 @@
 
 ## first_word
 
-> Assignment name  : first_word
-Expected files   : first_word.c
+> Assignment name: first_word
+
+Expected files: first_word.c
+
 Allowed functions: write
 --------------------------------------------------------------------------------
 
