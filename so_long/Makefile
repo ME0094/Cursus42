@@ -19,10 +19,8 @@ MAKEFLAGS = --no-print-directory
 
 all: $(LIBFT) $(NAME)
 
-
 $(NAME): $(SRCS)
 	$(CC) $(CFLAGS) $^ $(LIBFT) $(HEAD) -o $@
-
 
 $(LIBFT):
 	@make -C libft
