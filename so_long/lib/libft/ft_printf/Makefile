@@ -16,7 +16,7 @@ SRC = ft_printf.c ft_printf_utils.c
 
 OBJ = $(SRC:.c=.o)
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
