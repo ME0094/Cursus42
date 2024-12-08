@@ -6,9 +6,9 @@ LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
 DIR_SRCS = src
 DIR_OBJS = objs
 
-SRCS_NAMES = pipex.c main.c \
-    child_processes.c dup_operations.c error_handling.c execute_command.c \
-    file_operations.c util_command.c util_path.c
+SRCS_NAMES = main.c \
+    game_init.c map_parser.c \
+    movements.c render.c utils.c
 
 SRCS = $(addprefix $(DIR_SRCS)/,$(SRCS_NAMES))
 
