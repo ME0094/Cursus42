@@ -1,7 +1,7 @@
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include <mlx.h>
+#include "../MLX42/include/MLX42/MLX42.h"
 
 // Define constants
 #define WIDTH 800
