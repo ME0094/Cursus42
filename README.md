@@ -31,6 +31,7 @@ Estos proyectos no solo demuestran competencia técnica en C, sino que también 
 - **[get_next_line](https://github.com/ME0094/Cursus42/tree/master/get_next_line)**: Función que devuelve una línea leída de un file descriptor.
 - **[pipex](https://github.com/ME0094/Cursus42/tree/master/pipex)**: Recreación de la canalización de comandos en C a través de una pipe en el shell.
 - **[push_swap](https://github.com/ME0094/Cursus42/tree/master/push_swap)**: Ordenación de datos en un stack con un conjunto limitado de instrucciones.
+- **[so_long](https://github.com/ME0094/Cursus42/tree/master/so_long)**: Juego 2D.
 
 ## Instalación
 
