@@ -6,7 +6,8 @@
 /*   By: martirod <martirod@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:53:22 by martirod          #+#    #+#             */
-/*   Updated: 2024/12/30 15:53:23 by martirod         ###   ########.fr       */
+/*   Updated: 2024/12/30 15:54:15 by martirod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/so_long.h"
